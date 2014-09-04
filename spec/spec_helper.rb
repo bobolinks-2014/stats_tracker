@@ -18,7 +18,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.use_transactional_fixtures = fase
+  config.use_transactional_fixtures = false
 
   config.before :each do
     if Capybara.current_driver == :rack_test

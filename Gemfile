@@ -5,6 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.1.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'bcrypt'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -37,7 +38,7 @@ group :development, :test do
   gem 'jasmine-rails'
   gem 'launchy'
   gem 'selenium-webdriver'
-  
+
 
 end
 # Use ActiveModel has_secure_password
