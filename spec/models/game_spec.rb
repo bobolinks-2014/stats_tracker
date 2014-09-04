@@ -1,5 +1,9 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe Game, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  	it {should have_many(:stats)}
+  	it {should belong_to(:team)}
+  	it {should belong_to(:season)}
+
 end

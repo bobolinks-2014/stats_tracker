@@ -1,8 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-require 'simplecov'
-SimpleCov.start 'rails'
-puts "required simplecov"
+
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
@@ -20,7 +18,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.use_transactional_fixtures = fase
+  config.use_transactional_fixtures = false
 
   config.before :each do
     if Capybara.current_driver == :rack_test
@@ -34,4 +32,5 @@ RSpec.configure do |config|
   config.after do
     DatabaseCleaner.clean
   end
+  config.warnings = false
 end
