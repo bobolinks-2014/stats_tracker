@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140904142537) do
     t.integer  "x_coord"
     t.integer  "y_coord"
     t.boolean  "made"
-    t.integer  "type"
+    t.integer  "stat_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

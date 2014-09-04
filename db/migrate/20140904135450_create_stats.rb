@@ -3,7 +3,7 @@ class CreateStats < ActiveRecord::Migration
     create_table :stats do |t|
     	t.integer :game_id, :x_coord, :y_coord
     	t.boolean :made
-    	t.integer :type
+    	t.integer :stat_type
 
       t.timestamps
     end

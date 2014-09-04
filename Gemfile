@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.1.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
-gem 'bcrypt'
+gem 'bcrypt', '~> 3.1.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -38,6 +38,8 @@ group :development, :test do
   gem 'jasmine-rails'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem "better_errors"
+  gem "binding_of_caller"
 
 
 end
