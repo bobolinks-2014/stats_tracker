@@ -1,8 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-require 'simplecov'
-SimpleCov.start 'rails'
-puts "required simplecov"
+
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
@@ -34,4 +32,5 @@ RSpec.configure do |config|
   config.after do
     DatabaseCleaner.clean
   end
+  config.warnings = false
 end
