@@ -2,8 +2,11 @@ class CreateGames < ActiveRecord::Migration
   def change
     create_table :games do |t|
       t.datetime :date
-      t.string :location
-      t.integer :winning_team_id, :losing_team_id, :winning_total, :losing_total, :season_id
+      t.string :location, :default => "home", :opponent
+      t.boolean :win, :default => nil
+      t.integer :team_score, :default => nil
+      t.integer :opponent_score, :default => nil
+      t.integer :season_id
 
       t.timestamps
     end

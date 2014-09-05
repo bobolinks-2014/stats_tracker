@@ -8,8 +8,17 @@ class SeasonController < ApplicationController
 
   end
 
-  def create
-
+  def create #post to create a new season
+    @user = User.find(session[:user_id])
+    @team = Team.find(season_params[:team_id])
+    @team.seasons.new(season_params)
+    if @team.save
+      redirect_to user_path(@user)
+      flash[:notice] = "You have successfully created a season!"
+    else
+      redirect_to user_path
+      flash[:notice] = "Unsuccessful creation of season."
+    end
   end
 
   def show
@@ -17,7 +26,7 @@ class SeasonController < ApplicationController
   end
 
   def edit
-
+    @team = Team.find(@user.team_id)
   end
 
   def update #post for edit
@@ -25,6 +34,14 @@ class SeasonController < ApplicationController
   end
 
   def destroy
+
+  end
+
+   private
+
+  def season_params
+    params.require(:season).permit(:name, :team_id)
+
 
   end
 end
