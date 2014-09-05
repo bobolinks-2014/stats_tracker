@@ -1,0 +1,30 @@
+<div ng-controller="DashboardCtrl">
+
+
+	<p> This is the show page for Seasons</p>
+	  <li><%= @user.name %></li><br>
+
+	<h1>Teams</h1>
+	<div class="dash dash-team">
+		<li>{{teams[0].name}}</li>
+	</div>
+
+	<h1>Season</h1>
+	<div class="dash dash-season" ng-repeat="season in seasons">
+		<li>{{season.team_id}} {{season.name}}</li>
+	</div>
+
+	<h1>Games</h1>
+	<div class="dash dash-game" ng-repeat="game in games">
+		<li>{{game.opponent}} {{game.date}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}} </li>
+	</div>
+
+<!-- 	<%# current_user.teams.each do |team| %>
+	  <li><a href= "/teams/<%#=team.id %>"><%#=team.name %></a></li><br>
+	<%#end%>
+ -->
+	<%= link_to("create new season", new_season_path) %>
+
+	<!-- <dashboard-accordion></dashboard-accordion> -->
+
+</div>

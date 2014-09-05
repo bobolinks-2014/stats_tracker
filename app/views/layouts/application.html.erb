@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='ScoreApp'>
 <head>
   <title>StatsTracker</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,6 +15,11 @@
   <% if logged_in? %>
     <li><%= link_to 'Log out', logout_path %></li>
   <% end %>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-mocks.js"></script>
+<%= javascript_include_tag "application" %>
 
 </body>
 </html>

@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20140904142537) do
     t.integer  "losing_team_id"
     t.integer  "winning_total"
     t.integer  "losing_total"
-    t.integer  "team_id"
     t.integer  "season_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -31,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140904142537) do
 
   create_table "seasons", force: true do |t|
     t.string   "name"
-    t.integer  "game_id"
+    t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
