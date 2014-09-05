@@ -21,22 +21,34 @@ class UserController < ApplicationController
   end
 
   def show
-    @user
+    @user = User.find(session[:user_id])
   end
 
   def edit
+    @user = User.find(session[:user_id])
   end
 
   def update #post for edit
+    @user = User.find(session[:user_id])
+    if @user
+      @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      flash[:notice] = "We were unable to update your profile"
+      redirect_to user_path
+    end
   end
 
   def destroy
+    @user = User.find(session[:user_id])
+    @user.destroy
+    redirect_to root_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
 end
