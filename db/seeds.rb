@@ -5,8 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-  User.create(name: "mike", email: "michael@test.com", password: "tester123")
-  Team.create(name: "st. mikes", school: "hello", user_id: 1)
-  Game.create(date: 01/12/13, location: "edgars moms house", team_id: 1)
-  Stat.create(game_id: 1, made: true, stat_type: 1)
-  Season.create(name: "edgars mom", game_id: 1)
+  edgar = User.create(name: "Edgar Garza", email: "egarza@gamil.com", password: "password")
+  mirta = Team.create(name: "White Tigers", school: "Mirta Ramirez", user_id: 1)
+  mirta2 = Team.create(name: "White Tigers", school: "Mirta Ramirez", user_id: 1)
+  date = ["02/05/14", "03/04/14", "04/04/14", "05/04/14", "06/04/14", "07/04/14"]
+  boolean = [true, false]
+
+  20.times do 
+    Game.create(date: date.sample, location: Faker::Address.street_address(include_secondary = false), win: boolean.sample, season_id: rand(1..2))
+  end
+
+  Season.create(name: "2013", team_id: 1)
+  Season.create(name: "2014", team_id: 2)
+

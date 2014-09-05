@@ -1,15 +1,4 @@
-// This is related to Angular app
-@score = angular.module('score',[]);
-
-// Angular routing directive: it tells us default route for app
-//   - we're actually not going to use this
-
-@score.config(['$routeProvider', ($routeProvider) ->
-    $routeProvider.
-        otherwise({
-            templateUrl: '../templates/home.html',
-            controller: 'DashboardCtrl'
-        });
-]);
+// window.App = angular.module('AngularCasts', ['ngResource'])
+window.App = angular.module('ScoreApp', ['ngResource']);
 
 
