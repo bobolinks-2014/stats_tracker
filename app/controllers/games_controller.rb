@@ -9,7 +9,7 @@ class GamesController < ApplicationController
   end
 
   def create
-
+    @game
   end
 
   def show
@@ -26,6 +26,12 @@ class GamesController < ApplicationController
 
   def destroy
 
+  end
+
+   private
+
+  def game_params
+    params.require(:game).permit(:date, :location, :win, :team_score, :opponent_score, :season_id)
   end
 
 end
