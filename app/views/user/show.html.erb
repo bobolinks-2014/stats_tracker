@@ -1,2 +1,9 @@
-<p> This is the show page</p>
-<%= @user.name %>
+<p> This is the show page for Seasons</p>
+  <li><%= @user.name %></li><br>
+
+
+<% current_user.teams.each do |team| %>
+  <li><a href= "/teams/<%=team.id %>"><%=team.name %></a></li><br>
+<%end%>
+
+<%= link_to("create new season", new_season_path) %>
