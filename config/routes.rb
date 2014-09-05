@@ -10,5 +10,12 @@ Rails.application.routes.draw do
   post '/session/login' => 'session#login'
   get '/session/logout' => 'session#logout', :as => 'logout'
 
+  resources :team do
+    resources :stats
+  end
+
+  resources :season do
+    resources :games
+  end
 
 end
