@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'user#index'
 
   #create user routes
-  resources :user, only: [:index, :new, :show, :edit, :create]
+  resources :user
   #sessions routes
   post '/session/login' => 'session#login'
   get '/session/logout' => 'session#logout', :as => 'logout'
