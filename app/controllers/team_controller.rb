@@ -43,7 +43,8 @@ class TeamController < ApplicationController
   end
 
   def update #post for edit
-
+    @user = User.find(session[:user_id])
+    @user.teams
   end
 
 
