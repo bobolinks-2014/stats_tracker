@@ -1,15 +1,64 @@
-<p> This is the show page for Teams</p>
-  <li><%= current_user.name %></li><br>
+<div ng-controller="DashboardCtrl as dash">
+   <h1>Coach <%= @user.name %></h1><br>
 
+<!-- TEAMS ROW -->
+  <h2 ng-class="{ active: dash.isSet('teams') }">
+    <a href ng-click="dash.selectRow('teams')">Teams</a>
+  </h2>
 
-<% current_user.teams.each do |team| %>
-  <li><a href= "/team/<%=team.id %>"><%=team.name %></a></li>
-  <% team.seasons.each do |season|  %>
-  <%= season.name %>
-  <%end%>
-  <li><%= link_to("edit team", edit_team_path) %></li>
-<%end%>
+  <!-- Show teams attached to user -->
+  <div ng-show="dash.isSet('teams')" class="teams">
 
+    <!-- Add a new team for user -->
+    <div class="dash dash-team" ng-click="dash.displayForm('team')">+</div>
+
+    <!-- REPEAT DIV PER TEAM -->
+    <div class="dash dash-team" ng-repeat="team in dash.teams" ng-click="dash.showDerivative({team: team.id},'seasons')">
+      {{team.id}} {{team.name}}
+    </div>
+  </div>
+
+  <!-- <new-team ng-show="dash.shouldDisplay('team')"></new-team> -->
+  <h1 ng-show="dash.shouldDisplay('team')">IT WORKS</h1>
+  
+<!-- SEASONS ROW -->
+  <h2 ng-class="{ active: dash.isSet('seasons') }">
+    <a href ng-click="dash.selectRow('seasons')">Season</a>
+  </h2>
+
+  <!-- Show seasons per selected team -->
+  <div ng-show="dash.isSet('seasons')" class="seasons">
+
+    <!-- Add a new season for selected team -->
+    <div class="dash dash-season" ng-click="hai">+</div>
+
+    <!-- REPEAT DIV PER SEASON -->
+    <div class="dash dash-season" ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({season: season.id},'games')">
+      {{season.team_id}} {{season.name}} TEAMID:{{dash.team_id}}
+    </div>
+
+  </div>
+
+<!-- GAMES ROW -->
+  <h2 ng-class="{ active: dash.isSet('games') }">
+    <a href ng-click="dash.selectRow('games')">Games</a>
+  </h2>
+
+  <!-- Show games per selected season -->
+  <div ng-show="dash.isSet('games')" class="games">
+
+    <!-- Add a new game for selected season -->
+    <div class="dash dash-game" ng-click="hai">+</div>
+
+    <!-- REPEAT DIV PER GAME -->
+    <div class="dash dash-game" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
+      {{game.opponent}} {{game.date}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}} SEASONID: {{dash.season_id}}
+    </div>
+  </div>
+
+  <%= link_to("create new season", new_season_path) %>
+
+</div>
 
 
 

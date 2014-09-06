@@ -6,24 +6,26 @@ app.controller('DashboardCtrl', ['$http',function($http){
 //  === SET ZE VARS ===
 // 
 	// Set Teams row to auto-display
-	this.showRow = {'teams': true, 'seasons': false, 'games': false};
+		this.showRow = {'teams': true, 'seasons': false, 'games': false};
+
+	// Which new forms are showing
+		this.showForm = {'team': true, 'season': false, 'game': false};
 
 	// Set these to view specific team's season or specific season's games
-	this.team_id = null;
-	this.season_id = null;
+		this.team_id = null;
+		this.season_id = null;
 
 	// User's data to display
-	this.teams = [];
-	this.seasons = [];
-	this.games = [];
+		this.teams = [];
+		this.seasons = [];
+		this.games = [];
 
 
-//  === HAVE ZE FUNCTIONS ===
+//  === HAVE ZE ROW FUNCTIONS ===
 // 
 	// Oscillate between true / false
 	this.selectRow = function(rowName){
-		// debugger;
-		this.showRow[rowName] ? this.showRow[rowName] = false : this.showRow[rowName] = true;  
+		this.showRow[rowName] ? this.showRow[rowName] = false : this.showRow[rowName] = true;
 	};
 
 	this.isSet = function(rowName){
@@ -34,8 +36,19 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		this.selectRow(rowName);
 		this.team_id = idObj.team || this.team_id;
 		this.season_id = idObj.season || this.season_id;
-	}
+	};
 	
+//  === HAVE ZE FORM FUNCTIONS ===
+// 
+	// 
+	this.shouldDisplay = function (formName) {
+		return this.showForm[formName];
+	};
+
+	this.displayForm = function (formName) {
+		debugger;
+		this.showForm[formName] ? this.showForm[formName] = false : this.showForm[formName] = true;
+	};
 
 //  === GET ZE DATA ===
 // 
