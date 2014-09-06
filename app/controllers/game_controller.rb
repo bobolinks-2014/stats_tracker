@@ -1,12 +1,12 @@
 class GameController < ApplicationController
 
-  def index
+  # def index
 
-  end
+  # end
 
-  def new
+  # def new
 
-  end
+  # end
 
   def create
     @user = User.find(session[:user_id])
@@ -21,13 +21,24 @@ class GameController < ApplicationController
     end
   end
 
+  def show_all
+    @user = User.find(session[:user_id])
+    @season = Season.find(params[:id])
+    @games = Game.where(season_id: @season.id)
+    respond_to do |f|
+      f.html { redirect_to user_path(@user) }
+      f.json { render :json => @games }
+      # f.html { render :json => @teams }
+    end
+  end
+
   def show
 
   end
 
-  def edit
+  # def edit
 
-  end
+  # end
 
   def update #post for edit
 

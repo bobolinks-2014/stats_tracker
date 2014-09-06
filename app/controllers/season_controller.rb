@@ -1,12 +1,15 @@
 class SeasonController < ApplicationController
 
-  def index
-    @season = Season.find(session[:user_id])
-  end
+  # TODO: Restrict all of these for only the relevant user
+  #
 
-  def new
+  # def index
+  #   @season = Season.find(session[:user_id])
+  # end
 
-  end
+  # def new
+
+  # end
 
   def create #post to create a new season
     @user = User.find(session[:user_id])
@@ -21,9 +24,23 @@ class SeasonController < ApplicationController
     end
   end
 
-  def show
-
+# '/season/team/:id'
+  def show_all
+    @user = User.find(session[:user_id])
+    @team = Team.find(params[:id])
+    @seasons = Season.where(team_id: @team.id)
+    respond_to do |f|
+      f.html { redirect_to user_path(@user) }
+      f.json { render :json => @seasons }
+      # f.html { render :json => @teams }
+    end
   end
+
+
+
+  # def show
+
+  # end
 
   def edit
     @team = Team.find(@user.team_id)
