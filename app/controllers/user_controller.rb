@@ -20,7 +20,6 @@ class UserController < ApplicationController
     end
   end
 
-
    def show_all_teams
     @user = User.find(session[:user_id])
     @teams = Team.where(user_id: @user.id)
@@ -30,7 +29,6 @@ class UserController < ApplicationController
       # f.html { render :json => @teams }
     end
   end
-
 
   def show_all_team_seasons
     @user = User.find(session[:user_id])
@@ -43,8 +41,6 @@ class UserController < ApplicationController
       # f.html { render :json => @teams }
     end
   end
-
-
 
 
   def show

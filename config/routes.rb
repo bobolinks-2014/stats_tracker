@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   #sessions routes
   post '/session/login' => 'session#login'
   get '/session/logout' => 'session#logout', :as => 'logout'
+  get '/user/:id/team/all' => 'user#show_all'
+  get '/user/:id/season/all' => 'user#show_all_season'
 
   resources :team
   #get '/team/user/all' => 'team#show_all'
