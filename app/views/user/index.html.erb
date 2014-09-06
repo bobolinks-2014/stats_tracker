@@ -1,21 +1,22 @@
-<div class ="signs">
+
+<div class="content container" >
   <h1>LOG IN</h1>
-  <ul class="form">
+  <ul >
     <%= form_for(:user, :url => {:controller => 'session', :action => 'login'}) do |f|%>
       <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
       <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
-      <li class = "button"><%= f.submit "Log in" %></li>
+      <li><%= f.submit "Log in" %></li>
     <% end %>
   </ul>
   <br/>
   <h1>SIGN UP</h1>
-  <ul class="form">
+  <ul >
     <%= form_for(:user, :url => {:controller => 'user', :action => 'create'}) do |f|%>
       <li><%= f.text_field :name, :size => 70, placeholder: 'Full Name' %></li>
       <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
       <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
       <li><%= f.password_field :password_confirmation, :size => 70, placeholder: 'Confim Password' %></li>
-      <li class = "button"><%= f.submit "Create" %></li>
+      <li><%= f.submit "Create" %></li>
     <% end %>
   </ul>
 </div>
