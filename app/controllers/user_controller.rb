@@ -20,8 +20,45 @@ class UserController < ApplicationController
     end
   end
 
+
+   def show_all_teams
+    @user = User.find(session[:user_id])
+    @teams = Team.where(user_id: @user.id)
+    respond_to do |f|
+      f.html { redirect_to user_path(@user) }
+      f.json { render :json => @teams }
+      # f.html { render :json => @teams }
+    end
+  end
+
+
+  def show_all_team_seasons
+    @user = User.find(session[:user_id])
+    @teams = @user.teams #Team.where(user_id: @user.id)
+    @seasons = @teams.seasons #Season.where(season_id: @teams)
+
+    respond_to do |f|
+      f.html { redirect_to user_path(@user) }
+      f.json { render :json => @seasons }
+      # f.html { render :json => @teams }
+    end
+  end
+
+
+
+
   def show
     @user = User.find(session[:user_id])
+    @teams = @user.teams #Team.where(user_id: @user.id)
+    #@seasons = @teams.first.seasons #Season.where(season_id: @teams)
+    @seasons = []
+    @teams.each do |team|
+      @seasons << team.seasons
+    end
+
+     respond_to do |f|
+      f.html { redirect_to user_path(@user) }
+      f.json { render :json => @seasons }
   end
 
   def edit

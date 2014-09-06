@@ -3,10 +3,14 @@
 
 
 <% current_user.teams.each do |team| %>
-  <li><a href= "/teams/<%=team.id %>"><%=team.name %></a></li><br>
+  <li><a href= "/team/<%=team.id %>"><%=team.name %></a></li>
+  <% team.seasons.each do |season|  %>
+  <%= season.name %>
+  <%end%>
+  <li><%= link_to("edit team", edit_team_path) %></li>
 <%end%>
 
-<%= link_to("create team", new_team_path) %>
+
 
 
 <h2>Teams</h2>
@@ -40,6 +44,17 @@
         <li><%= f.datetime_field :date, placeholder: 'Date ex 01/12/13' %></li>
         <li><%= f.text_field :location, :size => 70, placeholder: 'home or away' %></li>
         <li><%= f.text_field :season_id, :size => 70, placeholder: 'season id for testing purposes' %></li>
+
+        <li class = "button"><%= f.submit "Create" %></li>
+      <% end %>
+    </ul>
+
+
+    <h2>Stats</h2>
+ <ul class="welcome_form">
+      <%= form_for(:stat, :url => {:controller => 'stat', :action => 'create'}) do |f|%>
+        <li><%= f.text_field :stat_type, placeholder: 'FG/FT/R' %></li>
+        <li><%= f.text_field :game_id, :size => 10, placeholder: 'game id for testing purposes' %></li>
 
         <li class = "button"><%= f.submit "Create" %></li>
       <% end %>
