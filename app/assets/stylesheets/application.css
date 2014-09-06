@@ -14,3 +14,23 @@
  *= require_self
  */
 
+/*.dash-team{
+  display: inline-block;
+  width: 1000px;
+  height: 130px;
+  overflow: scroll;
+}*/
+.dash-team, .dash-season, .dash-game{
+  display: inline-block;
+  background-color: #3eafff;
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin: 10px 10px;
+}
+
+.teams, .seasons, .games{
+  display: block;
+  overflow-x: scroll;
+}
+
