@@ -2,7 +2,7 @@
 
 // ]
 
-	app.controller('DashboardCtrl', function(){
+	app.controller('DashboardCtrl', ['$http',function($http){
 	// function DashboardCtrl($scope){
 		this.row = 0;
 		this.team_id = null;
@@ -10,7 +10,6 @@
 
 		this.selectRow = function(setRow){
 			this.row = setRow;
-			// debugger;
 		};
 
 		this.isSet = function(rowName){
@@ -22,29 +21,63 @@
 			this.team_id = idObj.team;
 			this.season_id = idObj.season;
 		}
-
-		// this.teams = [];
-		// this.seasons = [];
+		var that = this;
+		this.teams = [];
+		this.seasons = [];
 		// this.games = [];
 
-		this.teams = data_teams;
-		this.seasons = data_seasons;
+		// this.teams = data_teams;
+		// this.seasons = data_seasons;
 		this.games = data_games;
 
-	});
+
+		//getting all the teams
+		$http({
+			method: 'GET',
+			url: '/user/1/team/all.json'
+		}).
+		success(function(data, status, headers, config){
+			that.teams = data;
+		}).
+		error(function(data, status, headers, config){
+			debugger;
+		})
+
+		//getting a season
+		$http({
+			method: 'GET',
+			url: '/season/team/1.json'
+		}).
+		success(function(data, status, headers, config){
+			that.seasons = data;
+		}).
+		error(function(data, status, headers, config){
+			debugger;
+		})
+
+		//getting a game
+		$http({
+			method: 'GET',
+			url: '/game/season/1.json'
+		}).
+		success(function(data, status, headers, config){
+			that.games = data;
+			debugger;
+		}).
+		error(function(data, status, headers, config){
+			debugger;
+		})
 
 
 
-	var data_teams = [{
-		id: 1,
-		name: "White Tigers Varsity",
-		school: "Mirta Ramirez"
-	},
-	{
-		id: 2,
-		name: "White Tigers JV",
-		school: "Mirta Ramirez"
-	}];
+
+
+
+
+
+	}]);
+
+
 
 	var data_seasons = [{
 		id: 3,

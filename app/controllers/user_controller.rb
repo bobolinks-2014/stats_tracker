@@ -20,6 +20,16 @@ class UserController < ApplicationController
     end
   end
 
+  def show_all
+    @user = User.find(session[:user_id])
+    @teams = Team.where(user_id: @user.id)
+    respond_to do |f|
+      f.html { redirect_to user_path(@user) }
+      f.json { render :json => @teams }
+      # f.html { render :json => @teams }
+    end
+  end
+
   def show
     @user = User.find(session[:user_id])
   end
