@@ -11,11 +11,16 @@ Rails.application.routes.draw do
   get '/session/logout' => 'session#logout', :as => 'logout'
 
   resources :team
+  get '/team/user/all' => 'team#show_all'
+
   resources :stat
 
-
   resources :season
+  get '/season/team/:id' => 'season#show_all'
+
   resources :game
+   get '/game/season/:id' => 'game#show_all'
+
 
 
 end
