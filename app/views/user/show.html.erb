@@ -11,7 +11,7 @@
 
 <h2>Teams</h2>
 <h3>Create a new team</h3>
-    <ul class="welcome_form">
+    <ul class="team_form">
       <%= form_for(:team, :url => {:controller => 'team', :action => 'create'}) do |f|%>
         <li><%= f.text_field :name, :size => 70, placeholder: 'Team Name' %></li>
         <li><%= f.text_field :school, :size => 70, placeholder: 'School Name' %></li>
@@ -20,7 +20,7 @@
     </ul>
 
 <h2>Seasons</h2>
-<ul class="welcome_form">
+<ul class="season_form">
       <%= form_for(:season, :url => {:controller => 'season', :action => 'create'}) do |f|%>
         <li><%= f.text_field :name, :size => 70, placeholder: 'Season Name ie 2014-15' %></li>
          <%= fields_for :season do |t| %>
@@ -31,14 +31,12 @@
     </ul>
 
 
-
-
 <h2>Games</h2>
- <ul class="welcome_form">
-      <%= form_for(:team, :url => {:controller => 'team', :action => 'create'}) do |f|%>
-        <li><%= f.datetime_field :date, placeholder: 'Date ex 01/12/13' %></li>
-        <li><%= f.text_field :location, :size => 70, placeholder: 'home or away' %></li>
+ <ul class="game_form">
+      <%#= form_for(:game, :url => {:controller => 'game', :action => 'create'}) do |f|%>
+        <li><%#= f.datetime_field :date, placeholder: 'Date ex 01/12/13' %></li>
+        <li><%#= f.text_field :location, :size => 70, placeholder: 'home or away' %></li>
 
-        <li class = "button"><%= f.submit "Create" %></li>
+        <li class = "button"><%#= f.submit "Create" %></li>
       <% end %>
     </ul>

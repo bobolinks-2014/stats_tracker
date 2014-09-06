@@ -5,17 +5,17 @@ Rails.application.routes.draw do
   root 'user#index'
 
   #create user routes
-  resources :user
+  resources :users
   #sessions routes
   post '/session/login' => 'session#login'
   get '/session/logout' => 'session#logout', :as => 'logout'
 
-  resources :team do
-    resources :stats
-  end
+  resources :teams
+  resources :stats
 
-  resources :season do
-    resources :games
-  end
+
+  resources :seasons
+  resources :games
+
 
 end
