@@ -34,7 +34,7 @@
 		//getting all the teams
 		$http({
 			method: 'GET',
-			url: '/user/1/team/all.json'
+			url: '/user/1/teams.json'
 		}).
 		success(function(data, status, headers, config){
 			that.teams = data;
@@ -46,7 +46,7 @@
 		//getting a season
 		$http({
 			method: 'GET',
-			url: '/season/team/1.json'
+			url: '/user/1/team/1/seasons.json'
 		}).
 		success(function(data, status, headers, config){
 			that.seasons = data;
@@ -58,7 +58,7 @@
 		//getting a game
 		$http({
 			method: 'GET',
-			url: '/game/season/1.json'
+			url: '/user/1/season/1/games.json'
 		}).
 		success(function(data, status, headers, config){
 			that.games = data;
