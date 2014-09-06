@@ -1,22 +1,31 @@
-<div ng-controller="DashboardCtrl">
+<div ng-controller="DashboardCtrl as dash">
 
 
-	<p> This is the show page for Seasons</p>
-	  <li><%= @user.name %></li><br>
+	<h1> This is the show page for Seasons</h1>
+	 <p>Coach <%= @user.name %></p><br>
 
-	<h1>Teams</h1>
-	<div class="dash dash-team">
-		<li>{{teams[0].name}}</li>
+	<h2 ng-class="{ active: dash.isSet(1) }"><a href ng-click="dash.selectRow(1)">Teams</a></h2>
+	<div ng-show="dash.isSet(1)" class="teams">
+		<div class="dash dash-team" ng-repeat="team in dash.teams" ng-click="dash.showDerivative({team: team.id},2)">
+			{{team.id}} {{team.name}}
+		</div>
 	</div>
 
-	<h1>Season</h1>
-	<div class="dash dash-season" ng-repeat="season in seasons">
-		<li>{{season.team_id}} {{season.name}}</li>
+	<h2 ng-class="{ active: dash.isSet(2) }"><a href ng-click="dash.selectRow(2)">Season</a></h2>
+	<div ng-show="dash.isSet(2)" class="seasons">
+		<div class="dash dash-season" ng-repeat="season in dash.seasons"
+																	ng-show="season.team_id === dash.team_id"
+																	ng-click="dash.showDerivative({season: season.id},3)">
+			{{season.team_id}} {{season.name}} TEAMID:{{dash.team_id}}
+		</div>
 	</div>
 
-	<h1>Games</h1>
-	<div class="dash dash-game" ng-repeat="game in games">
-		<li>{{game.opponent}} {{game.date}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}} </li>
+	<h2 ng-class="{ active: dash.isSet(3) }"><a href ng-click="dash.selectRow(3)">Games</a></h2>
+	<div ng-show="dash.isSet(3)" class="games">
+		<div class="dash dash-game" ng-repeat="game in dash.games"
+																ng-show="game.season_id === dash.season_id">
+			{{game.opponent}} {{game.date}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}} SEASONID: {{dash.season_id}}
+		</div>
 	</div>
 
 <!-- 	<%# current_user.teams.each do |team| %>

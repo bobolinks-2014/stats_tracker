@@ -2,6 +2,7 @@
 <html ng-app='ScoreApp'>
 <head>
   <title>StatsTracker</title>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -15,10 +16,13 @@
   <% if logged_in? %>
     <li><%= link_to 'Log out', logout_path %></li>
   <% end %>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ --><!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-mocks.js"></script>
+
 <%= javascript_include_tag "application" %>
 
 </body>
