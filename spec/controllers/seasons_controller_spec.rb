@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe SeasonsController do
+# describe SeasonsController do
 
-end
+# end

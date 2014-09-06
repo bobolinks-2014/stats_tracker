@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 20140904142537) do
 
   create_table "games", force: true do |t|
     t.datetime "date"
-    t.string   "location"
-    t.integer  "winning_team_id"
-    t.integer  "losing_team_id"
-    t.integer  "winning_total"
-    t.integer  "losing_total"
+    t.string   "location",       default: "home"
+    t.string   "opponent"
+    t.boolean  "win"
+    t.integer  "team_score"
+    t.integer  "opponent_score"
     t.integer  "season_id"
     t.datetime "created_at"
     t.datetime "updated_at"
