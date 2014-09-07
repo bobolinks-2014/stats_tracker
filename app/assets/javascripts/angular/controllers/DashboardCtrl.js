@@ -31,27 +31,47 @@ app.controller('DashboardCtrl', ['$http',function($http){
 //  === ADD ZE NEW TEAM ===
 // 
 	this.addNewTeam = function(){
-		that.teams.push(that.newTeamInfo);
-		that.showForm['team'] = false;
-		that.newTeamInfo = {};
-		// $http({
-		// 		method: "POST",
-		// 		url: '/team.json'
-		// 	})
-
-		
+		var stuff = that.newTeamInfo;
+		$http({
+			method: "POST",
+			url: '/team.json',
+			data: stuff
+		})
+		.success(function (data, status, headers, config) {
+			that.teams.push(data);
+			that.showForm['team'] = false;
+			that.newTeamInfo = {};
+		})
+		.error(function (data, status, headers, config) {
+			debugger;
+			console.log("ERROR: "+status)
+			console.log(data);
+		});
 	};
 
 //  === ADD ZE NEW SEASON ===
 // 
-	this.addNewSeason = function(team_id){
-		debugger;
-		this.seasons.push(this.newSeasonInfo);
-		this.showForm['season'] = false;
-		this.newSeasonInfo = {};
+	this.addNewSeason = function(){
+		var stuff = that.newTeamInfo;
+		var teamId = that.team_id
+		$http({
+			method: "POST",
+			url: '/season.json',
+			data: stuff
+		})
+		.success(function (data, status, headers, config) {
+			that.seasons.push(data);
+			that.showForm['season'] = false;
+			that.newSeasonInfo = {};
+		})
+		.error(function (data, status, headers, config) {
+			debugger;
+			console.log("ERROR: "+status)
+			console.log(data);
+		});
 	};
 
-//  === HAVE ZE ROW DISPLAYED FUNCTIONS ===
+//  === DISPLAY ZE ROWS ===
 // 
 	// Oscillate between true / false
 	this.selectRow = function(rowName){
@@ -63,12 +83,14 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 
 	this.showDerivative = function(idObj,rowName){
-		this.selectRow(rowName);
+		// always show next row if clicking on team/season div
+		this.showRow[rowName] = true;
+
 		this.team_id = idObj.team || this.team_id;
 		this.season_id = idObj.season || this.season_id;
 	};
 	
-//  === HAVE ZE FORMS DISPLAYED FUNCTIONS ===
+//  === DISPLAY ZE FORMS ===
 // 
 	// 
 	this.shouldDisplay = function (formName) {
@@ -88,11 +110,9 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		})
 		.success(function(data, status, headers, config){
 			that.teams = data;
-			debugger;
 		})
 		.error(function(data, status, headers, config){
-			// debugger;
-	})	
+	});
 
 	//getting a season
 	$http({
