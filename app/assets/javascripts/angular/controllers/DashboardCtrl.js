@@ -14,13 +14,12 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	// Which new forms are showing
 		this.showForm = {'teams': false, 'seasons': false, 'games': false};
 
-	// Set these to view specific team's season or specific season's games
+	// Selected team or season
 		this.team_id = null;
 		this.season_id = null;
-
-	// Set these so the Create New forms include name
-		this.team_name = null;
-		this.season_name = null;
+		// Set these so the Create New forms include name
+			this.team_name = null;
+			this.season_name = null;
 
 	// User's data to display
 		this.teams = [];
@@ -43,6 +42,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		})
 		.success(function (data, status, headers, config) {
 			that.teams.push(data);
+			debugger;
 			that.showForm['teams'] = false;
 			that.newTeamInfo = {};
 		})
@@ -58,20 +58,20 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	this.addNewSeason = function(){
 		var stuff = that.newSeasonInfo;
 		stuff.team_id = that.team_id;
-		debugger;
+		// debugger;
 		$http({
 			method: "POST",
 			url: '/season.json',
 			data: stuff
 		})
 		.success(function (data, status, headers, config) {
-			debugger;
 			that.seasons.push(data);
+			debugger;
 			that.showForm['seasons'] = false;
 			that.newSeasonInfo = {};
 		})
 		.error(function (data, status, headers, config) {
-			debugger;
+			// debugger;
 			console.log("ERROR: "+status)
 			console.log(data);
 		});
@@ -82,20 +82,20 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	this.addNewGame = function(){
 		var stuff = that.newGameInfo;
 		stuff.season_id = that.season_id;
-		debugger;
+		// debugger;
 		$http({
 			method: "POST",
 			url: '/game.json',
 			data: stuff
 		})
 		.success(function (data, status, headers, config) {
-			debugger;
+			// debugger;
 			that.games.push(data);
 			that.showForm['games'] = false;
 			that.newGameInfo = {};
 		})
 		.error(function (data, status, headers, config) {
-			debugger;
+			// debugger;
 			console.log("ERROR: "+status)
 			console.log(data);
 		});
@@ -141,12 +141,12 @@ app.controller('DashboardCtrl', ['$http',function($http){
 //  === DISPLAY ZE FORMS ===
 //
 		this.shouldDisplay = function (formName) {
-		return this.showForm[formName];
-	};
+			return this.showForm[formName];
+		};
 
-	this.displayForm = function (formName) {
-		this.showForm[formName] ? this.showForm[formName] = false : this.showForm[formName] = true;
-	};
+		this.displayForm = function (formName) {
+			this.showForm[formName] ? this.showForm[formName] = false : this.showForm[formName] = true;
+		};
 
 //  === GET ZE DATA ===
 //
@@ -154,123 +154,57 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	$http({
 			method: 'GET',
 			url: '/user/1/teams.json'
-		})
-		.success(function(data, status, headers, config){
+	})
+	.success(function(data, status, headers, config){
 			that.teams = data;
-		})
-		.error(function(data, status, headers, config){
+			that.getAllSeasons();
+	})
+	.error(function(data, status, headers, config){
+		console.log("ERROR :(");
+		console.log("http: "+status);
+		console.log(headers);
+		console.log(config);
 	});
 
+	// This is only called on the success of getting all teams
+	// Input: none, grabs arrays of teams with that.teams
+	this.getAllSeasons = function(){
+		that.teams.forEach(function(team){
+			$http({
+					method: 'GET',
+					url: '/user/1/team/' + team.id + '/seasons.json'
+			})
+			.success(function(data, status, headers, config){
+					that.seasons = that.seasons.concat(data);
+					that.getAllGames(data);
+			})
+			.error(function(data, status, headers, config){
+				console.log("ERROR :(");
+				console.log("http: "+status);
+				console.log(headers);
+				console.log(config);
+			});
+		});
+	};
 
-
-	//getting a season
-	$http({
-			method: 'GET',
-			url: '/user/1/team/1/seasons.json'
-		})
-		.success(function(data, status, headers, config){
-			that.seasons = data;
-			// debugger;
-		})
-		.error(function(data, status, headers, config){
-			// debugger;
-		})
-
-	//getting a game
-	$http({
-			method: 'GET',
-			url: '/user/1/season/1/games.json'
-		})
-		.success(function(data, status, headers, config){
-			that.games = data;
-			// debugger;
-		})
-		.error(function(data, status, headers, config){
-			// debugger;
-		})
+	// This is called on success of retriving a team's seasons
+	// Input: array of season objects
+	this.getAllGames = function(seasons) {
+		seasons.forEach(function(season) {
+			$http({
+				method: 'GET',
+				url: '/user/1/season/' + season.id + '/games.json'
+			})
+			.success(function(data, status, headers, config){
+				that.games = that.games.concat(data);
+			})
+			.error(function(data, status, headers, config){
+				console.log("ERROR :(");
+				console.log("http: "+status);
+				console.log(headers);
+				console.log(config);
+			});
+		});
+	}
 
 }]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// var data_seasons = [{
-	// 	id: 3,
-	// 	name: "2015",
-	// 	team_id: 1
-	// },
-	// {
-	// 	id: 2,
-	// 	name: "2014",
-	// 	team_id: 2
-	// },
-	// {
-	// 	id: 1,
-	// 	name: 2013,
-	// 	team_id: 2
-	// }]
-	// var data_games = [{
-	// 	date: "01/30",
-	// 	location: "home",
-	// 	opponent: "Pistons",
-	// 	win: true,
-	// 	team_score: 60,
-	// 	opponent_score: 54,
-	// 	season_id: 3
-	// },
-	// {
-	// 	date: "01/28",
-	// 	location: "home",
-	// 	opponent: "Hawks",
-	// 	win: false,
-	// 	team_score: 40,
-	// 	opponent_score: 54,
-	// 	season_id: 3
-	// },
-	// {
-	// 	date: "01/25",
-	// 	location: "away",
-	// 	opponent: "Knicks",
-	// 	win: true,
-	// 	team_score: 55,
-	// 	opponent_score: 51,
-	// 	season_id: 3
-	// },
-	// {
-	// 	date: "01/20",
-	// 	location: "home",
-	// 	opponent: "Celtics",
-	// 	win: true,
-	// 	team_score: 50,
-	// 	opponent_score: 43,
-	// 	season_id: 3
-	// },
-	// {
-	// 	date: "01/18",
-	// 	location: "away",
-	// 	opponent: "Hornets",
-	// 	win: false,
-	// 	team_score: 60,
-	// 	opponent_score: 64,
-	// 	season_id: 3
-	// }]
