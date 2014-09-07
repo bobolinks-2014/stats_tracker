@@ -4,7 +4,7 @@
 
 app.controller('DashboardCtrl', ['$http',function($http){
 //  === SET ZE VARS ===
-// 
+//
 	// use that if afraid of scope issues
 		var that = this;
 
@@ -33,7 +33,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		this.newGameInfo = {};
 
 //  === ADD ZE NEW TEAM ===
-// 
+//
 	this.addNewTeam = function(){
 		var stuff = that.newTeamInfo;
 		$http({
@@ -54,7 +54,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 
 //  === ADD ZE NEW SEASON ===
-// 
+//
 	this.addNewSeason = function(){
 		var stuff = that.newSeasonInfo;
 		stuff.team_id = that.team_id;
@@ -78,7 +78,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 
 //  === ADD ZE NEW GAME ===
-// 
+//
 	this.addNewGame = function(){
 		var stuff = that.newGameInfo;
 		stuff.season_id = that.season_id;
@@ -102,10 +102,9 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 
 
-
-
 //  === DISPLAY ZE ROWS ===
-// 
+//
+
 	// Oscillate between true / false
 	this.selectRow = function(rowName){
 		this.showRow[rowName] ? this.showRow[rowName] = false : this.showRow[rowName] = true;
@@ -119,7 +118,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		// always show next row if clicking on team/season div
 		this.showRow[rowName] = true;
 
-		
+
 		this.showForm[rowName] = false;
 
 		// this closes games row if you pick another team (rowName would = seasons bc it's the *next* row to show)
@@ -136,13 +135,12 @@ app.controller('DashboardCtrl', ['$http',function($http){
 
 		// These are just for showing name on Create New forms
 		this.team_name = idObj.teamName || this.team_name;
-		this.season_name = idObj.seasonName || this.season_name;	
+		this.season_name = idObj.seasonName || this.season_name;
 	};
-	
+
 //  === DISPLAY ZE FORMS ===
-// 
-	// 
-	this.shouldDisplay = function (formName) {
+//
+		this.shouldDisplay = function (formName) {
 		return this.showForm[formName];
 	};
 
@@ -151,7 +149,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 
 //  === GET ZE DATA ===
-// 
+//
 	//getting all the teams
 	$http({
 			method: 'GET',
@@ -163,14 +161,16 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		.error(function(data, status, headers, config){
 	});
 
+
+
 	//getting a season
 	$http({
 			method: 'GET',
 			url: '/user/1/team/1/seasons.json'
-		})	
+		})
 		.success(function(data, status, headers, config){
 			that.seasons = data;
-			// debugger; 
+			// debugger;
 		})
 		.error(function(data, status, headers, config){
 			// debugger;
@@ -191,3 +191,86 @@ app.controller('DashboardCtrl', ['$http',function($http){
 
 }]);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// var data_seasons = [{
+	// 	id: 3,
+	// 	name: "2015",
+	// 	team_id: 1
+	// },
+	// {
+	// 	id: 2,
+	// 	name: "2014",
+	// 	team_id: 2
+	// },
+	// {
+	// 	id: 1,
+	// 	name: 2013,
+	// 	team_id: 2
+	// }]
+	// var data_games = [{
+	// 	date: "01/30",
+	// 	location: "home",
+	// 	opponent: "Pistons",
+	// 	win: true,
+	// 	team_score: 60,
+	// 	opponent_score: 54,
+	// 	season_id: 3
+	// },
+	// {
+	// 	date: "01/28",
+	// 	location: "home",
+	// 	opponent: "Hawks",
+	// 	win: false,
+	// 	team_score: 40,
+	// 	opponent_score: 54,
+	// 	season_id: 3
+	// },
+	// {
+	// 	date: "01/25",
+	// 	location: "away",
+	// 	opponent: "Knicks",
+	// 	win: true,
+	// 	team_score: 55,
+	// 	opponent_score: 51,
+	// 	season_id: 3
+	// },
+	// {
+	// 	date: "01/20",
+	// 	location: "home",
+	// 	opponent: "Celtics",
+	// 	win: true,
+	// 	team_score: 50,
+	// 	opponent_score: 43,
+	// 	season_id: 3
+	// },
+	// {
+	// 	date: "01/18",
+	// 	location: "away",
+	// 	opponent: "Hornets",
+	// 	win: false,
+	// 	team_score: 60,
+	// 	opponent_score: 64,
+	// 	season_id: 3
+	// }]
