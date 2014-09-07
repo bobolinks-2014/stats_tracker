@@ -273,3 +273,4 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	// 	opponent_score: 64,
 	// 	season_id: 3
 	// }]
+

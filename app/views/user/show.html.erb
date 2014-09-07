@@ -24,7 +24,7 @@
   </div>
 
   <form ng-show="dash.shouldDisplay('teams')" ng-submit="dash.addNewTeam()">
-    <h3>Create a Team</h3>
+    <h3>Create a Team!</h3>
     <fieldset class="form-group">
       <input ng-model="dash.newTeamInfo.name" type="text" placeholder="Team Name" title="Name">
     </fieldset>
@@ -59,7 +59,7 @@
   </div>
 
   <form ng-show="dash.shouldDisplay('seasons')" ng-submit="dash.addNewSeason()">
-    <h3>Create a Season for {{ dash.team_name }}</h3>
+    <h3>Create a Season for {{ dash.team_name }}!</h3>
     <fieldset class="form-group">
       <input ng-model="dash.newSeasonInfo.name" type="text" placeholder="1988-89" title="Name">
     </fieldset>
@@ -73,11 +73,17 @@
     <a href ng-click="dash.selectRow('games')">Games</a>
   </h2>
 
-  <!-- Show games per selected season -->
+  <!-- Show games per selected game -->
   <div ng-show="dash.isSet('games')" class="games">
 
-    <!-- Add a new game for selected season -->
-    <div class="dash dash-game" ng-click="hai">+</div>
+    <!-- Add a new game for selected game -->
+    <div class="dash dash-game" ng-click="dash.displayForm('games')">
+      <h1>+</h1>
+      <h3>{{dash.newGameInfo.date}}</h3>
+      <h3>{{dash.newGameInfo.location}}</h3>
+      <h3>{{dash.newGameInfo.opponent}}</h3>
+      <small>new Game not submitted yet</small>
+    </div>
 
     <!-- REPEAT DIV PER GAME -->
     <div class="dash dash-game" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
@@ -85,7 +91,21 @@
     </div>
   </div>
 
-  <%= link_to("create new season", new_season_path) %>
+  <form ng-show="dash.shouldDisplay('games')" ng-submit="dash.addNewGame()">
+    <h3>Create a Game!</h3>
+    <fieldset class="form-group">
+      <input ng-model="dash.newGameInfo.date" type="text" placeholder="Game Date" title="Date">
+    </fieldset>
+    <fieldset class="form-group">
+      <input ng-model="dash.newGameInfo.location" type="text" placeholder="Home or Away" title="Location">
+    </fieldset>
+    <fieldset class="form-group">
+      <input ng-model="dash.newGameInfo.opponent" type="text" placeholder="Opponent" title="Opponent">
+    </fieldset>
+    <fieldset class="form-group">
+      <input type="submit" value="Create Game" class="btn btn-primary">
+    </fieldset>
+  </form>
 
 </div>
 
@@ -110,16 +130,6 @@
 <br>
 <br>
 
-<h2>Seasons</h2>
-<ul class="welcome_form">
-      <%= form_for(:season, :url => {:controller => 'season', :action => 'create'}) do |f|%>
-        <li><%= f.text_field :name, :size => 70, placeholder: 'Season Name ie 2014-15' %></li>
-         <%= fields_for :season do |t| %>
-         <li><p>What is the Team? <%= t.collection_select :team_id, current_user.teams.order(:name),:id, :name %></p></li>
-        <li class = "button"><%= f.submit "Create" %></li>
-        <%end%>
-      <% end %>
-    </ul>
 
 <h2>Games</h2>
  <ul class="welcome_form">
