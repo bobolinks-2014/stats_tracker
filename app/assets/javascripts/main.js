@@ -1,4 +1,5 @@
-// window.App = angular.module('AngularCasts', ['ngResource'])
-window.App = angular.module('ScoreApp', ['ngResource']);
+var app = angular.module('ScoreApp', [])//, 'ui.bootstrap'])
+// window.App = angular.module('ScoreApp', ['ui.bootstrap']);
+
 
 
