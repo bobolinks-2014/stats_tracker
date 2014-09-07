@@ -63,7 +63,7 @@
 }
 
 .dot{
-  position: fixed;
+  position: absolute;
   height: 10px;
   width: 10px;
   border-radius: 100%;
