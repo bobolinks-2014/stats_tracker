@@ -35,7 +35,6 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'spring'
   gem 'rspec-rails', '~> 2.14.1'
-  gem 'capybara-webkit', '>=1.3.0'
   gem 'capybara', '~> 2.2.1'
   gem 'database_cleaner', '~> 1.2.0'
   gem 'jasmine-rails'
