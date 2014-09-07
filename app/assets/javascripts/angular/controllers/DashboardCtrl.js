@@ -4,7 +4,7 @@
 
 app.controller('DashboardCtrl', ['$http',function($http){
 //  === SET ZE VARS ===
-// 
+//
 	// use that if afraid of scope issues
 		var that = this;
 
@@ -29,7 +29,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		this.newGameInfo = {};
 
 //  === ADD ZE NEW TEAM ===
-// 
+//
 	this.addNewTeam = function(){
 		that.teams.push(that.newTeamInfo);
 		that.showForm['team'] = false;
@@ -39,11 +39,11 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		// 		url: '/team.json'
 		// 	})
 
-		
+
 	};
 
 //  === ADD ZE NEW SEASON ===
-// 
+//
 	this.addNewSeason = function(team_id){
 		debugger;
 		this.seasons.push(this.newSeasonInfo);
@@ -52,7 +52,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 
 //  === HAVE ZE ROW DISPLAYED FUNCTIONS ===
-// 
+//
 	// Oscillate between true / false
 	this.selectRow = function(rowName){
 		this.showRow[rowName] ? this.showRow[rowName] = false : this.showRow[rowName] = true;
@@ -67,10 +67,10 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		this.team_id = idObj.team || this.team_id;
 		this.season_id = idObj.season || this.season_id;
 	};
-	
+
 //  === HAVE ZE FORMS DISPLAYED FUNCTIONS ===
-// 
-	// 
+//
+	//
 	this.shouldDisplay = function (formName) {
 		return this.showForm[formName];
 	};
@@ -80,7 +80,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 
 //  === GET ZE DATA ===
-// 
+//
 	//getting all the teams
 	$http({
 			method: 'GET',
@@ -92,16 +92,16 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		})
 		.error(function(data, status, headers, config){
 			// debugger;
-	})	
+	})
 
 	//getting a season
 	$http({
 			method: 'GET',
 			url: '/user/1/team/1/seasons.json'
-		})	
+		})
 		.success(function(data, status, headers, config){
 			that.seasons = data;
-			// debugger; 
+			// debugger;
 		})
 		.error(function(data, status, headers, config){
 			// debugger;

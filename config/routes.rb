@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :user
   get '/user/:id/teams' => 'user#show_all_teams'
   get '/user/:id/team/:team_id/seasons' => 'user#show_all_team_seasons'
-  get '/user/:id/season/season_id/games' => 'user#show_all_season_games'
+  get '/user/:id/season/:season_id/games' => 'user#show_all_season_games'
   get '/user/:id/game/:game_id/stats' => 'user#show_all_game_stats'
   #sessions routes
   post '/session/login' => 'session#login'
