@@ -32,13 +32,13 @@ class GameController < ApplicationController
     end
   end
 
-  # def show
+  def show
 
-  # end
+  end
 
-  # # def edit
+  def edit
 
-  # # end
+  end
 
   # def update #post for edit
 
