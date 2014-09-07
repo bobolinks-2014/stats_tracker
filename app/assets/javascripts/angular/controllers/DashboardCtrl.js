@@ -12,11 +12,15 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		this.showRow = {'teams': true, 'seasons': false, 'games': false};
 
 	// Which new forms are showing
-		this.showForm = {'team': false, 'season': false, 'game': false};
+		this.showForm = {'teams': false, 'seasons': false, 'games': false};
 
 	// Set these to view specific team's season or specific season's games
 		this.team_id = null;
 		this.season_id = null;
+
+	// Set these so the Create New forms include name
+		this.team_name = null;
+		this.season_name = null;
 
 	// User's data to display
 		this.teams = [];
@@ -53,7 +57,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 // 
 	this.addNewSeason = function(){
 		var stuff = that.newTeamInfo;
-		var teamId = that.team_id
+		stuff.team_id = that.team_id
 		$http({
 			method: "POST",
 			url: '/season.json',
@@ -86,8 +90,24 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		// always show next row if clicking on team/season div
 		this.showRow[rowName] = true;
 
-		this.team_id = idObj.team || this.team_id;
-		this.season_id = idObj.season || this.season_id;
+		
+		this.showForm[rowName] = false;
+
+		// this closes games row if you pick another team (rowName would = seasons bc it's the *next* row to show)
+		if (rowName === "seasons"){
+			this.showRow["games"] = false;
+
+			// added - this closes create a team
+			this.showForm["teams"] = false;
+		}
+
+		// These are important: decide which derivatives are show (seasons are shown that belong to this.team_id; games are shown that belong to this.season_id)
+		this.team_id = idObj.teamId || this.team_id;
+		this.season_id = idObj.seasonId || this.season_id;
+
+		// These are just for showing name on Create New forms
+		this.team_name = idObj.teamName || this.team_name;
+		this.season_name = idObj.seasonName || this.season_name;	
 	};
 	
 //  === DISPLAY ZE FORMS ===

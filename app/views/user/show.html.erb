@@ -10,7 +10,7 @@
   <div ng-show="dash.isSet('teams')" class="teams">
 
     <!-- Add a new team for user -->
-    <div class="dash dash-team" ng-click="dash.displayForm('team')">
+    <div class="dash dash-team" ng-click="dash.displayForm('teams')">
       <h1>+</h1>
       <h3>{{dash.newTeamInfo.name}}</h3>
       <h3>{{dash.newTeamInfo.school}}</h3>
@@ -18,12 +18,12 @@
     </div>
 
     <!-- REPEAT DIV PER TEAM -->
-    <div class="dash dash-team" ng-repeat="team in dash.teams" ng-click="dash.showDerivative({team: team.id},'seasons')">
+    <div class="dash dash-team" ng-repeat="team in dash.teams" ng-click="dash.showDerivative({teamId: team.id, teamName: team.name},'seasons')">
       {{team.id}} {{team.name}}
     </div>
   </div>
 
-  <form ng-show="dash.shouldDisplay('team')" ng-submit="dash.addNewTeam()">
+  <form ng-show="dash.shouldDisplay('teams')" ng-submit="dash.addNewTeam()">
     <h3>Create a Team</h3>
     <fieldset class="form-group">
       <input ng-model="dash.newTeamInfo.name" type="text" placeholder="Team Name" title="Name">
@@ -45,18 +45,23 @@
   <div ng-show="dash.isSet('seasons')" class="seasons">
 
     <!-- Add a new season for selected team -->
-    <div class="dash dash-season" ng-click="hai">+</div>
+    <div class="dash dash-season" ng-click="dash.displayForm('seasons')">
+      <h1>+</h1>
+      <h3>{{dash.newSeasonInfo.name}}</h3>
+      <h3>{{dash.newSeasonInfo.school}}</h3>
+      <small>new Season not submitted yet</small>
+    </div>
 
     <!-- REPEAT DIV PER SEASON -->
-    <div class="dash dash-season" ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({season: season.id},'games')">
+    <div class="dash dash-season" ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({seasonId: season.id, seasonName: season.name},'games')">
       {{season.team_id}} {{season.name}} TEAMID:{{dash.team_id}}
     </div>
   </div>
 
-  <form ng-show="dash.shouldDisplay('season')" ng-submit="dash.addNewSeason()">
-    <h3>Create a Team</h3>
+  <form ng-show="dash.shouldDisplay('seasons')" ng-submit="dash.addNewSeason()">
+    <h3>Create a Season for {{ dash.team_name }}</h3>
     <fieldset class="form-group">
-      <input ng-model="dash.newTeamInfo.name" type="text" placeholder="Team Name" title="Name">
+      <input ng-model="dash.newTeamInfo.name" type="text" placeholder="1988-89" title="Name">
     </fieldset>
     <fieldset class="form-group">
       <input ng-model="dash.newTeamInfo.school" type="text" placeholder="School Name" title="School">
