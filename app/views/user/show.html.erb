@@ -1,53 +1,135 @@
-<p> This is the show page for Teams</p>
-  <li><%= current_user.name %></li><br>
+<div ng-controller="DashboardCtrl as dash">
+   <h1>Coach <%= @user.name %></h1><br>
 
+<!-- TEAMS ROW -->
+  <h2 ng-class="{ active: dash.isSet('teams') }">
+    <a href ng-click="dash.selectRow('teams')">Teams</a>
+  </h2>
 
-<% current_user.teams.each do |team| %>
-  <li><a href= "/team/<%=team.id %>"><%=team.name %></a></li>
-  <% team.seasons.each do |season|  %>
-  <%= season.name %>
-  <%end%>
-  <li><%= link_to("edit team", edit_team_path) %></li>
-<%end%>
+  <!-- Show teams attached to user -->
+  <div ng-show="dash.isSet('teams')" class="teams">
 
+    <!-- Add a new team for user -->
+    <div class="dash dash-team" ng-click="dash.displayForm('teams')">
+      <h1>+</h1>
+      <h3>{{dash.newTeamInfo.name}}</h3>
+      <h3>{{dash.newTeamInfo.school}}</h3>
+      <small>new team not submitted yet</small>
+    </div>
 
+    <!-- REPEAT DIV PER TEAM -->
+    <div class="dash dash-team" ng-repeat="team in dash.teams" ng-click="dash.showDerivative({teamId: team.id, teamName: team.name},'seasons')">
+      {{team.id}} {{team.name}}
+    </div>
+  </div>
 
+  <form ng-show="dash.shouldDisplay('teams')" ng-submit="dash.addNewTeam()">
+    <h3>Create a Team!</h3>
+    <fieldset class="form-group">
+      <input ng-model="dash.newTeamInfo.name" type="text" placeholder="Team Name" title="Name">
+    </fieldset>
+    <fieldset class="form-group">
+      <input ng-model="dash.newTeamInfo.school" type="text" placeholder="School Name" title="School">
+    </fieldset>
+    <fieldset class="form-group">
+      <input type="submit" value="Create Team" class="btn btn-primary">
+    </fieldset>
+  </form>
 
-<h2>Teams</h2>
-<h3>Create a new team</h3>
-    <ul class="welcome_form">
-      <%= form_for(:team, :url => {:controller => 'team', :action => 'create'}) do |f|%>
-        <li><%= f.text_field :name, :size => 70, placeholder: 'Team Name' %></li>
-        <li><%= f.text_field :school, :size => 70, placeholder: 'School Name' %></li>
-        <li class = "button"><%= f.submit "Create" %></li>
-      <% end %>
-    </ul>
+<!-- SEASONS ROW -->
+  <h2 ng-class="{ active: dash.isSet('seasons') }">
+    <a href ng-click="dash.selectRow('seasons')">Season</a>
+  </h2>
 
-<h2>Seasons</h2>
-<ul class="welcome_form">
-      <%= form_for(:season, :url => {:controller => 'season', :action => 'create'}) do |f|%>
-        <li><%= f.text_field :name, :size => 70, placeholder: 'Season Name ie 2014-15' %></li>
-         <%= fields_for :season do |t| %>
-         <li><p>What is the Team? <%= t.collection_select :team_id, current_user.teams.order(:name),:id, :name %></p></li>
-        <li class = "button"><%= f.submit "Create" %></li>
-        <%end%>
-      <% end %>
-    </ul>
+  <!-- Show seasons per selected team -->
+  <div ng-show="dash.isSet('seasons')" class="seasons">
 
+    <!-- Add a new season for selected team -->
+    <div class="dash dash-season" ng-click="dash.displayForm('seasons')">
+      <h1>+</h1>
+      <h3>{{dash.newSeasonInfo.name}}</h3>
+      <h3>{{dash.newSeasonInfo.school}}</h3>
+      <small>new Season not submitted yet</small>
+    </div>
 
+    <!-- REPEAT DIV PER SEASON -->
+    <div class="dash dash-season" ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({seasonId: season.id, seasonName: season.name},'games')">
+      {{season.team_id}} {{season.name}} TEAMID:{{dash.team_id}}
+    </div>
+  </div>
 
+  <form ng-show="dash.shouldDisplay('seasons')" ng-submit="dash.addNewSeason()">
+    <h3>Create a Season for {{ dash.team_name }}!</h3>
+    <fieldset class="form-group">
+      <input ng-model="dash.newSeasonInfo.name" type="text" placeholder="1988-89" title="Name">
+    </fieldset>
+    <fieldset class="form-group">
+      <input type="submit" value="Create Season" class="btn btn-primary">
+    </fieldset>
+  </form>
 
+<!-- GAMES ROW -->
+  <h2 ng-class="{ active: dash.isSet('games') }">
+    <a href ng-click="dash.selectRow('games')">Games</a>
+  </h2>
 
-<h2>Games</h2>
- <ul class="welcome_form">
-      <%= form_for(:game, :url => {:controller => 'game', :action => 'create'}) do |f|%>
-        <li><%= f.datetime_field :date, placeholder: 'Date ex 01/12/13' %></li>
-        <li><%= f.text_field :location, :size => 70, placeholder: 'home or away' %></li>
-        <li><%= f.text_field :season_id, :size => 70, placeholder: 'season id for testing purposes' %></li>
+  <!-- Show games per selected game -->
+  <div ng-show="dash.isSet('games')" class="games">
 
-        <li class = "button"><%= f.submit "Create" %></li>
-      <% end %>
-    </ul>
+    <!-- Add a new game for selected game -->
+    <div class="dash dash-game" ng-click="dash.displayForm('games')">
+      <h1>+</h1>
+      <h3>{{dash.newGameInfo.date}}</h3>
+      <h3>{{dash.newGameInfo.location}}</h3>
+      <h3>{{dash.newGameInfo.opponent}}</h3>
+      <small>new Game not submitted yet</small>
+    </div>
+
+    <!-- REPEAT DIV PER GAME -->
+    <div class="dash dash-game" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
+      {{game.opponent}} {{game.date}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}} SEASONID: {{dash.season_id}}
+    </div>
+  </div>
+
+  <form ng-show="dash.shouldDisplay('games')" ng-submit="dash.addNewGame()">
+    <h3>Create a Game!</h3>
+    <fieldset class="form-group">
+      <input ng-model="dash.newGameInfo.date" type="text" placeholder="Game Date" title="Date">
+    </fieldset>
+    <fieldset class="form-group">
+      <input ng-model="dash.newGameInfo.location" type="text" placeholder="Home or Away" title="Location">
+    </fieldset>
+    <fieldset class="form-group">
+      <input ng-model="dash.newGameInfo.opponent" type="text" placeholder="Opponent" title="Opponent">
+    </fieldset>
+    <fieldset class="form-group">
+      <input type="submit" value="Create Game" class="btn btn-primary">
+    </fieldset>
+  </form>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 
     <h2>Stats</h2>
