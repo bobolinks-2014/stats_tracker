@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
@@ -35,7 +35,6 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'spring'
   gem 'rspec-rails', '~> 2.14.1'
-  gem 'capybara-webkit', '>=1.3.0'
   gem 'capybara', '~> 2.2.1'
   gem 'database_cleaner', '~> 1.2.0'
   gem 'jasmine-rails'
