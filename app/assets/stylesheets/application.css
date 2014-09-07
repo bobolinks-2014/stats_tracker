@@ -80,7 +80,8 @@
 .heat_court{
   float: left;
   border: solid #333333;
-  background-color: #f2ab6d;
+  background-image: url("court_3.svg");
+  background-size: 1200px 750px;
   width: 1200px;
   height: 750px;
 }
