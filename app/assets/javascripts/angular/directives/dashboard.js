@@ -1,6 +1,6 @@
 var app = angular.module('dashboard-directives', []);
 
-app.directive("newTeam", function(){
+app.directive("newTeamForm", function(){
 	return {
 		restrict: "E",
 		templateUrl: "new-team.html"
