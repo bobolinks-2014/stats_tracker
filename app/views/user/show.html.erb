@@ -61,13 +61,10 @@
   <form ng-show="dash.shouldDisplay('seasons')" ng-submit="dash.addNewSeason()">
     <h3>Create a Season for {{ dash.team_name }}</h3>
     <fieldset class="form-group">
-      <input ng-model="dash.newTeamInfo.name" type="text" placeholder="1988-89" title="Name">
+      <input ng-model="dash.newSeasonInfo.name" type="text" placeholder="1988-89" title="Name">
     </fieldset>
     <fieldset class="form-group">
-      <input ng-model="dash.newTeamInfo.school" type="text" placeholder="School Name" title="School">
-    </fieldset>
-    <fieldset class="form-group">
-      <input type="submit" value="Create Team" class="btn btn-primary">
+      <input type="submit" value="Create Season" class="btn btn-primary">
     </fieldset>
   </form>
 

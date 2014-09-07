@@ -43,7 +43,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		})
 		.success(function (data, status, headers, config) {
 			that.teams.push(data);
-			that.showForm['team'] = false;
+			that.showForm['teams'] = false;
 			that.newTeamInfo = {};
 		})
 		.error(function (data, status, headers, config) {
@@ -56,16 +56,18 @@ app.controller('DashboardCtrl', ['$http',function($http){
 //  === ADD ZE NEW SEASON ===
 // 
 	this.addNewSeason = function(){
-		var stuff = that.newTeamInfo;
-		stuff.team_id = that.team_id
+		var stuff = that.newSeasonInfo;
+		stuff.team_id = that.team_id;
+		debugger;
 		$http({
 			method: "POST",
 			url: '/season.json',
 			data: stuff
 		})
 		.success(function (data, status, headers, config) {
+			debugger;
 			that.seasons.push(data);
-			that.showForm['season'] = false;
+			that.showForm['seasons'] = false;
 			that.newSeasonInfo = {};
 		})
 		.error(function (data, status, headers, config) {
@@ -74,6 +76,33 @@ app.controller('DashboardCtrl', ['$http',function($http){
 			console.log(data);
 		});
 	};
+
+//  === ADD ZE NEW GAME ===
+// 
+	this.addNewGame = function(){
+		var stuff = that.newGameInfo;
+		stuff.season_id = that.season_id;
+		debugger;
+		$http({
+			method: "POST",
+			url: '/game.json',
+			data: stuff
+		})
+		.success(function (data, status, headers, config) {
+			debugger;
+			that.games.push(data);
+			that.showForm['games'] = false;
+			that.newGameInfo = {};
+		})
+		.error(function (data, status, headers, config) {
+			debugger;
+			console.log("ERROR: "+status)
+			console.log(data);
+		});
+	};
+
+
+
 
 //  === DISPLAY ZE ROWS ===
 // 
