@@ -3,6 +3,8 @@ ENV["RAILS_ENV"] ||= 'test'
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'simplecov'
+SimpleCov.start 'rails'
 require 'shoulda/matchers'
 require 'rspec/autorun'
 require 'capybara/rails'
