@@ -7,6 +7,25 @@
  * v2.0.2 designed by @connors.
  * =====================================================
  */
+/*.dash-team{
+  display: inline-block;
+  width: 1000px;
+  height: 130px;
+  overflow: scroll;
+}*/
+.dash-team, .dash-season, .dash-game{
+  display: inline-block;
+  background-color: #3eafff;
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin: 10px 10px;
+}
+
+.teams, .seasons, .games{
+  display: block;
+  overflow-x: scroll;
+}
 
 a {
   color: #007aff;
@@ -15,7 +34,7 @@ a:active {
   color: #0062cc;
 }
 .container{
-	  margin: 20px auto;
+    margin: 20px auto;
   width: 660px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
