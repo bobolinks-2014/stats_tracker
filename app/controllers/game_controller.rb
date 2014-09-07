@@ -1,23 +1,19 @@
 class GameController < ApplicationController
-
-  # def index
-
-  # end
-
-  # def new
-
-  # end
+  skip_before_filter :verify_authenticity_token
 
   def create
     @user = User.find(session[:user_id])
     @season = Season.find(game_params[:season_id])
-    @season.games.new(game_params)
-    if @season.save
-      redirect_to user_path(@user)
-      flash[:notice] = "you have successfully created a game"
+    @game = @season.games.new(game_params)
+
+    if @game.save
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.json { render :json => @game }
+      end
     else
       redirect_to user_path(@user)
-      flash[:notice] = "You're a goddamn asshole"
+      flash[:notice] = "Failed to create a game"
     end
   end
 
@@ -51,7 +47,7 @@ class GameController < ApplicationController
    private
 
   def game_params
-    params.require(:game).permit(:date, :location, :win, :team_score, :opponent_score, :season_id)
+    params.require(:game).permit(:date, :location, :win, :team_score, :opponent, :opponent_score, :season_id)
   end
 
 end

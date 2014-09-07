@@ -1,4 +1,5 @@
 class TeamController < ApplicationController
+  skip_before_filter :verify_authenticity_token
 
   def index
     @team = Team.find_by(user_id: session[:user_id])
@@ -11,7 +12,7 @@ class TeamController < ApplicationController
   def create
     @user = User.find(session[:user_id])
     #@team = Team.new(params[:team_params])
-    @team = @user.teams.create!(team_params)
+    @team = @user.teams.new(team_params)
     if @team.save
       respond_to do |format|
       format.html { redirect_to user_path(@user) }

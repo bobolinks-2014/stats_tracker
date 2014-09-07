@@ -1,4 +1,5 @@
 class SeasonController < ApplicationController
+  skip_before_filter :verify_authenticity_token
 
   # TODO: Restrict all of these for only the relevant user
   #
@@ -11,16 +12,19 @@ class SeasonController < ApplicationController
 
   # end
 
-  def create #post to create a new season
+  def create
     @user = User.find(session[:user_id])
     @team = Team.find(season_params[:team_id])
-    @team.seasons.new(season_params)
-    if @team.save
-      redirect_to user_path(@user)
-      flash[:notice] = "You have successfully created a season!"
+    @season = @team.seasons.new(season_params)
+
+    if @season.save
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.json { render :json => @season }
+      end
     else
       redirect_to user_path
-      flash[:notice] = "Unsuccessful creation of season."
+      flash[:notice] = "Failed to create a season."
     end
   end
 
