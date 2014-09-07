@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require sign_in
 //= require jquery_ujs
 //= require main
 //= require heatmap

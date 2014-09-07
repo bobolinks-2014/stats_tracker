@@ -8,10 +8,8 @@
 </head>
 <body>
 
-<%= yield %>
-  <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: name %>
-  <% end %>
+  <%= yield %>
+
 
   <% if logged_in? %>
     <li><%= link_to 'Log out', logout_path %></li>
@@ -25,7 +23,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="javascripts/heatmap.js"></script> -->
 <%= javascript_include_tag "application" %>
-
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 </body>
 </html>
