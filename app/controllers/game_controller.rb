@@ -32,21 +32,21 @@ class GameController < ApplicationController
     end
   end
 
-  def show
-
-  end
-
-  # def edit
+  # def show
 
   # end
 
-  def update #post for edit
+  # # def edit
 
-  end
+  # # end
 
-  def destroy
+  # def update #post for edit
 
-  end
+  # end
+
+  # def destroy
+
+  # end
 
    private
 

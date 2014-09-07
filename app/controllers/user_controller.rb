@@ -1,6 +1,7 @@
 class UserController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
+
   def index
     @user = User.new
   end
@@ -20,8 +21,50 @@ class UserController < ApplicationController
     end
   end
 
+   def show_all_teams
+    @user = User.find(session[:user_id])
+    @teams = Team.where(user_id: @user.id)
+    respond_to do |f|
+      f.html { redirect_to user_path(@user) }
+      f.json { render :json => @teams }
+      # f.html { render :json => @teams }
+    end
+  end
+
+#'/user/:id/team/:team_id/seasons'
+  def show_all_team_seasons
+    @user = User.find(session[:user_id])
+    @team = Team.find(params[:team_id])
+    @seasons = @team.seasons
+
+    respond_to do |f|
+      f.html { redirect_to user_path(@user) }
+      f.json { render :json => @seasons }
+    end
+  end
+
+
+  #'/user/:id/season/:season_id/games'
+  def show_all_season_games
+    @user = User.find(session[:user_id])
+    @season = Season.find(params[:season_id])
+    @games = @season.games
+
+    respond_to do |f|
+      f.html { redirect_to user_path(@user) }
+      f.json { render :json => @games }
+    end
+  end
+
+
   def show
     @user = User.find(session[:user_id])
+    @teams = @user.teams #Team.where(user_id: @user.id)
+    #@seasons = @teams.first.seasons #Season.where(season_id: @teams)
+    @seasons = []
+    @teams.each do |team|
+      @seasons << team.seasons
+    end
   end
 
   def edit
