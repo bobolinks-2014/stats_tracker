@@ -7,13 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="top-nav">
+  <h1>half court press</h1>
+  <% if logged_in? %>
+    <a href="/session/logout"><p>Log out</p></a>
+  <% end %>
+</div>
 
   <%= yield %>
 
 
-  <% if logged_in? %>
-    <li><%= link_to 'Log out', logout_path %></li>
-  <% end %>
+
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
  --><!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
@@ -24,6 +28,10 @@
 <!-- <script type="text/javascript" src="javascripts/heatmap.js"></script> -->
 <%= javascript_include_tag "application" %>
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<!-- <div class="footer">
+    <p>Copyright 2014 HalfCourtPress, LLC. MIT License.</p>
+</div> -->
 
 </body>
 </html>

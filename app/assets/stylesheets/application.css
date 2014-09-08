@@ -21,6 +21,58 @@
   overflow: scroll;
 }*/
 
+body{
+  background-image: url("hardwood.jpg");
+  /*background-color: #3276b1;*/
+  min-height: 900px;
+}
+
+.top-nav {
+  background-color: #3276b1;
+  /*text-decoration: none;*/
+  display: block;
+  margin: auto;
+  color: white;
+  height: 55px;
+  width: 100%;
+  top: 0;
+  padding: 8px 0px;
+  position: fixed;
+  /*overflow: hidden;*/
+  font-family: Verdana;
+}
+.top-nav h1{
+  text-align: left;
+  margin: 0px 10px;
+  color: #ed9d3c;
+}
+.top-nav p{
+  text-align: right;
+  position: absolute;
+  top: 9px;
+  right: 0px;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+  margin: 2px 19px;
+}
+
+.top-nav p a{
+  text-decoration: none;
+}
+
+.footer{
+  margin: 0px auto;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+.dash_show{
+  margin: 70px 25px;
+}
+
 .image_display {
   display: block;
   margin-left: 3cm;
@@ -47,6 +99,7 @@
 
 .score_keeper{
   display: block;
+  margin: 35px auto;
   width: 1600px;
   height: 800px;
 }
@@ -64,93 +117,110 @@
   float: left;
   border: solid #333333;
   background-image: url("court_3.svg");
+  background-color: white;
   background-size: 1200px 750px;
-  width: 1200px;
+  width: 1050px;
   height: 750px;
 }
 
-.dot{
+.dot_shotmissed, .dot_shotmade, .dot_rebound, .dot_steal, .dot_turnover, .dot_block{
   position: absolute;
   height: 10px;
   width: 10px;
   border-radius: 100%;
-  background-color: black;
 }
+.dot_shotmissed{
+  background-color: #d72905;
+}
+
+.dot_shotmade {
+  background-color: #057cff;
+}
+
+.dot_rebound{
+  background-color: #459f14;
+}
+
+.dot_steal{
+  background-color: #854b6d;
+}
+
+.dot_turnover {
+  background-color: #04d9d9;
+}
+
+.dot_block{
+  background-color: #6b6b6b;
+}
+
 
 .heat_court{
   float: left;
   border: solid #333333;
   background-image: url("court_3.svg");
+  background-color: white;
   background-size: 1200px 750px;
-  width: 1200px;
+  width: 1050px;
   height: 750px;
 }
 
-.fg_missed_button{
+.fg_missed_button, .fg_made_button, .rebound_button, .steal_button, .turnover_button, .block_button{
   width: 110px;
   height: 110px;
   margin: 15px 15px;
+  border-radius: 7%;
   float: left;
   color: white;
   text-align: center;
   font: Verdana sans-serif;
   font: white;
+}
+
+.fg_missed_button{
   background-color: #d72905;
 }
-
 .fg_made_button{
-  width: 110px;
-  height: 110px;
-  margin: 15px 15px;
-  float: left;
-  color: white;
-  text-align: center;
-  font: Verdana sans-serif;
   background-color: #057cff;
 }
-
 .rebound_button{
-  width: 110px;
-  height: 110px;
-  margin: 15px 15px;
-  float: left;
-  color: white;
-  text-align: center;
-  font: Verdana sans-serif;
   background-color: #459f14;
 }
-
 .steal_button{
-  width: 110px;
-  height: 110px;
-  margin: 15px 15px;
-  float: left;
-  color: white;
-  text-align: center;
-  font: Verdana sans-serif;
   background-color: #854b6d;
 }
-
 .turnover_button{
-  width: 110px;
-  height: 110px;
-  margin: 15px 15px;
-  float: left;
-  color: white;
-  text-align: center;
-  font: Verdana sans-serif;
   background-color: #04d9d9;
 }
-
 .block_button{
-  width: 110px;
-  height: 110px;
+  background-color: #6b6b6b;
+}
+
+.heatmap_button, .clear_heatmap{
+  width:250px;
+  height: 65px;
   margin: 15px 15px;
+  border-radius: 7%;
   float: left;
   color: white;
   text-align: center;
   font: Verdana sans-serif;
-  background-color: #6b6b6b;
+  background-color: #ff661f;
+  text-decoration: none;
+}
+
+.clear_heatmap h1{
+  margin: 14px 0px;
+  text-decoration: none;
+}
+
+.heatmap_button h1{
+  margin: 14px 0px;
+  text-decoration: none;
+}
+
+a:link{
+  color: white;
+  text-decoration: none;
 }
 /**********************RATCHET BELOW****************************/
 
@@ -162,10 +232,11 @@ a:active {
   color: #0062cc;
 }
 .container{
-  margin: 20px auto;
+  margin: 90px auto;
   width: 660px;
-  padding: 0px 20px 20px 20px;
-  border: 1px solid black;
+  padding: 17px 20px 20px 20px;
+  /*background-color: white;*/
+  /*border: 1px solid black;*/
 }
 
 .content {
@@ -205,8 +276,14 @@ p {
   color: #fff;
   background-color: #929292;
 }
-
+#button_id{
+  /*position: absolute;
+  top:0px;
+  left:0px;*/
+  margin: 0px 40px;
+}
 .btn-primary {
+  width: 150px;
   color: #fff;
   background-color: #007aff;
   border: 1px solid #007aff;

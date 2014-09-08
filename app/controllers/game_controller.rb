@@ -29,11 +29,23 @@ class GameController < ApplicationController
   end
 
   def show
+    @user = User.find(session[:user_id])
+    @game = Game.find(params[:id])
+    @missed_shots = Stat.where(game_id: params[:id], stat_type: 1)
+    @made_shots = Stat.where(game_id: params[:id], stat_type: 2)
+    @rebounds = Stat.where(game_id: params[:id], stat_type: 3)
+    @steals = Stat.where(game_id: params[:id], stat_type: 4)
+    @turnovers = Stat.where(game_id: params[:id], stat_type: 5)
+    @blocks = Stat.where(game_id: params[:id], stat_type: 6)
+    respond_to do |f|
+      f.html { game_path(@game) }
+      f.json { render :json => {missed_shots: @missed_shots, made_shots: @made_shots, rebounds:@rebounds, steals: @steals, turnovers: @turnovers, blocks: @blocks} }
+    end
 
   end
 
   def edit
-
+    @game_id = params[:id]
   end
 
   # def update #post for edit
