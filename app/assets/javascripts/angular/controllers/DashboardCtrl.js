@@ -102,7 +102,8 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		formatYear: 'yy',
 		formatDay: 'd',
 		formatMonth: 'M',
-		startingDay:1
+		startingDay:1,
+		dropdownSelector: '#dropdown2'
 	}
 	this.today = function(){
 		this.newGameInfo.date = new Date();

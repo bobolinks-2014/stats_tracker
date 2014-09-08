@@ -13,6 +13,7 @@
 //= require jquery
 //= require sign_in
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require ui-bootstrap-0.11.0.min
 //= require main
 //= require_tree ./angular
