@@ -1,6 +1,5 @@
   app.controller('ScoreKeepersCtrl', ['$http',function($http){
     var gameId = parseInt($("#game_id").attr("value"));
-    var url =
 
     //coordinate hash to store the x and y coordinates of a mouse click
     var coordinates = {
@@ -29,8 +28,8 @@
 
     function Stats(event, type){
       this.game_id = gameId;
-      this.x = getX(event);
-      this.y = getY(event);
+      this.x_coord = getX(event);
+      this.y_coord = getY(event);
 
       if(type === 1){
         this.made = false;
@@ -52,7 +51,7 @@
     //Stats are default to missed shots
     this.type = 1;
     // debugger;
-
+    var that = this;
     //Empty arrays to contain all stat objects
     this.missed_fieldgoals = [];
     this.made_fieldgoals = [];
@@ -75,43 +74,185 @@
 
     //Method to make dots
     var i = 0;
-    var makedots = function(event){
+    var makedots_shotmissed = function(event){
       i++;
-      $('.court').append("<div class ='dot dot"+i+"'></div>");
+      $('.court').append("<div class ='dot_shotmissed dot"+i+"'></div>");
       $('.dot'+i).css({'top':event.y, 'left':event.x});
     };
 
+    var makedots_shotmade = function(event){
+      i++;
+      $('.court').append("<div class ='dot_shotmade dot"+i+"'></div>");
+      $('.dot'+i).css({'top':event.y, 'left':event.x});
+    };
 
+    var makedots_rebound = function(event){
+      i++;
+      $('.court').append("<div class ='dot_rebound dot"+i+"'></div>");
+      $('.dot'+i).css({'top':event.y, 'left':event.x});
+    };
+
+    var makedots_steal = function(event){
+      i++;
+      $('.court').append("<div class ='dot_steal dot"+i+"'></div>");
+      $('.dot'+i).css({'top':event.y, 'left':event.x});
+    };
+
+    var makedots_turnover = function(event){
+      i++;
+      $('.court').append("<div class ='dot_turnover dot"+i+"'></div>");
+      $('.dot'+i).css({'top':event.y, 'left':event.x});
+    };
+
+    var makedots_block = function(event){
+      i++;
+      $('.court').append("<div class ='dot_block dot"+i+"'></div>");
+      $('.dot'+i).css({'top':event.y, 'left':event.x});
+    };
+
+    var makeOldDots = function (stat) {
+      i++
+      $('.court').append("<div class ='dot dot"+i+"'></div>");
+      $('.dot'+i).css({'top':stat.y_coord, 'left':stat.x_coord});
+    }
     //function that records a stat object and pushes it in its corresponding array.
     this.recordStats = function(event, type){
       if(type === 1){
-        this.missed_fieldgoals.push(new Stats(event, this.type));
-        makedots(event);
-
+        var newMissedFG = new Stats(event, this.type);
+        this.missed_fieldgoals.push(newMissedFG);
+        makedots_shotmissed(event);
         $http({
           method: 'POST',
-          url: '/stat.json'
-          data:
+          url: '/stat.json',
+          data: newMissedFG
         })
-        debugger;
+        .success(function (data, status, headers, config) {
+        })
+        .error(function (data, status, headers, config) {
+        })
+
       } else if(type === 2){
+        var newMadeFG = new Stats(event, this.type);
         this.made_fieldgoals.push(new Stats(event, this.type));
-        makedots(event);
-        debugger;
+        makedots_shotmade(event);
+        $http({
+          method: 'POST',
+          url: '/stat.json',
+          data: newMadeFG
+        })
+        .success(function (data, status, headers, config) {
+        })
+        .error(function (data, status, headers, config) {
+        })
       } else if(type === 3) {
+        var rebound = new Stats(event, this.type);
         this.rebounds.push(new Stats(event, this.type));
-        makedots(event);
+        makedots_rebound(event);
+        $http({
+          method: 'POST',
+          url: '/stat.json',
+          data: rebound
+        })
+        .success(function (data, status, headers, config) {
+        // debugger;
+        })
+        .error(function (data, status, headers, config) {
+        })
       } else if(type === 4) {
+        var steal = new Stats(event, this.type);
         this.steals.push(new Stats(event, this.type));
-        makedots(event);
+        makedots_steal(event);
+        $http({
+          method: 'POST',
+          url: '/stat.json',
+          data: steal
+        })
+        .success(function (data, status, headers, config) {
+          // debugger;
+        })
+        .error(function (data, status, headers, config) {
+        })
       } else if(type === 5) {
+        var turnover = new Stats(event, this.type);
         this.turnovers.push(new Stats(event, this.type));
-        makedots(event);
+        makedots_turnover(event);
+        $http({
+          method: 'POST',
+          url: '/stat.json',
+          data: turnover
+        })
+        .success(function (data, status, headers, config) {
+          // debugger;
+        })
+        .error(function (data, status, headers, config) {
+        })
       } else if(type === 6){
+        var block = new Stats(event, this.type);
         this.blocks.push(new Stats(event, this.type));
-        makedots(event);
+        makedots_block(event);
+        $http({
+          method: 'POST',
+          url: '/stat.json',
+          data: block
+        })
+        .success(function (data, status, headers, config) {
+          // debugger;
+        })
+        .error(function (data, status, headers, config) {
+        })
       };
     };
+
+    // Load up stats from DB and draw to page
+
+    var ajaxResponse = $http({
+      method: 'GET',
+      url: '/game/' + gameId + '/stats.json'
+    })
+    ajaxResponse.success(function (data, status, headers, config){
+      var that = this;
+      parseStats(data, that);
+    }.bind(this));
+
+    // ajaxResponse.error(function(data, status, headers, config) {
+    // });
+    // this.missed_fieldgoals = [];
+    // this.made_fieldgoals = [];
+    // this.rebounds = [];
+    // this.steals = [];
+    // this.turnovers = [];
+    // this.blocks = [];
+
+    var parseStats = function (stats, that) {
+      stats.forEach(function(stat) {
+        // sleep(100);
+        if (stat.stat_type === 1){
+          // makeOldDots(stat);
+          that.missed_fieldgoals.push(stat);
+
+        } else if(stat.stat_type === 2){
+          // makeOldDots(stat);
+          that.made_fieldgoals.push(stat);
+
+        } else if(stat.stat_type === 3) {
+          that.rebounds.push(stat);
+
+          // makedots(event);
+        } else if(stat.stat_type === 4) {
+          that.steals.push(stat);
+
+          // makedots(event);
+        } else if(stat.stat_type === 5) {
+          that.turnovers.push(stat);
+
+          // makedots(event);
+        } else if(stat.stat_type === 6){
+          that.blocks.push(stat);
+          // makedots(event);
+        };
+      })
+    }
+
 }]);
 
 
