@@ -24,7 +24,7 @@
 body{
   background-image: url("hardwood.jpg");
   /*background-color: #3276b1;*/
-  min-height: 1000px;
+  min-height: 900px;
 }
 
 .top-nav {
@@ -99,6 +99,7 @@ body{
 
 .score_keeper{
   display: block;
+  margin: 35px auto;
   width: 1600px;
   height: 800px;
 }
@@ -116,6 +117,7 @@ body{
   float: left;
   border: solid #333333;
   background-image: url("court_3.svg");
+  background-color: white;
   background-size: 1200px 750px;
   width: 1050px;
   height: 750px;
@@ -156,8 +158,9 @@ body{
   float: left;
   border: solid #333333;
   background-image: url("court_3.svg");
+  background-color: white;
   background-size: 1200px 750px;
-  width: 1200px;
+  width: 1050px;
   height: 750px;
 }
 
