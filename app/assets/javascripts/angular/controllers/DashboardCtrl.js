@@ -1,7 +1,3 @@
-// dashboard.controller 'DashboardCtrl', ['$scope', ($scope) ->
-
-// ]
-
 app.controller('DashboardCtrl', ['$http',function($http){
 //  === SET ZE VARS ===
 //
@@ -134,12 +130,12 @@ app.controller('DashboardCtrl', ['$http',function($http){
 //  === DISPLAY ZE FORMS ===
 //
 		this.shouldDisplay = function (formName) {
+			// only check whether they clicked the + button for teams
 			if (formName === "teams"){
 				return this.showForm[formName];
 			}
 
-
-
+			// others: check + button pressed or if no games/seasons exist for selected season/team
 			if (this.showForm[formName]){
 				console.log(formName + " form: true")
 				return true;
