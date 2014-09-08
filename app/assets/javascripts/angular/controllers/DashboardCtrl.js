@@ -1,7 +1,3 @@
-// dashboard.controller 'DashboardCtrl', ['$scope', ($scope) ->
-
-// ]
-
 app.controller('DashboardCtrl', ['$http',function($http){
 //  === SET ZE VARS ===
 //
@@ -94,6 +90,26 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		});
 	};
 
+	// Date Formatting Stuff
+	this.dateOpened = 
+	this.openDate = function($event){
+		$event.preventDefault();
+		$event.stopPropagation();
+
+		that.dateOpened = true;
+	};
+	this.dateOptions ={
+		formatYear: 'yy',
+		formatDay: 'd',
+		formatMonth: 'M',
+		startingDay:1,
+		dropdownSelector: '#dropdown2'
+	}
+	this.today = function(){
+		this.newGameInfo.date = new Date();
+	};
+	this.today();
+
 
 //  === DISPLAY ZE ROWS ===
 //
@@ -134,12 +150,12 @@ app.controller('DashboardCtrl', ['$http',function($http){
 //  === DISPLAY ZE FORMS ===
 //
 		this.shouldDisplay = function (formName) {
+			// only check whether they clicked the + button for teams
 			if (formName === "teams"){
 				return this.showForm[formName];
 			}
 
-
-
+			// others: check + button pressed or if no games/seasons exist for selected season/team
 			if (this.showForm[formName]){
 				console.log(formName + " form: true")
 				return true;
