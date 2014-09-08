@@ -42,12 +42,10 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		})
 		.success(function (data, status, headers, config) {
 			that.teams.push(data);
-			debugger;
 			that.showForm['teams'] = false;
 			that.newTeamInfo = {};
 		})
 		.error(function (data, status, headers, config) {
-			debugger;
 			console.log("ERROR: "+status)
 			console.log(data);
 		});
@@ -66,12 +64,10 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		})
 		.success(function (data, status, headers, config) {
 			that.seasons.push(data);
-			debugger;
 			that.showForm['seasons'] = false;
 			that.newSeasonInfo = {};
 		})
 		.error(function (data, status, headers, config) {
-			// debugger;
 			console.log("ERROR: "+status)
 			console.log(data);
 		});
@@ -82,20 +78,17 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	this.addNewGame = function(){
 		var stuff = that.newGameInfo;
 		stuff.season_id = that.season_id;
-		// debugger;
 		$http({
 			method: "POST",
 			url: '/game.json',
 			data: stuff
 		})
 		.success(function (data, status, headers, config) {
-			// debugger;
 			that.games.push(data);
 			that.showForm['games'] = false;
 			that.newGameInfo = {};
 		})
 		.error(function (data, status, headers, config) {
-			// debugger;
 			console.log("ERROR: "+status)
 			console.log(data);
 		});
