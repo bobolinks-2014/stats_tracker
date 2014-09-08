@@ -4,11 +4,44 @@
   </div>
 
   <div class="identifiers">
+    <div class="fg_missed_button">
+      SHOTS MISS
+      <h1><%= @missed_shots.length %></h1>
+    </div>
+    <div class="fg_made_button">
+      SHOTS MADE
+      <h1><%= @made_shots.length %></h1>
+    </div>
+    <div class="rebound_button">
+      REBOUNDS
+      <h1><%= @rebounds.length %></h1>
+    </div>
+    <div class="steal_button">
+      STEALS
+      <h1><%= @steals.length %></h1>
+    </div>
+    <div class="turnover_button">
+      TURNOVERS
+      <h1><%= @turnovers.length %></h1>
+    </div>
+    <div class="block_button">
+      BLOCKS
+      <h1><%= @blocks.length %></h1>
+    </div>
 
+    <div class="clear_heatmap">
+      <h1>CLEAR DATA</h1>
+    </div>
   </div>
 
-  <div class="heat_court">
+  <div class="heat_court" ></div>
+<!--   <div class="heat_court shots_missed"></div>
+  <div class="heat_court shots_made"></div>
+  <div class="heat_court rebounds"></div>
+  <div class="heat_court steals"></div>
+  <div class="heat_court blocks"></div>
+  <div class="heat_court turnovers"></div> -->
 
-  </div>
+
 
 </div>
