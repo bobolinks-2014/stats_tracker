@@ -77,9 +77,9 @@
   <div ng-show="dash.isSet('games')" class="games row-transition">
     <form ng-show="dash.shouldDisplay('games')" ng-submit="dash.addNewGame()">
       <fieldset class="form-group">
-        <input type="text" class="" placeholder="Date: 9/3/07" title="Date" datepicker-popup="shortDate" ng-model="dash.newGameInfo.date" is-open="dash.dateOpened" min-date="" max-date="n " datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close">
+        <input type="text" class="" placeholder="Date: 9/3/07" title="Date" datepicker-popup="shortDate" ng-model="dash.newGameInfo.date" is-open="dash.dateOpened" min-date="" max-date="n " datepicker-options="dateOptions" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close">
           <button type="button" class="btn btn-default" ng-click="dash.openDate($event)"><i class="glyphicon glyphicon-calendar fa-lg"></i></button>
-        </input>
+       </input>
       </fieldset>
       <fieldset class="form-group">
         <div class="btn-group">
