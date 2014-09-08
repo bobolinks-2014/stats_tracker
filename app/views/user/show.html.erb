@@ -101,8 +101,8 @@
 
     <!-- REPEAT DIV PER GAME -->
     <div class="dash dash-game fade-in fade-out" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
-      <a href ng-href="http://localhost:3000/game/{{game.id}}/edit"><div>
-        {{game.opponent}} {{game.date}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}} SEASONID: {{dash.season_id}}
+      <a href ng-href="http://localhost:3000/game/{{game.id}}/edit"><div title="{{dash.season_name}} Season">
+        {{game.opponent}} {{game.date | date : "EEE M/d/yy"}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}}
       </div></a>
     </div>
   </div>
