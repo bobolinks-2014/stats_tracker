@@ -1,29 +1,33 @@
-<div class="content container" >
-  <div class="content-padded">
-    <h1></h1>
-  </div>
-  <ul >
+<%if @current_user == nil%>
+  <div class="content container" >
+    <div class="content-padded">
+      <h1></h1>
+    </div>
+      <div id="login">
+      <ul >
+          <%= form_for(:user, :url => {:controller => 'session', :action => 'login'}) do |f|%>
+            <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
+            <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
+            <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, class: name %>
+            <% end %>
+            <br>
+            <button class="btn btn-primary btn-block" id="login_button">Log in</button>
+          <% end %>
+      </ul>
+      </div>
 
-    <%= form_for(:user, :url => {:controller => 'session', :action => 'login'}) do |f|%>
-      <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
-      <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: name %>
+    <button class="btn btn-primary btn-block", id="button_id">Sign up</button>
+    <div class="signup">
+    <ul >
+      <%= form_for(:user, :url => {:controller => 'user', :action => 'create'}) do |f|%>
+        <li><%= f.text_field :name, :size => 70, placeholder: 'Full Name' %></li>
+        <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
+        <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
+        <li><%= f.password_field :password_confirmation, :size => 70, placeholder: 'Confim Password' %></li>
+        <button class="btn btn-primary btn-block" id="signup_enter">Sign up</button>
       <% end %>
-  <br>
-    <button class="btn btn-primary btn-block">Log in</button>
-    <% end %>
-  </ul>
-  <button class="btn btn-primary btn-block", id="button_id">Sign up</button>
-  <div class="signup">
-  <ul >
-    <%= form_for(:user, :url => {:controller => 'user', :action => 'create'}) do |f|%>
-      <li><%= f.text_field :name, :size => 70, placeholder: 'Full Name' %></li>
-      <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
-      <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
-      <li><%= f.password_field :password_confirmation, :size => 70, placeholder: 'Confim Password' %></li>
-      <button class="btn btn-primary btn-block">Sign up</button>
-    <% end %>
+    </div>
+    </ul>
   </div>
-  </ul>
-</div>
+<% end %>

@@ -2,8 +2,10 @@ class UserController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
 
+
   def index
     @user = User.new
+    @current_user = User.find_by(id: session[:user_id])
   end
 
   def new
