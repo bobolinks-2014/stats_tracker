@@ -90,6 +90,25 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		});
 	};
 
+	// Date Formatting Stuff
+	this.dateOpened = 
+	this.openDate = function($event){
+		$event.preventDefault();
+		$event.stopPropagation();
+
+		that.dateOpened = true;
+	};
+	this.dateOptions ={
+		formatYear: 'yy',
+		formatDay: 'd',
+		formatMonth: 'M',
+		startingDay:1
+	}
+	this.today = function(){
+		this.newGameInfo.date = new Date();
+	};
+	this.today();
+
 
 //  === DISPLAY ZE ROWS ===
 //
