@@ -7,7 +7,7 @@
   </h2>
 
   <!-- Show teams attached to user -->
-  <div ng-show="dash.isSet('teams')" class="teams">
+  <div ng-show="dash.isSet('teams')" class="teams row-transition">
 
     <!-- Add a new team for user -->
     <a href><div class="dash dash-team" ng-click="dash.displayForm('teams')">
@@ -18,7 +18,7 @@
     </div></a>
 
     <!-- REPEAT DIV PER TEAM -->
-    <div class="dash dash-team" ng-repeat="team in dash.teams" ng-click="dash.showDerivative({teamId: team.id, teamName: team.name},'seasons')">
+    <div class="dash dash-team fade-in fade-out" ng-repeat="team in dash.teams" ng-click="dash.showDerivative({teamId: team.id, teamName: team.name},'seasons')" ng-animate="'animate'">
       {{team.id}} {{team.name}}
     </div>
   </div>
@@ -42,7 +42,7 @@
   </h2>
 
   <!-- Show seasons per selected team -->
-  <div ng-show="dash.isSet('seasons')" class="seasons">
+  <div ng-show="dash.isSet('seasons')" class="seasons row-transition">
 
     <!-- Add a new season for selected team -->
     <a href><div class="dash dash-season" ng-click="dash.displayForm('seasons')">
@@ -53,7 +53,7 @@
     </div></a>
 
     <!-- REPEAT DIV PER SEASON -->
-    <div class="dash dash-season" ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({seasonId: season.id, seasonName: season.name},'games')">
+    <div class="dash dash-season fade-in fade-out" ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({seasonId: season.id, seasonName: season.name},'games')">
       {{season.team_id}} {{season.name}} TEAMID:{{dash.team_id}}
     </div>
   </div>
@@ -74,7 +74,7 @@
   </h2>
 
   <!-- Show games per selected game -->
-  <div ng-show="dash.isSet('games')" class="games">
+  <div ng-show="dash.isSet('games')" class="games row-transition">
 
     <!-- Add a new game for selected game -->
     <a href><div class="dash dash-game" ng-click="dash.displayForm('games')">
@@ -85,7 +85,7 @@
     </div></a>
 
     <!-- REPEAT DIV PER GAME -->
-    <div class="dash dash-game" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
+    <div class="dash dash-game fade-in fade-out" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
       <a href ng-href="http://localhost:3000/game/{{game.id}}/edit"><div>
         {{game.opponent}} {{game.date}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}} SEASONID: {{dash.season_id}}
       </div></a>
