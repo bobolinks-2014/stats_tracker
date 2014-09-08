@@ -21,6 +21,58 @@
   overflow: scroll;
 }*/
 
+body{
+  background-image: url("hardwood.jpg");
+  /*background-color: #3276b1;*/
+  min-height: 1000px;
+}
+
+.top-nav {
+  background-color: #3276b1;
+  /*text-decoration: none;*/
+  display: block;
+  margin: auto;
+  color: white;
+  height: 55px;
+  width: 100%;
+  top: 0;
+  padding: 8px 0px;
+  position: fixed;
+  /*overflow: hidden;*/
+  font-family: Verdana;
+}
+.top-nav h1{
+  text-align: left;
+  margin: 0px 10px;
+  color: #ed9d3c;
+}
+.top-nav p{
+  text-align: right;
+  position: absolute;
+  top: 9px;
+  right: 0px;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+  margin: 2px 19px;
+}
+
+.top-nav p a{
+  text-decoration: none;
+}
+
+.footer{
+  margin: 0px auto;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+.dash_show{
+  margin: 70px 25px;
+}
+
 .image_display {
   display: block;
   margin-left: 3cm;
@@ -177,10 +229,11 @@ a:active {
   color: #0062cc;
 }
 .container{
-  margin: 20px auto;
+  margin: 90px auto;
   width: 660px;
-  padding: 0px 20px 20px 20px;
-  border: 1px solid black;
+  padding: 17px 20px 20px 20px;
+  /*background-color: white;*/
+  /*border: 1px solid black;*/
 }
 
 .content {
@@ -220,8 +273,14 @@ p {
   color: #fff;
   background-color: #929292;
 }
-
+#button_id{
+  /*position: absolute;
+  top:0px;
+  left:0px;*/
+  margin: 0px 40px;
+}
 .btn-primary {
+  width: 150px;
   color: #fff;
   background-color: #007aff;
   border: 1px solid #007aff;
