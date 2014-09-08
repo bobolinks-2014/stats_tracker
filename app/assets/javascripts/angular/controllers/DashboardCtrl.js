@@ -134,12 +134,39 @@ app.controller('DashboardCtrl', ['$http',function($http){
 //  === DISPLAY ZE FORMS ===
 //
 		this.shouldDisplay = function (formName) {
-			return this.showForm[formName];
+			if (formName === "teams"){
+				return this.showForm[formName];
+			}
+
+
+
+			if (this.showForm[formName]){
+				console.log(formName + " form: true")
+				return true;
+			} else if (!this.anyExist(formName)){
+				console.log(formName + " form: true")
+				return true;
+			} else {
+				console.log(formName + " form: false")
+				return false;}
 		};
 
 		this.displayForm = function (formName) {
 			this.showForm[formName] ? this.showForm[formName] = false : this.showForm[formName] = true;
 		};
+
+		// returns false if no games/seasons exist for selected season/team) 
+		this.anyExist = function(formName){
+			var which = {"seasons": "team_id", "games" : "season_id"}
+			var exist = false;
+			this[formName].forEach(function(elem){
+				if (that[which[formName]] === elem[which[formName]]){
+					exist = true;
+				}
+			});
+			return exist;
+		};
+
 
 //  === GET ZE DATA ===
 //
@@ -149,7 +176,10 @@ app.controller('DashboardCtrl', ['$http',function($http){
 			url: '/user/1/teams.json'
 	})
 	.success(function(data, status, headers, config){
-			that.teams = data;
+			that.teams = that.teams.concat(data);
+			if (that.teams.length === 0){
+				that.showForm['teams'] = true;
+			}
 			that.getAllSeasons();
 	})
 	.error(function(data, status, headers, config){
@@ -164,12 +194,15 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	this.getAllSeasons = function(){
 		that.teams.forEach(function(team){
 			$http({
-					method: 'GET',
-					url: '/user/1/team/' + team.id + '/seasons.json'
+				method: 'GET',
+				url: '/user/1/team/' + team.id + '/seasons.json'
 			})
 			.success(function(data, status, headers, config){
-					that.seasons = that.seasons.concat(data);
-					that.getAllGames(data);
+				that.seasons = that.seasons.concat(data);
+				if (that.seasons.length === 0){
+					that.showForm['seasons'] = true;
+				}
+				that.getAllGames(data);
 			})
 			.error(function(data, status, headers, config){
 				console.log("ERROR :(");
@@ -190,6 +223,9 @@ app.controller('DashboardCtrl', ['$http',function($http){
 			})
 			.success(function(data, status, headers, config){
 				that.games = that.games.concat(data);
+				if (that.games.length === 0){
+					that.showForm['games'] = true;
+				}
 			})
 			.error(function(data, status, headers, config){
 				console.log("ERROR :(");
