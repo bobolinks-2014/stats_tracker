@@ -21,6 +21,75 @@
   overflow: scroll;
 }*/
 
+/*========== DASHBOARD ============*/
+/* DURING HIDE 
+teams ng-hide-add ng-hide ng-hide-add-active
+
+DURING SHOW
+teams ng-hide-remove ng-hide-remove-active
+*/
+.teams{
+  background-color: rgba(0, 255, 0, 0.1);
+}
+.seasons{
+  background-color: rgba(255, 0, 0, 0.1);
+}
+.games{
+  background-color: rgba(0, 0, 255, 0.1);
+}
+
+.row-transition.ng-hide-add,
+.row-transition.ng-hide-remove {
+  -webkit-transition:all linear 0.08s;
+  transition: all linear 0.08s;
+}
+
+.row-transition.ng-hide{
+  opacity: 0;
+}
+
+.fade-in.ng-enter, .fade-out.ng-leave {
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-duration: 125ms;
+    -moz-transition-duration: 125ms;
+    -o-transition-duration: 125ms;
+    transition-duration: 125ms;
+}
+
+.fade-in.ng-enter, .fade-out.ng-leave {
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-duration: 125ms;
+    -moz-transition-duration: 125ms;
+    -o-transition-duration: 125ms;
+    transition-duration: 125ms;
+}
+
+.fade-in.ng-enter {
+    opacity: 0;
+}
+
+.fade-in.ng-enter-active {
+    opacity: 1;
+}
+
+.fade-out.ng-leave {
+    opacity: 1;
+}
+
+.fade-out.ng-leave-active {
+    opacity: 0;
+}
+
+
+/*========== END DASHBOARD ============*/
+
+
 .image_display {
   display: block;
   margin-left: 3cm;
