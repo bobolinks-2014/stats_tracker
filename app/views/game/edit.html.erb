@@ -29,8 +29,13 @@
       <h1>{{skeeps.blocks.length}}</h1>
     </div>
 
-  </div>
+    <div class="heatmap_button">
+      <a href ng-href="http://localhost:3000/game/<%= @game_id %>">
+      <h1>HEATMAP</h1>
+    </div></a>
 
+  </div>
+  <input id="game_id" value="<%= @game_id %>" type="hidden">
   <div class="court" ng-click="skeeps.recordStats($event, skeeps.type)">
 
   </div>
