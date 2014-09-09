@@ -29,6 +29,8 @@ gem 'factory_girl','~>4.4.0'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 
+gem "twitter-bootstrap-rails"
+gem 'bootstrap-glyphicons'
 
 
 group :development, :test do
