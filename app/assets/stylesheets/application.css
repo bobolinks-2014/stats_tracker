@@ -88,7 +88,8 @@
 body{
   /*background-image: url("hardwood.jpg");*/
   /*background-color: #3276b1;*/
-  min-height: 900px;
+  /*min-height: 900px;*/
+  /*padding-bottom: 100px;*/
 }
 
 #login #user_email{
@@ -136,7 +137,7 @@ body{
   width: 100%;
   top: 0;
   padding: 8px 0px;
-  position: fixed;
+  position: absolute;
   /*overflow: hidden;*/
   font-family: Verdana;
 }
@@ -147,7 +148,7 @@ body{
 }
 .top-nav p{
   text-align: right;
-  position: fixed;
+  position: absolute;
   top: 9px;
   right: 0px;
   text-decoration: none;
@@ -155,6 +156,7 @@ body{
   font-size: 1.5em;
   margin: 2px 19px;
 }
+
 
 .top-nav p a{
   text-decoration: none;
@@ -195,26 +197,59 @@ body{
   text-align: center;
 }
 
+.pic_wrap{
+
+}
+
+.dev_team{
+  display: block;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.dev_team img {
+  width: 10%;
+  height: auto;
+  border-radius: 100px;
+}
+
+.dev_text {
+  text-align: center;
+}
+
 .make_miss_div{
   background-image: url("made_and_missed.png");
-  background-size: 20%;
+  background-size: 28%;
   background-repeat: no-repeat;
-  position:relative;
+ /* position:relative;*/
   height: 20em;
   width:90%;
-  margin-left: 0px;
+  margin-left: 6%;
   margin-right:0px;
-  float:right;
+  float:left;
 
 }
 .made_heat_div{
-  background-image: url("made_heat.png");
-  background-size: 20%;
+  background-image: url("/assets/made_heat.png");
   background-repeat: no-repeat;
+  background-size: 28%;
   position: relative;
   height: 20em;
-  width:90%;
-  margin-left: 40%;
+  width: 90%;
+  margin-left: 37%;
+}
+
+.gif{
+  background-image: url("/assets/AlSW1zc2Hz.gif");
+  background-repeat: no-repeat;
+  background-size: 45%;
+
+  position: relative;
+  height: 20em;
+  width: 90%;
+  margin-left: 30%;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .make_heat_div p{
@@ -222,15 +257,39 @@ body{
 }
 
 .miss_heat_div{
-  background-image: url("made_heat.png");
-  background-size: 20%;
+  background-image: url("missed_shots.png");
+  background-size: 28%;
   background-repeat: no-repeat;
   position: relative;
   height: 20em;
   width:90%;
-  margin-left: 70%;
+  margin-left: 68%;
   float: left;
-  bottom: 278px;
+ bottom: 278px;
+}
+
+.pic_text{
+  display: inline-block;
+  text-align: center;
+  margin: 241px 0px;
+}
+
+.pic_text p{
+  font-size: 1em;
+}
+
+.made_pic_heat{
+  display: inline-block;
+  text-align: center;
+  margin: 241px -981px;
+}
+
+
+
+.miss_pic_heat {
+  display: inline-block;
+  text-align: center;
+  margin: 241px 7px;
 }
 
 
@@ -241,10 +300,33 @@ hr{
     background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
     background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+}
 
+.below_pics{
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 }
 
 h1 {font-family: "Droid Serif",georgia,serif;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.25em;
+    font-family: "Roboto Slab";
+    font-size: 32px;
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-style: normal;
+    color: ghostwhite;
+ }
+
+ .mirror{
+  font-family: "Droid Serif",georgia,serif;
     font-size: 24px;
     font-weight: normal;
     line-height: 1.25em;
@@ -272,15 +354,25 @@ h1 {font-family: "Droid Serif",georgia,serif;
     color: gray;
  }
 
+p {
+    font-family: "Droid Serif",georgia,serif;
+    /*font-size: 12px;*/
+    font-weight: normal;
+    line-height: 1.25em;
+    font-family: "Roboto Slab";
+    /*font-size: 12px;*/
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-style: normal;
+    color: black;
+}
 
 .footer{
-  position: relative;
-  /*margin: 0px auto;*/
-  /*display: inline-block;*/
-  /*position: absolute;*/
-  bottom: -180px;
-  text-align: center;
-  color: black;
+  bottom: 20px;
+  color:black;
+  margin-left: 42%;
 }
 
 .dash_show{
