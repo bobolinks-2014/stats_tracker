@@ -211,6 +211,7 @@ body{
   width: 10%;
   height: auto;
   border-radius: 100px;
+  padding: 2px;
 }
 
 .dev_text {
