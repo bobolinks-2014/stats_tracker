@@ -1,115 +1,162 @@
 <div class = "dash_show" ng-controller="DashboardCtrl as dash">
    <h1>Coach <%= @user.name %></h1><br>
 
-<!-- TEAMS ROW -->
-  <h2 ng-class="{ active: dash.isSet('teams') }">
-    <a href ng-click="dash.selectRow('teams')">Teams</a>
-  </h2>
+<!--   <div class="teams_row">
+ -->      <!-- TEAMS ROW -->
+      <h2 ng-class="{ active: dash.isSet('teams') }">
+        <a href ng-click="dash.selectRow('teams')">Teams</a>
+      </h2>
 
-  <!-- Show teams attached to user -->
-  <div ng-show="dash.isSet('teams')" class="teams row-transition">
+      <!-- Show teams attached to user -->
+      <div ng-show="dash.isSet('teams')" class="teams row-transition">
 
-    <form ng-show="dash.shouldDisplay('teams')" ng-submit="dash.addNewTeam()">
-      <h3>Create a Team!</h3>
-      <fieldset class="form-group">
-        <input ng-model="dash.newTeamInfo.name" type="text" placeholder="Team Name" title="Name">
-      </fieldset>
-      <fieldset class="form-group">
-        <input ng-model="dash.newTeamInfo.school" type="text" placeholder="School Name" title="School">
-      </fieldset>
-      <fieldset class="form-group">
-        <input type="submit" value="Create Team" class="btn btn-primary">
-      </fieldset>
-    </form>
-    <!-- Add a new team for user -->
-    <a href><div class="dash dash-team" ng-click="dash.displayForm('teams')">
-      <center>
-        <h1>+</h1>
-        {{dash.newTeamInfo.name}} {{dash.newTeamInfo.school}}
-      </center>
-    </div></a>
-
-    <!-- REPEAT DIV PER TEAM -->
-    <a href><div ng-repeat="team in dash.teams" ng-click="dash.showDerivative({teamId: team.id, teamName: team.name},'seasons')" ng-animate="'animate'" ng-class="{'dash':true, 'dash-team':true, 'fade-in':true, 'fade-out':true, 'team-selected': dash.team_id === team.id}">
-      <h1>{{team.name}}<h1>
-    </div></a>
-  </div>
-
-
-<!-- SEASONS ROW -->
-  <h2 ng-class="{ active: dash.isSet('seasons') }">
-    <a href ng-click="dash.selectRow('seasons')">Season</a>
-  </h2>
-
-  <!-- Show seasons per selected team -->
-  <div ng-show="dash.isSet('seasons')" class="seasons row-transition">
-
-    <form ng-show="dash.shouldDisplay('seasons')" ng-submit="dash.addNewSeason()">
-      <h3>Create a Season for {{ dash.team_name }}!</h3>
-      <fieldset class="form-group">
-        <input ng-model="dash.newSeasonInfo.name" type="text" placeholder="1988-89" title="Name">
-      </fieldset>
-      <fieldset class="form-group">
-        <input type="submit" value="Create Season" class="btn btn-primary">
-      </fieldset>
-    </form>
-    <!-- Add a new season for selected team -->
-    <a href><div class="dash dash-season" ng-click="dash.displayForm('seasons')">
-      <center>
-        <h1>+</h1>
-        {{dash.newSeasonInfo.name}} {{dash.newSeasonInfo.school}}
-      </center>
-    </div></a>
-
-    <!-- REPEAT DIV PER SEASON -->
-    <a href><div ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({seasonId: season.id, seasonName: season.name},'games')" ng-class="{'dash':true, 'dash-team':true, 'fade-in':true, 'fade-out':true, 'season-selected': dash.season_id === season.id}">
-      <h1>{{season.name}}</h1>
-    </div></a>
-  </div>
-
-
-<!-- GAMES ROW -->
-  <h2 ng-class="{ active: dash.isSet('games') }">
-    <a href ng-click="dash.selectRow('games')">Games</a>
-  </h2>
-
-  <!-- Show games per selected game -->
-  <div ng-show="dash.isSet('games')" class="games row-transition">
-    <form ng-show="dash.shouldDisplay('games')" ng-submit="dash.addNewGame()">
-      <fieldset class="form-group">
-        <input type="text" class="" placeholder="Date: 9/3/07" title="Date" datepicker-popup="shortDate" ng-model="dash.newGameInfo.date" is-open="dash.dateOpened" min-date="" max-date="n " datepicker-options="dateOptions" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close">
-          <button type="button" class="btn btn-default" ng-click="dash.openDate($event)"><i class="glyphicon glyphicon-calendar fa-lg"></i></button>
-       </input>
-      </fieldset>
-      <fieldset class="form-group">
-        <div class="btn-group">
-          <label class="btn btn-primary" ng-model="dash.newGameInfo.location" btn-radio="'Home'">Home</label>
-          <label class="btn btn-primary" ng-model="dash.newGameInfo.location" btn-radio="'Away'">Away</label>
+        <!-- <form ng-show="dash.shouldDisplay('teams')" ng-submit="dash.addNewTeam()">
+          <h3>Create a Team!</h3>
+          <fieldset class="form-group">
+            <input ng-model="dash.newTeamInfo.name" type="text" placeholder="Team Name" title="Name">
+          </fieldset>
+          <fieldset class="form-group">
+            <input ng-model="dash.newTeamInfo.school" type="text" placeholder="School Name" title="School">
+          </fieldset>
+          <fieldset class="form-group">
+            <input type="submit" value="Create Team" class="btn btn-primary">
+          </fieldset>
+        </form> -->
+        <!-- Add a new team for user -->
+        <div class="dash dash-team" ng-click="dash.displayForm('teams')">
+          <center>
+            <h1>+</h1>
+            {{dash.newTeamInfo.name}} {{dash.newTeamInfo.school}}
+          </center>
         </div>
-      </fieldset>
-      <fieldset class="form-group">
-        <input ng-model="dash.newGameInfo.opponent" type="text" placeholder="Opponent" title="Opponent">
-      </fieldset>
-      <fieldset class="form-group">
-        <input type="submit" value="Create Game" class="btn btn-primary">
-      </fieldset>
-    </form>
 
-    <!-- Add a new game for selected game -->
-    <a href><div class="dash dash-game" ng-click="dash.displayForm('games')">
-      <center>
-        <h1>+</h1>
-        {{dash.newGameInfo.date}} {{dash.newGameInfo.location}} {{dash.newGameInfo.opponent}}
-      </center>
-    </div></a>
+        <div class="dash dash-team" ng-show="dash.shouldDisplay('teams')">
+          <form id="teamform"  ng-submit="dash.addNewTeam()">
+            <!-- <h2>CREATE A TEAM</h2> -->
+            <fieldset class="form-group">
+              <input ng-model="dash.newTeamInfo.name" type="text" placeholder="Team Name" title="Name">
+            </fieldset>
+            <fieldset class="form-group">
+              <input ng-model="dash.newTeamInfo.school" type="text" placeholder="School Name" title="School">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="submit" value="Create Team" class="btn btn-primary">
+            </fieldset>
+          </form>
+        </div>
 
-    <!-- REPEAT DIV PER GAME -->
-    <div class="dash dash-game fade-in fade-out" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
-      <a href ng-href="http://localhost:3000/game/{{game.id}}/edit"><div title="{{dash.season_name}} Season">
-        {{game.opponent}} {{game.date | date : "EEE M/d/yy"}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}}
+        <!-- REPEAT DIV PER TEAM -->
+        <div ng-repeat="team in dash.teams" ng-click="dash.showDerivative({teamId: team.id, teamName: team.name},'seasons')" ng-animate="'animate'" ng-class="{'dash':true, 'dash-team':true, 'fade-in':true, 'fade-out':true, 'team-selected': dash.team_id === team.id}">
+          <h1>{{team.name}}<h1>
+        </div>
+      </div>
+<!--   </div>
+ -->
+<!--   <div class="seasons_row">
+ -->    <!-- SEASONS ROW -->
+    <h2 ng-class="{ 'active': dash.isSet('seasons'), 'clear-fix': true }">
+      <a href ng-click="dash.selectRow('seasons')">Season</a>
+    </h2>
+
+    <!-- Show seasons per selected team -->
+    <div ng-show="dash.isSet('seasons')" class="seasons row-transition">
+
+      <!-- <form id="gameform" ng-show="dash.shouldDisplay('seasons')" ng-submit="dash.addNewSeason()">
+        <h3>Create a Season for {{ dash.team_name }}!</h3>
+        <fieldset class="form-group">
+          <input ng-model="dash.newSeasonInfo.name" type="text" placeholder="1988-89" title="Name">
+        </fieldset>
+        <fieldset class="form-group">
+          <input type="submit" value="Create Season" class="btn btn-primary">
+        </fieldset>
+      </form> -->
+      <!-- Add a new season for selected team -->
+      <a href><div class="dash dash-season" ng-click="dash.displayForm('seasons')">
+        <center>
+          <h1>+</h1>
+          {{dash.newSeasonInfo.name}} {{dash.newSeasonInfo.school}}
+        </center>
       </div></a>
-    </div></a>
-  </div>
 
+      <form id="gameform" ng-show="dash.shouldDisplay('seasons')" ng-submit="dash.addNewSeason()">
+        <!-- <h3>Create a Season for {{ dash.team_name }}!</h3> -->
+        <fieldset class="form-group">
+          <input ng-model="dash.newSeasonInfo.name" type="text" placeholder="1988-89" title="Name">
+        </fieldset>
+        <fieldset class="form-group">
+          <input type="submit" value="Create Season" class="btn btn-primary">
+        </fieldset>
+      </form>
 
+      <!-- REPEAT DIV PER SEASON -->
+      <a href><div ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({seasonId: season.id, seasonName: season.name},'games')" ng-class="{'dash':true, 'dash-team':true, 'fade-in':true, 'fade-out':true, 'season-selected': dash.season_id === season.id}">
+        <h1>{{season.name}}</h1>
+      </div></a>
+    </div>
+<!--   </div>
+ -->
+<!--   <div class="games_row">
+ -->    <!-- GAMES ROW -->
+    <h2 ng-class="{ 'active': dash.isSet('games'), 'clear-fix': true}">
+      <a href ng-click="dash.selectRow('games')">Games</a>
+    </h2>
+
+    <!-- Show games per selected game -->
+    <div ng-show="dash.isSet('games')" class="games row-transition">
+<!--       <form ng-show="dash.shouldDisplay('games')" ng-submit="dash.addNewGame()">
+        <fieldset class="form-group">
+          <input type="text" class="" placeholder="Date: 9/3/07" title="Date" datepicker-popup="shortDate" ng-model="dash.newGameInfo.date" is-open="dash.dateOpened" min-date="" max-date="n " datepicker-options="dateOptions" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close">
+            <button type="button" class="btn btn-default" ng-click="dash.openDate($event)"><i class="glyphicon glyphicon-calendar fa-lg"></i></button>
+         </input>
+        </fieldset>
+        <fieldset class="form-group">
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="dash.newGameInfo.location" btn-radio="'Home'">Home</label>
+            <label class="btn btn-primary" ng-model="dash.newGameInfo.location" btn-radio="'Away'">Away</label>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <input ng-model="dash.newGameInfo.opponent" type="text" placeholder="Opponent" title="Opponent">
+        </fieldset>
+        <fieldset class="form-group">
+          <input type="submit" value="Create Game" class="btn btn-primary">
+        </fieldset>
+      </form> -->
+
+      <!-- Add a new game for selected game -->
+      <a href><div class="dash dash-game" ng-click="dash.displayForm('games')">
+        <center>
+          <h1>+</h1>
+        </center>
+      </div></a>
+
+      <form id="gameform" ng-show="dash.shouldDisplay('games')" ng-submit="dash.addNewGame()">
+        <fieldset class="form-group">
+          <input type="text" class="" placeholder="Date: 9/3/07" title="Date" datepicker-popup="shortDate" ng-model="dash.newGameInfo.date" is-open="dash.dateOpened" min-date="" max-date="n " datepicker-options="dateOptions" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close">
+            <button type="button" class="btn btn-default" ng-click="dash.openDate($event)"><i class="glyphicon glyphicon-calendar fa-lg"></i></button>
+         </input>
+        </fieldset>
+        <fieldset class="form-group">
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="dash.newGameInfo.location" btn-radio="'Home'">Home</label>
+            <label class="btn btn-primary" ng-model="dash.newGameInfo.location" btn-radio="'Away'">Away</label>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <input ng-model="dash.newGameInfo.opponent" type="text" placeholder="Opponent" title="Opponent">
+        </fieldset>
+        <fieldset class="form-group">
+          <input type="submit" value="Create Game" class="btn btn-primary">
+        </fieldset>
+      </form>
+
+      <!-- REPEAT DIV PER GAME -->
+      <div class="dash dash-game fade-in fade-out" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
+        <a href ng-href="http://localhost:3000/game/{{game.id}}/edit"><div title="{{dash.season_name}} Season">
+          {{game.opponent}} {{game.date | date : "EEE M/d/yy"}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}}
+        </div></a>
+      </div></a>
+    </div>
+<!--   </div>
+ -->
 </div>
