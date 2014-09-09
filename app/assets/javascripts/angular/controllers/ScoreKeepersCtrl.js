@@ -168,9 +168,10 @@
           data: steal
         })
         .success(function (data, status, headers, config) {
-          // debugger;
+          debugger;
         })
         .error(function (data, status, headers, config) {
+          debugger;
         })
       } else if(type === 5) {
         var turnover = new Stats(event, this.type);
@@ -207,7 +208,7 @@
 
     var ajaxResponse = $http({
       method: 'GET',
-      url: '/game/' + gameId + '/stats.json'
+      url: '/game/' + gameId + '/stat.json'
     })
     ajaxResponse.success(function (data, status, headers, config){
       var that = this;

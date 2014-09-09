@@ -138,13 +138,13 @@ body{
 
 }
 
-#signup_enter{
+/*#signup_enter{
   position: fixed;
   top: 225px;
   right: 382px;
   z-index: 9999;
 
-}
+}*/
 
 .notice{
   position: fixed;
@@ -245,7 +245,7 @@ body{
 
 .developement_team{
   display: block;
-  width: 50%;
+  width: 67%;
   text-align: center;
   padding-bottom: 40px;
   margin: auto;
