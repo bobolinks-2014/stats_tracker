@@ -30,9 +30,9 @@
     </div></a>
 
     <!-- REPEAT DIV PER TEAM -->
-    <div class="dash dash-team fade-in fade-out" ng-repeat="team in dash.teams" ng-click="dash.showDerivative({teamId: team.id, teamName: team.name},'seasons')" ng-animate="'animate'">
-      {{team.id}} {{team.name}}
-    </div>
+    <a href><div ng-repeat="team in dash.teams" ng-click="dash.showDerivative({teamId: team.id, teamName: team.name},'seasons')" ng-animate="'animate'" ng-class="{'dash':true, 'dash-team':true, 'fade-in':true, 'fade-out':true, 'team-selected': dash.team_id === team.id}">
+      <h1>{{team.name}}<h1>
+    </div></a>
   </div>
 
 
@@ -62,9 +62,9 @@
     </div></a>
 
     <!-- REPEAT DIV PER SEASON -->
-    <div class="dash dash-season fade-in fade-out" ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({seasonId: season.id, seasonName: season.name},'games')">
-      {{season.team_id}} {{season.name}} TEAMID:{{dash.team_id}}
-    </div>
+    <a href><div ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({seasonId: season.id, seasonName: season.name},'games')" ng-class="{'dash':true, 'dash-team':true, 'fade-in':true, 'fade-out':true, 'season-selected': dash.season_id === season.id}">
+      <h1>{{season.name}}</h1>
+    </div></a>
   </div>
 
 
@@ -108,7 +108,7 @@
       <a href ng-href="http://localhost:3000/game/{{game.id}}/edit"><div title="{{dash.season_name}} Season">
         {{game.opponent}} {{game.date | date : "EEE M/d/yy"}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}}
       </div></a>
-    </div>
+    </div></a>
   </div>
 
 

@@ -13,6 +13,7 @@
   Season.create(name: "2014", team_id: 2)
   date = ["02/05/14", "03/04/14", "04/04/14", "05/04/14", "06/04/14", "07/04/14"]
   boolean = [true, false]
+  opponents = ["Noble", "Rauner", "Bulls", "Pritzker", "Whitney Young","Simean","Cass Tech","Renaissance"]
 
   10.times do
     Game.create(date: date.sample, location: Faker::Address.street_address(include_secondary = false), win: boolean.sample, season_id: 1)

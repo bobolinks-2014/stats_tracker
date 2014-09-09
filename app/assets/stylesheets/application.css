@@ -87,7 +87,7 @@
 
 /*========== END DASHBOARD ============*/
 
-
+/*========== LOGIN, SIGNUP, AND NAVBAR ==========*/
 body{
   background-image: url("hardwood.jpg");
   /*background-color: #3276b1;*/
@@ -113,6 +113,12 @@ body{
   top: 225px;
   right: 376px;
 
+}
+
+.notice{
+  position: fixed;
+  top: 16px;
+  font-size: 1.2em;
 }
 
 .signup{
@@ -171,6 +177,8 @@ body{
   text-align: center;
 }
 
+/*========== END LOGIN, SIGNUP, AND NAVBAR ==========*/
+
 .dash_show{
   margin: 70px 25px;
 }
@@ -183,13 +191,80 @@ body{
 
 .dash-team, .dash-season, .dash-game{
   display: inline-block;
-  background-color: #3eafff;
+  background-color: #5C5E5E;
+  opacity: 0.7;
   float: left;
+  /*border-radius: 7%;*/
   width: 200px;
   height: 200px;
   margin: 10px 10px;
 }
 
+
+
+.dash-team:hover{
+  background: #333333;
+  border: #5C5E5E;
+  color: black;
+} 
+.dash-season:hover{
+  background: #333333;
+  border: #5C5E5E;
+  color: black;
+} 
+.dash-game:hover{
+  background: #333333;
+  border: #5C5E5E;
+  color: black;
+}
+
+.dash-team h1{
+  font-size: 10em;
+}
+.dash-season h1{
+  font-size: 10em;
+}
+.dash-game h1{
+  font-size: 10em;
+}
+
+.fade-in{
+  font-size: 1em;
+  background-color: #356094;
+  opacity: 1;
+  text-align: center;
+  color: white
+}
+
+.team-selected{
+  background-color: #3eafff;
+}
+
+.season-selected{
+  background-color: #3eafff;
+}
+
+.fade-in:hover, .fade-in:focus{
+  background: #3eafff;
+  border: solid 1px #3eafff;
+  text-decoration: none;
+  color: white
+}
+
+.fade-in:active {
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #25a4ff;
+    border: solid 1px #25a4ff;
+    text-decoration: none;
+    color: white;
+}
+
+.fade-in h1{
+  font-family: "Roboto Slab";
+  font-size: 3em;
+}
 .teams, .seasons, .games{
   display: block;
   overflow-x: scroll;
@@ -199,10 +274,11 @@ body{
   display: inline-block;
 }
 
+/*************** The Game Court and Heatmap Buttons ************/
 .score_keeper{
   display: block;
   margin: 35px auto;
-  width: 1600px;
+  width: 1350px;
   height: 800px;
 }
 
@@ -227,8 +303,8 @@ body{
 
 .dot_shotmissed, .dot_shotmade, .dot_rebound, .dot_steal, .dot_turnover, .dot_block{
   position: absolute;
-  height: 10px;
-  width: 10px;
+  height: 15px;
+  width: 15px;
   border-radius: 100%;
 }
 .dot_shotmissed{
@@ -281,20 +357,118 @@ body{
 .fg_missed_button{
   background-color: #d72905;
 }
+.fg_missed_button:hover, .fg_missed_button:focus{
+  background-color: #fa3d15;
+  border: solid 1px #be2404;
+  text-decoration: none;
+  color: white;
+}
+.fg_missed_button:active{
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #f02e06;
+    border: solid 4px #f02e06;
+    text-decoration: none;
+    color: white;
+}
+
 .fg_made_button{
   background-color: #057cff;
 }
+.fg_made_button:hover, .fg_made_button:focus{
+  background-color: #3897ff;
+  border: solid 1px #057cff;
+  text-decoration: none;
+  color: white;
+}
+.fg_made_button:active{
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #1f89ff;
+    border: solid 4px #1f89ff;
+    text-decoration: none;
+    color: white;
+}
+
 .rebound_button{
   background-color: #459f14;
 }
+.rebound_button:hover, .rebound_button:focus{
+  background-color: #59cc1a;
+  border: solid 1px #459f14;
+  text-decoration: none;
+  color: white;
+}
+.rebound_button:active{
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #4fb617;
+    border: solid 4px #4fb617;
+    text-decoration: none;
+    color: white;
+}
+
+
 .steal_button{
   background-color: #854b6d;
 }
+.steal_button:hover, .steal_button:focus{
+  background-color: #a45f88;
+  border: solid 1px #854b6d;
+  text-decoration: none;
+  color: white;
+}
+.steal_button:active{
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #95547a;
+    border: solid 4px #95547a;
+    text-decoration: none;
+    color: white;
+}
+
+
 .turnover_button{
   background-color: #04d9d9;
 }
+.turnover_button:hover, .turnover_button:focus{
+  background-color: #15fbfb;
+  border: solid 1px #04d9d9;
+  text-decoration: none;
+  color: white;
+}
+.turnover_button:active{
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #04f2f2;
+    border: solid 4px #04f2f2;
+    text-decoration: none;
+    color: white;
+}
+
+
 .block_button{
   background-color: #6b6b6b;
+}
+.block_button:hover, .block_button:focus{
+  background-color: #858585;
+  border: solid 1px #6b6b6b;
+  text-decoration: none;
+  color: white;
+}
+.block_button:active{
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #787878;
+    border: solid 4px #787878;
+    text-decoration: none;
+    color: white;
 }
 
 .heatmap_button, .clear_heatmap{
@@ -308,6 +482,21 @@ body{
   font: Verdana sans-serif;
   background-color: #ff661f;
   text-decoration: none;
+}
+.heatmap_button:hover, .heatmap_button:focus, .clear_heatmap:hover, .clear_heatmap:focus{
+  background-color: #ff8952;
+  border: solid 1px #ff661f;
+  text-decoration: none;
+  color: white;
+}
+.heatmap_button:active, .clear_heatmap:active{
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #ff7739;
+    border: solid 4px #ff7739;
+    text-decoration: none;
+    color: white;
 }
 
 .clear_heatmap h1{

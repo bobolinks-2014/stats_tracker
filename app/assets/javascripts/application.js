@@ -13,6 +13,8 @@
 //= require jquery
 //= require sign_in
 //= require jquery_ujs
+//= require heatmap
+//= require heat_show
 //= require twitter/bootstrap
 //= require ui-bootstrap-0.11.0.min
 //= require main
