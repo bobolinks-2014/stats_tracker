@@ -20,7 +20,7 @@
   height: 130px;
   overflow: scroll;
 }*/
-@import 'bootstrap/glyphicons';
+/*@import 'bootstrap/glyphicons';*/
 /*========== FONT AWESOME =========*/
 
 
@@ -206,12 +206,12 @@ body{
   background: #333333;
   border: #5C5E5E;
   color: black;
-} 
+}
 .dash-season:hover{
   background: #333333;
   border: #5C5E5E;
   color: black;
-} 
+}
 .dash-game:hover{
   background: #333333;
   border: #5C5E5E;
