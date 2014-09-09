@@ -26,8 +26,17 @@
 
 /*========== DASHBOARD ============*/
 
+.clear-fix {
+  clear: both;
+}
+
+.teams_row, {
+  cursor: pointer;
+  clear:both;
+  display: block;
+}
 .teams{
-  background-color: rgba(0, 255, 0, 0.1);
+  /*background-color: blue;*/
 }
 .seasons{
   background-color: rgba(255, 0, 0, 0.1);
@@ -36,6 +45,14 @@
   background-color: rgba(0, 0, 255, 0.1);
 }
 
+#teamform, #seasonform, #gameform {
+  float: left;
+}
+#teamform h2 {
+  color: #333333;
+  margin: 0px;
+  font-family: "Roboto Slab";
+}
 .row-transition.ng-hide-add,
 .row-transition.ng-hide-remove {
   -webkit-transition:all linear 0.08s;
@@ -95,11 +112,21 @@ body{
   /*padding-bottom: 100px;*/
 }
 
+.show_container{
+  min-height: 1200px;
+}
+
+.welcome_container{
+  margin-top: 0px;
+  position: relative;
+}
+
 #login #user_email{
   position: fixed;
   top: 7px;
   width: 200px;
   right: 572px;
+  z-index: 9999;
 }
 
 #login #user_password{
@@ -107,12 +134,15 @@ body{
   top: 7px;
   width: 200px;
   right: 360px;
+  z-index: 9999;
+
 }
 
 #signup_enter{
   position: fixed;
   top: 225px;
-  right: 376px;
+  right: 382px;
+  z-index: 9999;
 
 }
 
@@ -126,10 +156,12 @@ body{
   display: block;
   background-color: black;
   position: fixed;
+  /*border-radius: 5%;*/
   top: 58px;
   right: 4px;
   height: 210px;
   padding-top: 5px;
+  z-index: 9999;
 }
 
 .signup ul{
@@ -146,9 +178,10 @@ body{
   width: 100%;
   top: 0;
   padding: 8px 0px;
-  position: absolute;
+  position: fixed;
   /*overflow: hidden;*/
   font-family: Verdana;
+  z-index: 999;
 }
 .top-nav h1{
   text-align: left;
@@ -171,7 +204,7 @@ body{
   text-decoration: none;
 }
 
-.mid_div{
+.title{
   background-image: url("rsz_background.jpg");
   background-size: 100% 488px;
   /*background-repeat: no-repeat;*/
@@ -179,13 +212,13 @@ body{
   top: 100%;
   width:100%;
   height:34em;
-  margin-top: 3.7em;
+  margin-top: 2.5em;
   text-align: center;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
 }
 
-.mid_div h1{
+.title h1{
   font-size: 12em;
 }
 
@@ -210,50 +243,91 @@ body{
 
 }
 
-.dev_team{
+.developement_team{
   display: block;
+  width: 50%;
   text-align: center;
   padding-bottom: 40px;
+  margin: auto;
 }
 
-.dev_team img {
-  width: 10%;
+.pics img {
+  width: 100%;
   height: auto;
   border-radius: 100px;
   padding: 2px;
 }
 
-.dev_text {
-  text-align: center;
+.developement_team h3{
+  font-family: "Roboto Slab";
+  margin: 0px;
+  font-size: 4em;
+  color: gray;
 }
 
+.pics{
+  width:25%;
+  float: left;
+  padding: 0px 53px;
+}
+
+
 .make_miss_div{
-  background-image: url("made_and_missed.png");
+/*  background-image: url("made_and_missed.png");*/
   background-size: 28%;
   background-repeat: no-repeat;
  /* position:relative;*/
   height: 20em;
-  width:90%;
+  width:24%;
   margin-left: 6%;
   margin-right:0px;
   float:left;
-
+}
+.make_miss_div img, .made_heat_div img, .miss_heat_div img{
+  width: 100%;
 }
 .made_heat_div{
-  background-image: url("/assets/made_heat.png");
+/*  background-image: url("/assets/made_heat.png");*/
   background-repeat: no-repeat;
   background-size: 28%;
   position: relative;
   height: 20em;
-  width: 90%;
+  width: 24%;
   margin-left: 37%;
+  clear: right;
+}
+
+.miss_heat_div{
+  /*background-image: url("made_heat.png");*/
+  background-size: 20%;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 20em;
+  width:24%;
+  margin-left: 68%;
+  float: left;
+ bottom: 278px;
+}
+.make_miss_div p, .made_heat_div p, .miss_heat_div p{
+  font-size: 2em;
+  bottom: 200%;
+}
+.made_pic_heat{
+  display: inline-block;
+  text-align: center;
+  margin: 241px -981px;
+}
+.miss_pic_heat {
+  display: inline-block;
+  text-align: center;
+  margin: 241px 7px;
 }
 
 .gif{
-  background-image: url("/assets/AlSW1zc2Hz.gif");
+/*  background-image: url("/assets/AlSW1zc2Hz.gif");*/
+  background-color: blue;
   background-repeat: no-repeat;
   background-size: 45%;
-
   position: relative;
   height: 20em;
   width: 90%;
@@ -284,27 +358,7 @@ body{
   margin-left: 40%;
 }
 */
-.make_heat_div p{
-  bottom: 200%;
-}
 
-.miss_heat_div{
-<<<<<<< HEAD
-  background-image: url("missed_shots.png");
-  background-size: 28%;
-=======
-  background-image: url("made_heat.png");
-  background-size: 20%;
->>>>>>> b8f2629f942fdb3d449fb2abe4eefeabee903642
-  background-repeat: no-repeat;
-  position: relative;
-  height: 20em;
-  width:90%;
-<<<<<<< HEAD
-  margin-left: 68%;
-  float: left;
- bottom: 278px;
-}
 
 .pic_text{
   display: inline-block;
@@ -312,23 +366,10 @@ body{
   margin: 241px 0px;
 }
 
-.pic_text p{
+/*.pic_text p{
   font-size: 1em;
-}
+}*/
 
-.made_pic_heat{
-  display: inline-block;
-  text-align: center;
-  margin: 241px -981px;
-}
-
-
-
-.miss_pic_heat {
-  display: inline-block;
-  text-align: center;
-  margin: 241px 7px;
-}
 
 
 hr{
@@ -340,14 +381,14 @@ hr{
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 }
 
-.below_pics{
+/*.below_pics{
     border: 0;
     height: 1px;
     background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
     background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
     background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-}
+}*/
 
 h1 {font-family: "Droid Serif",georgia,serif;
     font-size: 24px;
@@ -404,7 +445,7 @@ p {
     letter-spacing: 0px;
     font-weight: 300;
     font-style: normal;
-    color: black;
+    color: gray;
 }
 
 .footer{
@@ -497,27 +538,24 @@ h1 {font-family: "Droid Serif",georgia,serif;
   background: #333333;
   border: #5C5E5E;
   color: black;
-} 
+}
 .dash-season:hover{
   background: #333333;
   border: #5C5E5E;
   color: black;
-} 
+}
 .dash-game:hover{
   background: #333333;
   border: #5C5E5E;
   color: black;
 }
 
-.dash-team h1{
-  font-size: 10em;
+.dash-team h1, .dash-season h1, .dash-game h1{
+  font-size: 8.5em;
+  margin: 0px;
+  padding: 0px;
 }
-.dash-season h1{
-  font-size: 10em;
-}
-.dash-game h1{
-  font-size: 10em;
-}
+
 
 .fade-in{
   font-size: 1em;
@@ -558,7 +596,7 @@ h1 {font-family: "Droid Serif",georgia,serif;
 }
 .teams, .seasons, .games{
   display: block;
-  overflow-x: scroll;
+  /*overflow-x: scroll;*/
 }
 
 .welcome{
@@ -866,18 +904,21 @@ p {
   position: fixed;
   top: 7px;
   right: 0px;
+  z-index: 9999;
 }
 
 #login_button{
   position: fixed;
   top: 6px;
   right: 200px;
+  z-index: 9999;
 }
 
 .btn-primary {
   width: 150px;
   color: #fff;
   font-size: 1.2em;
+  margin-right: 2px;
   background-color: #737272;
   border: 1px solid #737272;
 }

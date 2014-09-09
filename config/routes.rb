@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
-  root 'user#new_index'
+  root 'user#index'
 
   #create user routes
   resources :user
