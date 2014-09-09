@@ -14,8 +14,9 @@
 </head>
 <body>
 <div class="top-nav">
-  <h1>h<span style="color:#FA8320">CP</span></h1>
+
   <% if logged_in? %>
+  <a href="/user/<%=@user.email%>"><h1>h<span style="color:#FA8320">CP</span></h1></a>
     <a href="/session/logout"><p>Log out</p></a>
   <% end %>
 </div>
