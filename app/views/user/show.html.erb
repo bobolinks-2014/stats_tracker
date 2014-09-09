@@ -76,12 +76,16 @@
   <!-- Show games per selected game -->
   <div ng-show="dash.isSet('games')" class="games row-transition">
     <form ng-show="dash.shouldDisplay('games')" ng-submit="dash.addNewGame()">
-      <h3>Create a Game!</h3>
       <fieldset class="form-group">
-        <input ng-model="dash.newGameInfo.date" type="text" placeholder="Game Date" title="Date">
+        <input type="text" class="" placeholder="Date: 9/3/07" title="Date" datepicker-popup="shortDate" ng-model="dash.newGameInfo.date" is-open="dash.dateOpened" min-date="" max-date="n " datepicker-options="dateOptions" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close">
+          <button type="button" class="btn btn-default" ng-click="dash.openDate($event)"><i class="glyphicon glyphicon-calendar fa-lg"></i></button>
+       </input>
       </fieldset>
       <fieldset class="form-group">
-        <input ng-model="dash.newGameInfo.location" type="text" placeholder="Home or Away" title="Location">
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="dash.newGameInfo.location" btn-radio="'Home'">Home</label>
+          <label class="btn btn-primary" ng-model="dash.newGameInfo.location" btn-radio="'Away'">Away</label>
+        </div>
       </fieldset>
       <fieldset class="form-group">
         <input ng-model="dash.newGameInfo.opponent" type="text" placeholder="Opponent" title="Opponent">
@@ -101,8 +105,8 @@
 
     <!-- REPEAT DIV PER GAME -->
     <div class="dash dash-game fade-in fade-out" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
-      <a href ng-href="http://localhost:3000/game/{{game.id}}/edit"><div>
-        {{game.opponent}} {{game.date}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}} SEASONID: {{dash.season_id}}
+      <a href ng-href="http://localhost:3000/game/{{game.id}}/edit"><div title="{{dash.season_name}} Season">
+        {{game.opponent}} {{game.date | date : "EEE M/d/yy"}} {{game.win}} {{game.team_score}} {{game.opp_score}} {{game.season}}
       </div></a>
     </div>
   </div>
