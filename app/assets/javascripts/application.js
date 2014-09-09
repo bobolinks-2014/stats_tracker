@@ -13,5 +13,7 @@
 //= require jquery
 //= require sign_in
 //= require jquery_ujs
+//= require heatmap
+//= require heat_show
 //= require main
 //= require_tree ./angular
