@@ -31,8 +31,12 @@
       <h1>{{skeeps.blocks.length}}</h1>
     </div>
 
-    <a href ng-href="http://localhost:3000/game/<%= @game_id %>"><div class="heatmap_button">
-      <h1>GO TO HEATMAP</h1>
+    <!-- <a href ng-href="http://localhost:3000/game/<%= @game.id %>"> --><div class="heatmap_button">
+      <h1>HEAT/COURT</h1>
+    </div><!-- </a> -->
+
+    <a href><div class="clear_heatmap">
+      <h1>RESET MAP</h1>
     </div></a>
 
     <div class="game_over_button" id="game_over">Game Over?</div>
@@ -51,12 +55,20 @@
   </div>
 
 
-  <input id="game_id" value="<%= @game_id %>" type="hidden">
+  <input id="game_id" value="<%= @game.id %>" type="hidden">
 
   <a href><div class="court" ng-click="skeeps.recordStats($event, skeeps.type)">
     <div id="directions">
       <p>Begin by clicking a stat you want to track. Then click the court.</p>
     </div>
   </div></a>
+
+  <div class="heat_court_map">
+    <!-- <div id="directions">
+      <p>Turn on the Heatmap by clicking on a stat. To clear the Heatmap click the RESET button.</p>
+    </div> -->
+  </div>
+
+
 
 </div>
