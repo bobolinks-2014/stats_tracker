@@ -3,8 +3,12 @@ class UserController < ApplicationController
 
 
   def index
-    @user = User.new
-    @current_user = User.find_by(id: session[:user_id])
+    if session[:user_id] != nil
+    redirect_to user_path(User.find(session[:user_id]))
+    else
+      @user = User.new
+
+    end
   end
 
   def new
@@ -94,5 +98,7 @@ class UserController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+
+
 
 end
