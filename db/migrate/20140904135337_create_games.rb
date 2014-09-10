@@ -8,7 +8,7 @@ class CreateGames < ActiveRecord::Migration
       t.integer :team_score, :default => nil
       t.integer :opponent_score, :default => nil
       t.integer :season_id
-      t.boolean :gameover, default: false
+      t.boolean :gameover, :default => false
 
       t.timestamps
     end

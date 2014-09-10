@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require sign_in
+//=require game_over
 //= require jquery_ujs
 //= require heatmap
 //= require heat_show
