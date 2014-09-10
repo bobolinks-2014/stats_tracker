@@ -3,6 +3,7 @@
     Coach <%= @user.name %>
   </h1>
 
+<!-- TEAMS SECTION -->
   <section id="teams" class="row-group">
     <h2 class="teams-row active-row" ng-click="dash.toggleRow('teams')">
       {{dash.team_name || "Teams"}}
@@ -10,23 +11,26 @@
 
     <!-- Show teams attached to user -->
     <ul ng-show="dash.isRowVisible('teams')" class="teams row row-transition">
-      <li class="add-btn" ng-click="dash.displayForm('teams')">
+      
+      <!-- Add new team button -->
+      <li class="add-btn" ng-class="{'selected': dash.isFormVisible('teams')}" ng-click="dash.displayForm('teams')">
         <strong>
           +
         </strong>
       </li>
 
+      <!-- All the teams loaded up -->
       <li ng-repeat="team in dash.teams"
           ng-click="dash.showRowGroup(team, 'team')"
-          ng-animate="'animate'"
-          class="team"
+          class="team row row-transition"
           ng-class="{'selected': dash.team_id == team.id}">
         <strong>
           {{team.name}}
         </strong>
       </li>
 
-      <li ng-show="dash.isFormVisible('teams')" class="add-form">
+      <!-- Add new team form -->
+      <li ng-show="dash.isFormVisible('teams')" class="add-form row row-transition">
         <form id="team-form" ng-submit="dash.addNewTeam()">
           <input type="text" ng-model="dash.newTeamInfo.name" placeholder="Team Name" title="Name" name="team[name]">
           <input type="text" ng-model="dash.newTeamInfo.school" placeholder="School Name" title="School" name="team[school_name]">
@@ -36,54 +40,93 @@
     </ul>
   </section>
 
-
-
-
-
-
-
-
-
-<!--   <div class="seasons_row">
- -->    <!-- SEASONS ROW -->
-    <h2 ng-class="{ 'clear-fix': true, 'seasons-row': true, 'active-row': dash.isIdSet('team_id') }" ng-click="dash.selectRow('seasons')">
-      {{ dash.season_name || "Season"}}
+<!-- SEASONS SECTION -->
+  <section id="seasons" class="row-group">
+    <h2 ng-class="{ 'seasons-row': true, 'active-row': dash.isIdSet('team_id')}" ng-click="dash.toggleRowIfPreviousSet('seasons','team_id')">
+      {{dash.season_name || "Seasons"}}
     </h2>
+
+    <!-- Show if no season selected -->
     <alert ng-show="dash.showWarning['seasons']" type="danger" close="dash.closeAlert('seasons')">
-      You must select a team first!
+      Select a team
     </alert>
 
-    <!-- Show seasons per selected team -->
-    <div ng-show="dash.isSet('seasons')" class="seasons row-transition">
+    <!-- Show seasons attached to team -->
+    <ul ng-show="dash.isRowVisible('seasons')" class="seasons row row-transition">
+      
+      <!-- New-season button -->
+      <li class="add-btn"  ng-class="{'selected': dash.isFormVisible('seasons')}" ng-click="dash.displayForm('seasons')">
+        <strong>
+          +
+        </strong>
+      </li>
 
+      <!-- Display all seasons attached to team -->
+      <li ng-repeat="season in dash.seasons"
+          ng-click="dash.showRowGroup(season, 'season')"
+          ng-class="{'selected': dash.season_id == season.id}"
+          class="season">
+        <strong>
+          {{season.name}}
+        </strong>
+      </li>
 
-      <!-- Add a new season for selected team -->
-      <div class="dash dash-season" ng-click="dash.displayForm('seasons')">
-        <center>
-          <h1>+</h1>
-          {{dash.newSeasonInfo.name}} {{dash.newSeasonInfo.school}}
-        </center>
-      </div>
-
-      <form id="seasonform" ng-show="dash.shouldDisplay('seasons')" ng-submit="dash.addNewSeason()">
-        <!-- <h3>Create a Season for {{ dash.team_name }}!</h3> -->
-        <fieldset class="form-group">
-          <input ng-model="dash.newSeasonInfo.name" type="text" placeholder="1988-89" title="Name">
-        </fieldset>
-        <fieldset class="form-group">
+      <!-- New-season form -->
+      <li ng-show="dash.isFormVisible('seasons')" class="add-form">
+        <form id="season-form" ng-submit="dash.addNewSeason()">
+          <input type="text" ng-model="dash.newSeasonInfo.name" placeholder="Season Name" title="Name" name="season[name]">
           <input type="submit" value="Create Season" class="btn btn-primary">
-        </fieldset>
-      </form>
+        </form>
+      </li>
+    </ul>
+  </section>
 
-      <!-- REPEAT DIV PER SEASON -->
-      <div ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id" ng-click="dash.showDerivative({obj: season, type: 'season'}, 'games')" ng-class="{'dash':true, 'dash-team':true, 'season-selected': dash.season_id === season.id}">
-        <h1>{{season.name}}</h1>
-      </div>
-    </div>
-<!--   </div>
- -->
-<!--   <div class="games_row">
- -->    <!-- GAMES ROW -->
+<!-- GAMES SECTION -->
+  <section id="games" class="row-group">
+    <h2 ng-class="{ 'games-row': true, 'active-row': dash.isIdSet('season_id')}" ng-click="dash.toggleRowIfPreviousSet('games','season_id')">
+      Games
+    </h2>
+
+    <!-- Show if no team selected -->
+    <alert ng-show="dash.showWarning['games']" type="info" close="dash.closeAlert('games')">
+      Select a season
+    </alert>
+
+    <!-- Show games attached to team -->
+    <ul ng-show="dash.isRowVisible('games')" class="games row row-transition">
+      
+      <!-- New-team button -->
+      <li class="add-btn" ng-class="{'selected': dash.isWarningVisible('games')}" ng-click="dash.displayForm('games')">
+        <strong>
+          +
+        </strong>
+      </li>
+
+      <!-- Display all games attached to team -->
+      <li ng-repeat="game in dash.games"
+          ng-click="dash.showRowGRoup(game, 'game')"
+          ng-animate="'animate'"
+          ng-class="{'selected': dash.game_id == game.id}"
+          class="game">
+        <strong id="dateshow">{{game.date | date : "EEE M/d/yy"}}</strong>
+        <strong id="opponentshow">{{game.opponent}}</strong>
+        <strong id="winshow">{{game.win}}<strong>
+      </li>
+
+      <!-- New-team form -->
+      <li ng-show="dash.isFormVisible('games')" class="add-form">
+        <form id="game-form" ng-submit="dash.addNewGame()">
+          <input type="text" ng-model="dash.newGameInfo.name" placeholder="Game Name" title="Name" name="game[name]">
+          <input type="submit" value="Create Season" class="btn btn-primary">
+        </form>
+      </li>
+    </ul>
+  </section>
+
+
+
+
+    <!-- GAMES ROW -->
     <h2 ng-class="{ 'clear-fix': true, 'games-row': true, 'active-row': dash.isIdSet('season_id')}" ng-click="dash.selectRow('games')">
       Games
     </h2>
@@ -124,7 +167,7 @@
 
       <!-- REPEAT DIV PER GAME -->
       <div class="dash dash-game" ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
-        <a ng-href="/game/{{game.id}}/edit"><div title="{{dash.season_name}} Season">
+        <a ><div title="{{dash.season_name}} Season">
           <p id="dateshow">{{game.date | date : "EEE M/d/yy"}}</p>
           <h3 id="opponentshow">{{game.opponent}}</h3>
           <h1 id="winshow">{{game.win}}<h1>
