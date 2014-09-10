@@ -2,7 +2,7 @@ class GameController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def create
-    @user = User.find(session[:user_id])
+    # @user = User.find(session[:user_id])
     @season = Season.find(game_params[:season_id])
     @game = @season.games.new(game_params)
 
@@ -18,7 +18,7 @@ class GameController < ApplicationController
   end
 
   def show_all
-    @user = User.find(session[:user_id])
+    # @user = User.find(session[:user_id])
     @season = Season.find(params[:id])
     @games = Game.where(season_id: @season.id)
     respond_to do |f|
@@ -29,7 +29,7 @@ class GameController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    # @user = User.find(session[:user_id])
     @game = Game.find(params[:id])
     @missed_shots = Stat.where(game_id: params[:id], stat_type: 1)
     @made_shots = Stat.where(game_id: params[:id], stat_type: 2)
