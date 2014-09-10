@@ -671,7 +671,7 @@ h1 {font-family: "Droid Serif",georgia,serif;
   height: 750px;
 }
 
-.fg_missed_button, .fg_made_button, .rebound_button, .steal_button, .turnover_button, .block_button{
+.fg_missed_button, .fg_made_button, .rebound_button, .steal_button, .turnover_button, .block_button, .game_over_button{
   width: 110px;
   height: 110px;
   margin: 15px 15px;
@@ -722,6 +722,10 @@ h1 {font-family: "Droid Serif",georgia,serif;
 }
 
 .rebound_button{
+  background-color: #459f14;
+}
+
+.game_over_button{
   background-color: #459f14;
 }
 .rebound_button:hover, .rebound_button:focus{

@@ -45,12 +45,27 @@ class GameController < ApplicationController
   end
 
   def edit
-    @game_id = params[:id]
+    @game = Game.find(params[:id])
+
+    if @game.gameover == true
+      redirect_to game_path(@game)
+    end
+
+    @user = User.find(session[:user_id])
   end
 
-  # def update #post for edit
-
-  # end
+  def update #post for edit
+    @game = Game.find(params[:id])
+    @user = User.find(session[:user_id])
+      if params[:win] == 'win'
+        @game.update(win: true)
+        @game.gameover == true
+      else
+        @game.update(win: false)
+        @game.gameover == true
+      end
+      redirect_to game_path
+  end
 
   # def destroy
 
@@ -61,5 +76,5 @@ class GameController < ApplicationController
   def game_params
     params.require(:game).permit(:date, :location, :win, :team_score, :opponent, :opponent_score, :season_id)
   end
-
 end
+

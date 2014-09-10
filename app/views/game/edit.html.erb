@@ -39,7 +39,22 @@
       <h1>HEATMAP</h1>
     </div></a>
 
+    <div class="game_over_button" id="game_over">Game Over?</div>
+
+      <div class="game_over_form" id="game_over_form">
+      <ul >
+        <%= form_for @game do |f|%>
+          <li><label class="win" for="win"><p>Win?</p></label>
+            <input type="checkbox" name="win" value="win"></li>
+          <li><label class="loss" for="loss"><p>Loss?</p></label>
+            <input type="checkbox" name="loss" value="loss"></li>
+          <button class="btn btn-primary btn-block">Submit</button>
+        <% end %>
+      </ul>
+    </div>
   </div>
+
+
   <input id="game_id" value="<%= @game_id %>" type="hidden">
 
   <a href><div class="court" ng-click="skeeps.recordStats($event, skeeps.type)">
