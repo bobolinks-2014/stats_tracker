@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'faker'
 gem 'factory'
 gem 'factory_girl','~>4.4.0'
-
+gem "non-stupid-digest-assets"
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 
 gem "twitter-bootstrap-rails"

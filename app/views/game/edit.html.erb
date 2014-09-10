@@ -2,7 +2,7 @@
   <div class="identifiers">
 
     <div class="fg_missed_button" ng-click="skeeps.selectType(1)">
-      SHOTS MISS
+      SHOTS MISSED
       <h1>{{skeeps.missed_fieldgoals.length}}</h1>
     </div>
 
@@ -37,7 +37,7 @@
 
     <div class="game_over_button" id="game_over">Game Over?</div>
 
-      <div class="game_over_form" id="game_over_form">
+    <div class="game_over_form" id="game_over_form">
       <ul >
         <%= form_for @game do |f|%>
           <li><label class="win" for="win"><p>Win?</p></label>
@@ -45,6 +45,7 @@
           <li><label class="loss" for="loss"><p>Loss?</p></label>
             <input type="checkbox" name="loss" value="loss"></li>
           <button class="btn btn-primary btn-block">Submit</button>
+
         <% end %>
       </ul>
     </div>
