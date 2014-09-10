@@ -1,7 +1,4 @@
 <div class="score_keeper" ng-controller="ScoreKeepersCtrl as skeeps">
-  <div class="Welcome">
-    HEATMAP PAGE!!!
-  </div>
 
   <div class="identifiers">
     <a href><div class="fg_missed_button">
@@ -35,18 +32,20 @@
     </div></a>
 
     <a href><div class="clear_heatmap">
-      <h1>CLEAR DATA</h1>
+      <h1>RESET MAP</h1>
     </div></a>
+
+    <a href=""><div class="back_to_game">
+      <h1>BACK TO GAME</h1>
+    </div></a>
+
   </div>
 
-  <div class="heat_court" ></div>
-<!--   <div class="heat_court shots_missed"></div>
-  <div class="heat_court shots_made"></div>
-  <div class="heat_court rebounds"></div>
-  <div class="heat_court steals"></div>
-  <div class="heat_court blocks"></div>
-  <div class="heat_court turnovers"></div> -->
-
+  <div class="heat_court">
+    <div id="directions">
+      <p>Turn on the Heatmap by clicking on a stat. To clear the Heatmap click the RESET button.</p>
+    </div>
+  </div>
 
 
 </div>

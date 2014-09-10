@@ -49,7 +49,7 @@
     };
 
     //Stats are default to missed shots
-    this.type = 1;
+    this.type = 0;
     // debugger;
     var that = this;
     //Empty arrays to contain all stat objects

@@ -15,6 +15,7 @@
 //=require game_over
 //= require jquery_ujs
 //= require heatmap
+//= require heat_buttons
 //= require heat_show
 //= require twitter/bootstrap
 //= require ui-bootstrap-0.11.0.min
