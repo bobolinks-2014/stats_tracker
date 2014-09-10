@@ -540,7 +540,7 @@ h2 {
   width: 1350px;
   height: 800px;
 }
-.identifiers {
+.identifiers, .gameover_identifiers {
   display: inline-block;
   height: 750px;
   width: 300px;
