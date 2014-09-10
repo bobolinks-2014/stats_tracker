@@ -1,6 +1,9 @@
   app.controller('ScoreKeepersCtrl', ['$http',function($http){
     var gameId = parseInt($("#game_id").attr("value"));
 
+    // This gets data for the heat map
+
+
     //coordinate hash to store the x and y coordinates of a mouse click
     var coordinates = {
       x: 0,
@@ -127,8 +130,10 @@
           data: newMissedFG
         })
         .success(function (data, status, headers, config) {
+          // debugger;
         })
         .error(function (data, status, headers, config) {
+          // debugger;
         })
 
       } else if(type === 2){
@@ -168,10 +173,10 @@
           data: steal
         })
         .success(function (data, status, headers, config) {
-          debugger;
+          // debugger;
         })
         .error(function (data, status, headers, config) {
-          debugger;
+          // debugger;
         })
       } else if(type === 5) {
         var turnover = new Stats(event, this.type);
