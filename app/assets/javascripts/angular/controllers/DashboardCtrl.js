@@ -19,6 +19,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 
 
 	// Selected team or season
+		this.always = true;
 		this.team_id = 0;
 		this.season_id = 0;
 		// Set these so the Create New forms include name
@@ -99,7 +100,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 
 	// Date Formatting Stuff
-	this.dateOpened = 
+	this.dateOpened =
 	this.openDate = function($event){
 		$event.preventDefault();
 		$event.stopPropagation();
@@ -118,26 +119,8 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 	this.today();
 
-
 //  === DISPLAY ZE ROWS ===
-//
-
-	// Oscillate between true / false
-	this.selectRow = function(rowName){
-		var which = {"seasons": "team_id", "games" : "season_id"}
-
-		// If the PREVIOUS row's ID is set, then make current row clickable
-		if (this.isIdSet(which[rowName])){
-			// hide (if showing) alert
-			this.showWarning[rowName] = false;
-
-			// make current row clickable
-			this.showRow[rowName] ? this.showRow[rowName] = false : this.showRow[rowName] = true;
-		} else {
-			this.showWarning[rowName] = true;
-		}
-	};
-
+// 
 	this.isSet = function(rowName){
 		return this.showRow[rowName];
 	};
@@ -146,30 +129,86 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		return (this[which] ? true : false);
 	}
 
-	this.showDerivative = function(idObj,openingRow){
+	this.displayWarning = function(row) {
+		this.showWarning[row] = true;
+	}
+	this.clearWarningsFor = function(row) {
+		this.showWarning[row] = false;
+	}
+	this.isWarningVisible = function(row) {
+		return this.showWarning[row];
+	}
+
+	this.displayRow = function(row) {
+		this.showRow[row] = true;
+	}
+	this.hideRow = function(row) {
+		this.showRow[row] = false;
+	}
+	this.toggleRow = function(row) {
+		this.showRow[row] = !this.showRow[row];
+	}
+	this.isRowVisible = function(row) {
+		return this.showRow[row];
+	}
+
+	this.displayForm = function(row) {
+		this.showForm[row] = true;
+	}
+	this.hideForm = function(row) {
+		this.showForm[row] = false;
+	}
+	this.toggleForm = function(row) {
+		this.showForm[row] = !this.showForm[row];
+	}
+	this.isFormVisible = function(row) {
+		return this.showForm[row];
+	}
+
+	this.toggleRowIfPreviousSet= function(current, previous){
+		if (this.isIdSet(previous)){
+			this.toggleRow(current);
+		} else {this.displayWarning(current)};
+	}
+
+	this.showRowGroup = function(obj, rowType) {
+		switch(rowType) {
+			case 'team':
+				var openingRow = 'seasons';
+				break;
+			case 'season':
+				var openingRow = 'games';
+				break;
+			default:
+				console.log('shut up legs ' + rowType)
+		};
 		// close warning if it's open
-		this.showWarning[openingRow] = false;
+		this.clearWarningsFor(openingRow);
+		this.hideForm(openingRow);
 
 		// always show next row if clicking on team/season div
-		this.showRow[openingRow] = true;
-
-		this.showForm[openingRow] = false;
+		this.displayRow(openingRow);
 
 		// this closes games row if you pick another team (openingRow would = seasons bc it's the *next* row to show)
-		if (openingRow === "seasons"){
-			this.showRow["games"] = false;
-
+		if (openingRow === "seasons") {
+			this.hideRow("games");
 			// added - this closes create a team
-			this.showForm["teams"] = false;
+			this.hideForm("teams");
 		}
 
 		// These are important: decide which derivatives are shown (seasons are shown that belong to this.team_id; games are shown that belong to this.season_id)
-		this.team_id = idObj.teamId || this.team_id;
-		this.season_id = idObj.seasonId || this.season_id;
-
-		// These are just for showing name on Create New forms
-		this.team_name = idObj.teamName || this.team_name;
-		this.season_name = idObj.seasonName || this.season_name;
+		switch(rowType) {
+			case "team":
+				this.team_id = obj.id;
+				this.team_name = obj.name;
+				break;
+			case "season":
+				this.season_id = obj.id;
+				this.season_name = obj.name;
+				break;
+			default:
+				alert("shut the hell up " + rowType);
+		}
 	};
 
 //  === DISPLAY ZE FORMS ===
@@ -182,13 +221,10 @@ app.controller('DashboardCtrl', ['$http',function($http){
 
 			// others: check + button pressed or if no games/seasons exist for selected season/team
 			if (this.showForm[formName]){
-				console.log(formName + " form: true")
 				return true;
 			} else if (!this.anyExist(formName)){
-				console.log(formName + " form: true")
 				return true;
 			} else {
-				console.log(formName + " form: false")
 				return false;}
 		};
 
@@ -196,7 +232,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 			this.showForm[formName] ? this.showForm[formName] = false : this.showForm[formName] = true;
 		};
 
-		// returns false if no games/seasons exist for selected season/team) 
+		// returns false if no games/seasons exist for selected season/team)
 		this.anyExist = function(formName){
 			var which = {"seasons": "team_id", "games" : "season_id"}
 			var exist = false;
@@ -212,6 +248,14 @@ app.controller('DashboardCtrl', ['$http',function($http){
 //  === GET ZE DATA ===
 //
 	//getting all the teams
+
+	this.panic = function(data, status, headers, config){
+		console.log("ERROR :(");
+		console.log("http: "+status);
+		console.log(headers);
+		console.log(config);
+	};
+
 	$http({
 			method: 'GET',
 			url: '/user/1/teams.json'
@@ -223,12 +267,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 			}
 			that.getAllSeasons();
 	})
-	.error(function(data, status, headers, config){
-		console.log("ERROR :(");
-		console.log("http: "+status);
-		console.log(headers);
-		console.log(config);
-	});
+	.error(this.panic);
 
 	// This is only called on the success of getting all teams
 	// Input: none, grabs arrays of teams with that.teams
@@ -245,12 +284,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 				}
 				that.getAllGames(data);
 			})
-			.error(function(data, status, headers, config){
-				console.log("ERROR :(");
-				console.log("http: "+status);
-				console.log(headers);
-				console.log(config);
-			});
+			.error(this.panic);
 		});
 	};
 
@@ -268,12 +302,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 					that.showForm['games'] = true;
 				}
 			})
-			.error(function(data, status, headers, config){
-				console.log("ERROR :(");
-				console.log("http: "+status);
-				console.log(headers);
-				console.log(config);
-			});
+			.error(this.panic);
 		});
 	}
 
