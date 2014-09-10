@@ -119,8 +119,8 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 	this.today();
 
-	//  === DISPLAY ZE ROWS ===
-
+//  === DISPLAY ZE ROWS ===
+// 
 	this.isSet = function(rowName){
 		return this.showRow[rowName];
 	};
@@ -129,8 +129,14 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		return (this[which] ? true : false);
 	}
 
+	this.displayWarning = function(row) {
+		this.showWarning[row] = true;
+	}
 	this.clearWarningsFor = function(row) {
 		this.showWarning[row] = false;
+	}
+	this.isWarningVisible = function(row) {
+		return this.showWarning[row];
 	}
 
 	this.displayRow = function(row) {
@@ -159,6 +165,12 @@ app.controller('DashboardCtrl', ['$http',function($http){
 		return this.showForm[row];
 	}
 
+	this.toggleRowIfPreviousSet= function(current, previous){
+		if (this.isIdSet(previous)){
+			this.toggleRow(current);
+		} else {this.displayWarning(current)};
+	}
+
 	this.showRowGroup = function(obj, rowType) {
 		switch(rowType) {
 			case 'team':
@@ -184,7 +196,6 @@ app.controller('DashboardCtrl', ['$http',function($http){
 			this.hideForm("teams");
 		}
 
-		var obj = obj;
 		// These are important: decide which derivatives are shown (seasons are shown that belong to this.team_id; games are shown that belong to this.season_id)
 		switch(rowType) {
 			case "team":
