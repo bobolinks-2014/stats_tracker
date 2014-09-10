@@ -14,8 +14,8 @@
 </head>
 <body>
 <div class="top-nav">
+  <h1>h<span style="color:#FA8320">CP</span></h1>
   <% if logged_in? %>
-  <h1><%=link_to("half court press", user_path(@user)) %></h1>
     <a href="/session/logout"><p>Log out</p></a>
   <% end %>
 </div>
@@ -31,9 +31,9 @@
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 
 
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-animate.js"></script> -->
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-animate.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="javascripts/heatmap.js"></script> -->
 <%= javascript_include_tag "application" %>
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
