@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(version: 20140904142537) do
     t.datetime "date"
     t.string   "location",       default: "home"
     t.string   "opponent"
-    t.boolean  "win"
+    t.string   "win"
     t.integer  "team_score"
     t.integer  "opponent_score"
     t.integer  "season_id"
+    t.boolean  "gameover"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
