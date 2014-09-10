@@ -43,13 +43,10 @@
   opacity: 0.7
 }
 .teams {
-  /*background-color: blue;*/
 }
 .seasons {
-  background-color: rgba(255, 0, 0, 0.1);
 }
 .games {
-  background-color: rgba(0, 0, 255, 0.1);
 }
 #teamform h2 {
   color: #333333;
@@ -57,8 +54,8 @@
   font-family: "Roboto Slab";
 }
 .row-transition.ng-hide-add, .row-transition.ng-hide-remove {
-  -webkit-transition: all linear 0.08s;
-  transition: all linear 0.08s;
+  -webkit-transition: all linear 0.09s;
+  transition: all linear 0.09s;
 }
 .row-transition.ng-hide {
   opacity: 0;
@@ -1188,25 +1185,55 @@ ul.row {
 ul.row > li {
   float: left;
 
-  height: 150px;
-  width: 150px;
-  line-height: 150px;
+  height: 11em;
+  width: 11em;
+  line-height: 11em;
 
   background-color: #3B8686;
   text-align: center;
 
-  margin: 0 30px 30px 0;
+  margin: 0 2em 2em 0;
   cursor: pointer;
+
+  -webkit-transition: all linear 0.09s;
+  transition: all linear 0.09s;
+}
+ul.row > li.add-form:hover, ul.row > li:active {
+  width: 11em;
 }
 ul.row > li:hover, ul.row > li:active, ul.row > li.selected {
   background-color: #79BD9A;
+  width: 13em;
+
+  -webkit-transition: all linear 0.09s;
+  transition: all linear 0.09s;
 }
+/*This is if you want the text in li's to change when hovered / selected*/
+/*ul.row > li:hover strong, ul.row > li:active strong, ul.row > li.selected strong{
+  -webkit-transition: all linear 0.09s;
+  transition: all linear 0.09s;
+}*/
 ul.row > li strong, ul > li > form {
   display: inline-block;
   vertical-align: middle;
 }
+ul.row > li.add-btn {
+  width: 3.5em;
+  -webkit-transition: all linear 0.09s;
+  transition: all linear 0.09s;
+}
+ul.row > li.add-btn:hover, ul.row > li.add-btn.selected {
+  width: 4.5em;
+  -webkit-transition: all linear 0.09s;
+  transition: all linear 0.09s;
+}
+ul.row > li.add-btn:hover strong, ul.row > li.add-btn.selected strong {
+  /*font-size: 4.5em;*/
+  -webkit-transition: all linear 0.09s;
+  transition: all linear 0.09s;
+}
 ul.row > li.add-form {
-  background-color: white;
+  background-color: rgba(0,0,0,0);
 }
 ul.row > li.add-form > form > input {
   margin-bottom: 1em;
@@ -1222,7 +1249,7 @@ ul.row > li > form {
 ul.row > li strong {
   font-family: "Roboto Slab", sans-serif;
   font-weight: 300;
-  font-size: 32px;
-  line-height: 36px;
+  font-size: 2.5em;
+  line-height: 1em;
   color: white;
 }
