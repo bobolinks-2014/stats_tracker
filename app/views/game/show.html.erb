@@ -5,27 +5,27 @@
       SHOTS MISS
       <h1><%= @missed_shots.length %></h1>
     </div></a>
-    
+
     <a href><div class="fg_made_button">
       SHOTS MADE
       <h1><%= @made_shots.length %></h1>
     </div></a>
-    
+
     <a href><div class="rebound_button">
       REBOUNDS
       <h1><%= @rebounds.length %></h1>
     </div></a>
-    
+
     <a href><div class="steal_button">
       STEALS
       <h1><%= @steals.length %></h1>
     </div></a>
-    
+
     <a href><div class="turnover_button">
       TURNOVERS
       <h1><%= @turnovers.length %></h1>
     </div></a>
-    
+
     <a href><div class="block_button">
       BLOCKS
       <h1><%= @blocks.length %></h1>
@@ -35,9 +35,6 @@
       <h1>RESET MAP</h1>
     </div></a>
 
-    <a href=""><div class="back_to_game">
-      <h1>BACK TO GAME</h1>
-    </div></a>
 
   </div>
 
@@ -47,5 +44,6 @@
     </div>
   </div>
 
+  <input id="game_id" value="<%= @game.id %>" type="hidden">
 
 </div>

@@ -9,7 +9,7 @@ class StatController < ApplicationController
   end
 
   def create
-    @game = Game.find(stat_params[:game_id])
+    @game = Game.find(params[:game_id])
     @stats = @game.stats.new(stat_params)
     if @stats.save
       respond_to do |format|

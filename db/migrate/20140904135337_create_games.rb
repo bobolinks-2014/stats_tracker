@@ -6,7 +6,6 @@ class CreateGames < ActiveRecord::Migration
       t.string :opponent
       t.string :win, :default => nil
       t.integer :team_score, :default => nil
-      t.integer :opponent_score, :default => nil
       t.integer :season_id
       t.boolean :gameover, :default => false
 

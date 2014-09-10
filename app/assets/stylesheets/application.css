@@ -428,8 +428,8 @@ h2 {
 }
 .dash_coach {
   position: fixed;
-  top: 24px;
-  left: 102px;
+  top: 8px;
+  left: 125px;
   color: #FA8320;
   margin: 0;
   z-index: 9999;
@@ -580,7 +580,7 @@ h2 {
 .dot_block {
   background-color: #6b6b6b;
 }
-.heat_court {
+.heat_court, .heat_court_map{
   float: left;
   border: solid #333333;
   background-image: url("court_3.svg");
@@ -590,7 +590,13 @@ h2 {
   height: 750px;
 }
 
-.fg_missed_button, .fg_made_button, .rebound_button, .steal_button, .turnover_button, .block_button, .game_over_button{
+.heat_court_map{
+  position: relative;
+  top: -750px;
+  left: 300px;
+}
+
+.fg_missed_button, .fg_made_button, .rebound_button, .steal_button, .turnover_button, .block_button{
   width: 110px;
   height: 110px;
   margin: 15px 20px;
@@ -602,6 +608,44 @@ h2 {
   font: Verdana sans-serif;
   font: white;
 }
+
+.game_over_button{
+  background-color: #fa3d15;
+  width: 275px;
+  height: 50px;
+  margin: 15px 20px;
+  border-radius: 7%;
+  cursor: pointer;
+  float: left;
+  color: ghostwhite;
+  text-align: center;
+  font: Verdana sans-serif;
+  font: white;
+  text-shadow: 0 2px 2px rgba(1, 1, 1, 2.2);
+  font-size: 2em;
+  background: rgb(202, 60, 60);
+  margin-top: 43%;
+  position: relative;
+}
+
+.game_over_button:hover, .game_over_button:focus{
+  background-color: #d72905;
+  border: solid 1px #be2404;
+  text-decoration: none;
+  color: white;
+}
+
+.game_over_form {
+  position: relative;
+  top: -193px;
+  left: -21px;
+}
+
+.game_over_form p {
+  font-size: 16px;
+  color: ghostwhite;
+}
+
 
 .fg_missed_button {
   background-color: #d72905;
@@ -717,7 +761,6 @@ h2 {
     color: white;
 }
 
-
 .block_button{
   background-color: #5e5e5e;
 }
@@ -742,20 +785,23 @@ h2 {
 
 #directions{
   width: 300px;
-  font-size: 1.5em;
   margin: 20px 20px;
-  border-top: solid red;
-  border-bottom: solid red;
+  border-top: solid blue;
+  border-bottom: solid blue;
+}
+
+#directions p {
+  font-size: 16px;
 }
 
 .heatmap_button, .clear_heatmap, .back_to_game{
   display: inline-block;
   vertical-align: middle;
-  position: relative;
+  /*position: relative;*/
   top: 220px;
   width: 275px;
-  height: 82px;
-  margin: 15px 15px;
+  height: 50px;
+  margin: 8px 15px;
   border-radius: 7%;
   float: left;
   color: white;
@@ -807,11 +853,11 @@ h2 {
 
 
 .clear_heatmap h1{
-  margin: 14px 0px;
+  margin: 0px 0px;
   text-decoration: none;
 }
 .heatmap_button h1 {
-  margin: 14px 0px;
+  margin: 0px 0px;
   text-decoration: none;
 }
 
