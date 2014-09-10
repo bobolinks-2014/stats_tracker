@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   #get '/user/team/all' => 'user#show_all_teams'
 
   resources :stat
-  get '/game/:id/stats' => 'stat#show_all'
+  get '/game/:id/stat' => 'stat#show_all'
 
   resources :season
   get '/season/team/:id' => 'season#show_all'

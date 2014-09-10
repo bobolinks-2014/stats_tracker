@@ -26,8 +26,17 @@
 
 /*========== DASHBOARD ============*/
 
+.clear-fix {
+  clear: both;
+}
+
+.teams_row, {
+  cursor: pointer;
+  clear:both;
+  display: block;
+}
 .teams{
-  background-color: rgba(0, 255, 0, 0.1);
+  /*background-color: blue;*/
 }
 .seasons{
   background-color: rgba(255, 0, 0, 0.1);
@@ -36,6 +45,14 @@
   background-color: rgba(0, 0, 255, 0.1);
 }
 
+#teamform, #seasonform, #gameform {
+  float: left;
+}
+#teamform h2 {
+  color: #333333;
+  margin: 0px;
+  font-family: "Roboto Slab";
+}
 .row-transition.ng-hide-add,
 .row-transition.ng-hide-remove {
   -webkit-transition:all linear 0.08s;
@@ -89,9 +106,19 @@
 
 /*========== LOGIN, SIGNUP, AND NAVBAR ==========*/
 body{
-  background-image: url("hardwood.jpg");
+  /*background-image: url("hardwood.jpg");*/
   /*background-color: #3276b1;*/
-  min-height: 900px;
+  /*min-height: 900px;*/
+  /*padding-bottom: 100px;*/
+}
+
+.show_container{
+  min-height: 1200px;
+}
+
+.welcome_container{
+  margin-top: 0px;
+  position: relative;
 }
 
 #login #user_email{
@@ -99,6 +126,7 @@ body{
   top: 7px;
   width: 200px;
   right: 572px;
+  z-index: 9999;
 }
 
 #login #user_password{
@@ -106,14 +134,17 @@ body{
   top: 7px;
   width: 200px;
   right: 360px;
+  z-index: 9999;
+
 }
 
-#signup_enter{
+/*#signup_enter{
   position: fixed;
   top: 225px;
-  right: 376px;
+  right: 382px;
+  z-index: 9999;
 
-}
+}*/
 
 .notice{
   position: fixed;
@@ -125,10 +156,12 @@ body{
   display: block;
   background-color: black;
   position: fixed;
+  /*border-radius: 5%;*/
   top: 58px;
   right: 4px;
   height: 210px;
   padding-top: 5px;
+  z-index: 9999;
 }
 
 .signup ul{
@@ -148,15 +181,16 @@ body{
   position: fixed;
   /*overflow: hidden;*/
   font-family: Verdana;
+  z-index: 999;
 }
 .top-nav h1{
   text-align: left;
   margin: 0px 10px;
-  color: #ed9d3c;
+  color: ghostwhite;
 }
 .top-nav p{
   text-align: right;
-  position: absolute;
+  position: fixed;
   top: 9px;
   right: 0px;
   text-decoration: none;
@@ -165,16 +199,314 @@ body{
   margin: 2px 19px;
 }
 
+
 .top-nav p a{
   text-decoration: none;
 }
 
-.footer{
-  margin: 0px auto;
-  display: inline-block;
-  position: absolute;
-  bottom: 0;
+.title{
+  background-image: url("rsz_background.jpg");
+  background-size: 100% 488px;
+  /*background-repeat: no-repeat;*/
+  position:relative;
+  top: 100%;
+  width:100%;
+  height:34em;
+  margin-top: 2.5em;
   text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+}
+
+.title h1{
+  font-size: 12em;
+}
+
+.center{
+   width:60%;
+  margin-left: 20%;
+  margin-right: 20%;
+
+}
+
+.about_div{
+  background-color: white;
+  position:relative;
+  bottom: -04%;
+  width:60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  text-align: center;
+}
+
+.pic_wrap{
+
+}
+
+.developement_team{
+  display: block;
+  width: 67%;
+  text-align: center;
+  padding-bottom: 40px;
+  margin: auto;
+}
+
+.pics img {
+  width: 100%;
+  height: auto;
+  border-radius: 100px;
+  padding: 2px;
+}
+
+.developement_team h3{
+  font-family: "Roboto Slab";
+  margin: 0px;
+  font-size: 4em;
+  color: gray;
+}
+
+.pics{
+  width:25%;
+  float: left;
+  padding: 0px 53px;
+}
+
+
+.make_miss_div{
+/*  background-image: url("made_and_missed.png");*/
+  background-size: 28%;
+  background-repeat: no-repeat;
+ /* position:relative;*/
+  height: 20em;
+  width:24%;
+  margin-left: 6%;
+  margin-right:0px;
+  float:left;
+}
+.make_miss_div img, .made_heat_div img, .miss_heat_div img{
+  width: 100%;
+}
+.made_heat_div{
+/*  background-image: url("/assets/made_heat.png");*/
+  background-repeat: no-repeat;
+  background-size: 28%;
+  position: relative;
+  height: 20em;
+  width: 24%;
+  margin-left: 37%;
+  clear: right;
+}
+
+.miss_heat_div{
+  /*background-image: url("made_heat.png");*/
+  background-size: 20%;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 20em;
+  width:24%;
+  margin-left: 68%;
+  float: left;
+ bottom: 278px;
+}
+.make_miss_div p, .made_heat_div p, .miss_heat_div p{
+  font-size: 2em;
+  bottom: 200%;
+}
+.made_pic_heat{
+  display: inline-block;
+  text-align: center;
+  margin: 241px -981px;
+}
+.miss_pic_heat {
+  display: inline-block;
+  text-align: center;
+  margin: 241px 7px;
+}
+
+.gif{
+/*  background-image: url("/assets/AlSW1zc2Hz.gif");*/
+  background-color: blue;
+  background-repeat: no-repeat;
+  background-size: 45%;
+  position: relative;
+  height: 20em;
+  width: 90%;
+  margin-left: 30%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/*.make_miss_div{
+  background-image: url("made_and_missed.png");
+  background-size: 20%;
+  background-repeat: no-repeat;
+  position:relative;
+  height: 20em;
+  width:90%;
+  margin-left: 0px;
+  margin-right:0px;
+  float:right;
+}
+*/
+/*.made_heat_div{
+  background-image: url("made_heat.png");
+  background-size: 20%;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 20em;
+  width:90%;
+  margin-left: 40%;
+}
+*/
+
+
+.pic_text{
+  display: inline-block;
+  text-align: center;
+  margin: 241px 0px;
+}
+
+/*.pic_text p{
+  font-size: 1em;
+}*/
+
+
+
+hr{
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+}
+
+/*.below_pics{
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+}*/
+
+h1 {font-family: "Droid Serif",georgia,serif;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.25em;
+    font-family: "Roboto Slab";
+    font-size: 32px;
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-style: normal;
+    color: ghostwhite;
+ }
+
+ .mirror{
+  font-family: "Droid Serif",georgia,serif;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.25em;
+    font-family: "Roboto Slab";
+    font-size: 32px;
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-style: normal;
+    color: ghostwhite;
+ }
+
+ h2 {font-family: "Droid Serif",georgia,serif;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.25em;
+    font-family: "Roboto Slab";
+    font-size: 32px;
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-style: normal;
+    color: gray;
+ }
+
+p {
+    font-family: "Droid Serif",georgia,serif;
+    /*font-size: 12px;*/
+    font-weight: normal;
+    line-height: 1.25em;
+    font-family: "Roboto Slab";
+    /*font-size: 12px;*/
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-style: normal;
+    color: gray;
+}
+
+.footer{
+  bottom: 20px;
+  color:black;
+  margin-left: 42%;
+=======
+  margin-left: 70%;
+  float: left;
+  bottom: 278px;
+}
+
+
+hr{
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+
+}
+
+h1 {font-family: "Droid Serif",georgia,serif;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.25em;
+    font-family: "Roboto Slab";
+    font-size: 32px;
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-style: normal;
+    color: ghostwhite;
+ }
+
+ h2 {font-family: "Droid Serif",georgia,serif;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.25em;
+    font-family: "Roboto Slab";
+    font-size: 32px;
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-style: normal;
+    color: gray;
+ }
+
+
+.footer{
+  position: relative;
+  /*margin: 0px auto;*/
+  /*display: inline-block;*/
+  /*position: absolute;*/
+  bottom: -180px;
+  text-align: center;
+  color: black;
+>>>>>>> b8f2629f942fdb3d449fb2abe4eefeabee903642
 }
 
 /*========== END LOGIN, SIGNUP, AND NAVBAR ==========*/
@@ -218,15 +550,12 @@ body{
   color: black;
 }
 
-.dash-team h1{
-  font-size: 10em;
+.dash-team h1, .dash-season h1, .dash-game h1{
+  font-size: 8.5em;
+  margin: 0px;
+  padding: 0px;
 }
-.dash-season h1{
-  font-size: 10em;
-}
-.dash-game h1{
-  font-size: 10em;
-}
+
 
 .fade-in{
   font-size: 1em;
@@ -267,7 +596,7 @@ body{
 }
 .teams, .seasons, .games{
   display: block;
-  overflow-x: scroll;
+  /*overflow-x: scroll;*/
 }
 
 .welcome{
@@ -524,7 +853,7 @@ a:active {
 }
 .container{
   margin: 90px auto;
-  width: 660px;
+  width: 100%;
   padding: 17px 20px 20px 20px;
   /*background-color: white;*/
   /*border: 1px solid black;*/
@@ -575,18 +904,21 @@ p {
   position: fixed;
   top: 7px;
   right: 0px;
+  z-index: 9999;
 }
 
 #login_button{
   position: fixed;
   top: 6px;
   right: 200px;
+  z-index: 9999;
 }
 
 .btn-primary {
   width: 150px;
   color: #fff;
   font-size: 1.2em;
+  margin-right: 2px;
   background-color: #737272;
   border: 1px solid #737272;
 }
@@ -1005,8 +1337,6 @@ textarea,
   }
 }
 
-h1 { font-family: ‘Metrophobic’,
-  Arial, serif; font-weight: 400; }
 
 
 

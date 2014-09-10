@@ -1,33 +1,93 @@
-<%if @current_user == nil%>
-  <div class="content container" >
-    <div class="content-padded">
-      <h1></h1>
-    </div>
-      <div id="login">
+<div class="show_container">
+  <%if @current_user == nil%>
+        <div id="login">
+          <ul >
+              <%= form_for(:user, :url => {:controller => 'session', :action => 'login'}) do |f|%>
+                <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
+                <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
+                <% flash.each do |name, msg| %>
+                  <%= content_tag :div, msg, class: name %>
+                <% end %>
+                <br>
+                <button class="btn btn-primary btn-block" id="login_button">Log in</button>
+              <% end %>
+          </ul>
+        </div>
+
+      <button class="btn btn-primary btn-block", id="button_id">Sign up</button>
+
+      <div class="signup">
       <ul >
-          <%= form_for(:user, :url => {:controller => 'session', :action => 'login'}) do |f|%>
-            <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
-            <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
-            <% flash.each do |name, msg| %>
-              <%= content_tag :div, msg, class: name %>
-            <% end %>
-            <br>
-            <button class="btn btn-primary btn-block" id="login_button">Log in</button>
-          <% end %>
+        <%= form_for(:user, :url => {:controller => 'user', :action => 'create'}) do |f|%>
+          <li><%= f.text_field :name, :size => 70, placeholder: 'Full Name' %></li>
+          <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
+          <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
+          <li><%= f.password_field :password_confirmation, :size => 70, placeholder: 'Confim Password' %></li>
+          <button class="btn btn-primary btn-block" id="signup_enter">Sign up</button>
+        <% end %>
+      </div>
       </ul>
+  <% end %>
+  <div class="welcome_container">
+      <div class ="title">
+        <h1>
+          half<span style="color:#FA8320">C</span>ourt <span style="color:#FA8320">P</span>ress
+        </h1>
       </div>
 
-    <button class="btn btn-primary btn-block", id="button_id">Sign up</button>
-    <div class="signup">
-    <ul >
-      <%= form_for(:user, :url => {:controller => 'user', :action => 'create'}) do |f|%>
-        <li><%= f.text_field :name, :size => 70, placeholder: 'Full Name' %></li>
-        <li><%= f.email_field :email, :size => 70, placeholder: 'Email' %></li>
-        <li><%= f.password_field :password, :size => 70, placeholder: 'Password' %></li>
-        <li><%= f.password_field :password_confirmation, :size => 70, placeholder: 'Confim Password' %></li>
-        <button class="btn btn-primary btn-block" id="signup_enter">Sign up</button>
-      <% end %>
-    </div>
-    </ul>
+      <br><br>
+
+      <div class = "about_div">
+        <h2>
+          halfCourt Press is a platform designed for basketball programs to track, collect and analyze game statistics over the course of a season.</h2>
+      </div>
+      <br><br>
+
+      <hr>
+      <br>
+      <div class ="pic_wrap">
+        <div class = "make_miss_div">
+          <%= image_tag("made_and_missed.png")%>
+          <p>Track your <span style="color:blue">made</span> and <span style="color:red">missed</span> shots throughout the game.</p>
+        </div>
+        <div class = "made_heat_div">
+          <%= image_tag("made_heat.png")%>
+          <p>Our Heatmap will show you the location and frequency of your team's is <span style="color:blue">made shots.</span></p>
+        </div>
+        <div class = "miss_heat_div">
+          <%= image_tag("missed_shots.png")%>
+          <p>Identify which areas your team needs improving by tracking <span style="color:red">their missed shots</span></p>
+        </div>
+      </div>
+      <hr>
+
+    <!-- <div class = "below_pics"> </div> -->
+      <!-- <div class="gif"></div> -->
+
+      <div class = "developement_team">
+        <h3>Team halfCourt Press</h3>
+        <br>
+        <div class="pics">
+          <img src="Dave.jpg">
+        </div>
+        <div class="pics">
+          <img src="Sebastian C.jpg">
+        </div>
+        <div class="pics">
+          <img src="Edgar.jpg">
+        </div>
+        <div class="pics">
+          <img src="Michael.jpg">
+        </div>
+      </div>
+    <!-- </div> -->
+
   </div>
-<% end %>
+</div>
+
+
+
+
+
+
+

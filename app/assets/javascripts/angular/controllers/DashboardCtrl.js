@@ -10,9 +10,17 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	// Which new forms are showing
 		this.showForm = {'teams': false, 'seasons': false, 'games': false};
 
+	// Regulates whether the "You must select a season/game first" warning shows
+		this.showWarning = {'seasons': false, 'games': false, 'teams': false};
+
+		this.closeAlert = function(row){
+			this.showWarning[row] = false;
+		}
+
+
 	// Selected team or season
-		this.team_id = null;
-		this.season_id = null;
+		this.team_id = 0;
+		this.season_id = 0;
 		// Set these so the Create New forms include name
 			this.team_name = null;
 			this.season_name = null;
@@ -116,29 +124,46 @@ app.controller('DashboardCtrl', ['$http',function($http){
 
 	// Oscillate between true / false
 	this.selectRow = function(rowName){
-		this.showRow[rowName] ? this.showRow[rowName] = false : this.showRow[rowName] = true;
+		var which = {"seasons": "team_id", "games" : "season_id"}
+
+		// If the PREVIOUS row's ID is set, then make current row clickable
+		if (this.isIdSet(which[rowName])){
+			// hide (if showing) alert
+			this.showWarning[rowName] = false;
+
+			// make current row clickable
+			this.showRow[rowName] ? this.showRow[rowName] = false : this.showRow[rowName] = true;
+		} else {
+			this.showWarning[rowName] = true;
+		}
 	};
 
 	this.isSet = function(rowName){
 		return this.showRow[rowName];
 	};
 
-	this.showDerivative = function(idObj,rowName){
+	this.isIdSet = function(which) {
+		return (this[which] ? true : false);
+	}
+
+	this.showDerivative = function(idObj,openingRow){
+		// close warning if it's open
+		this.showWarning[openingRow] = false;
+
 		// always show next row if clicking on team/season div
-		this.showRow[rowName] = true;
+		this.showRow[openingRow] = true;
 
+		this.showForm[openingRow] = false;
 
-		this.showForm[rowName] = false;
-
-		// this closes games row if you pick another team (rowName would = seasons bc it's the *next* row to show)
-		if (rowName === "seasons"){
+		// this closes games row if you pick another team (openingRow would = seasons bc it's the *next* row to show)
+		if (openingRow === "seasons"){
 			this.showRow["games"] = false;
 
 			// added - this closes create a team
 			this.showForm["teams"] = false;
 		}
 
-		// These are important: decide which derivatives are show (seasons are shown that belong to this.team_id; games are shown that belong to this.season_id)
+		// These are important: decide which derivatives are shown (seasons are shown that belong to this.team_id; games are shown that belong to this.season_id)
 		this.team_id = idObj.teamId || this.team_id;
 		this.season_id = idObj.seasonId || this.season_id;
 

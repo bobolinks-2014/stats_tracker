@@ -10,17 +10,19 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div class="top-nav">
-
   <% if logged_in? %>
   <h1><%=link_to("half court press", user_path(@user)) %></h1>
     <a href="/session/logout"><p>Log out</p></a>
   <% end %>
 </div>
 
+
   <%= yield %>
+
 
 
 
@@ -36,9 +38,9 @@
 <%= javascript_include_tag "application" %>
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
-<!-- <div class="footer">
-    <p>Copyright 2014 HalfCourtPress, LLC. MIT License.</p>
-</div> -->
+<div class="footer">
+    <p>Copyright 2014 halfCourtPress, LLC.</p>
+</div>
 
 </body>
 </html>
