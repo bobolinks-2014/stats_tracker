@@ -1,4 +1,4 @@
-app.controller('DashboardCtrl', ['$http',function($http){
+app.controller('DashboardCtrl', ['$http', '$window',function($http, $window){
 //  === SET ZE VARS ===
 //
 	// use that if afraid of scope issues
@@ -89,7 +89,8 @@ app.controller('DashboardCtrl', ['$http',function($http){
 			data: stuff
 		})
 		.success(function (data, status, headers, config) {
-			that.games.push(data);
+			that.displayIfWin([data]);
+			that.games.unshift(data);
 			that.showForm['games'] = false;
 			that.newGameInfo = {};
 		})
@@ -100,7 +101,6 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	};
 
 	// Date Formatting Stuff
-	this.dateOpened =
 	this.openDate = function($event){
 		$event.preventDefault();
 		$event.stopPropagation();
@@ -117,7 +117,15 @@ app.controller('DashboardCtrl', ['$http',function($http){
 	this.today = function(){
 		this.newGameInfo.date = new Date();
 	};
-	this.today();
+	this.displayIfWin = function(games){
+		games.forEach(function(game){
+			if(game.win){
+				game.win = "W";
+			}else if(game.win === false){
+				game.win = "L";
+			}else{game.win = ""}
+		})
+	}
 
 //  === DISPLAY ZE ROWS ===
 // 
@@ -179,8 +187,12 @@ app.controller('DashboardCtrl', ['$http',function($http){
 			case 'season':
 				var openingRow = 'games';
 				break;
+			case 'game':
+				console.log($window);
+				var origin = $window.location.origin
+				$window.location.href = origin + "/game/"+ obj.id+"/edit"
 			default:
-				console.log('shut up legs ' + rowType)
+				break;
 		};
 		// close warning if it's open
 		this.clearWarningsFor(openingRow);
@@ -207,7 +219,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 				this.season_name = obj.name;
 				break;
 			default:
-				alert("shut the hell up " + rowType);
+				break;
 		}
 	};
 
@@ -297,6 +309,7 @@ app.controller('DashboardCtrl', ['$http',function($http){
 				url: '/user/1/season/' + season.id + '/games.json'
 			})
 			.success(function(data, status, headers, config){
+				that.displayIfWin(data);
 				that.games = that.games.concat(data);
 				if (that.games.length === 0){
 					that.showForm['games'] = true;
