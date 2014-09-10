@@ -58,11 +58,9 @@ class GameController < ApplicationController
     @game = Game.find(params[:id])
     @user = User.find(session[:user_id])
       if params[:win] == 'win'
-        @game.update(win: true)
-        @game.gameover == true
+        @game.update(win: "W", gameover: true)
       else
-        @game.update(win: false)
-        @game.gameover == true
+        @game.update(win: "L", gameover:true)
       end
       redirect_to game_path
   end
