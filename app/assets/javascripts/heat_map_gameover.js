@@ -15,7 +15,7 @@ $(document).ready(function(){
     var data_fieldgoals = [];
 
     var gameId = parseInt($("#game_id").attr("value"));
-    debugger;
+    // debugger;
     var ajaxRequest = $.ajax({
       type: 'GET',
       url: "/game/"+gameId+".json"
@@ -28,41 +28,41 @@ $(document).ready(function(){
         dataSteals = response.steals;
         dataTurnovers = response.turnovers;
         dataBlocks = response.blocks;
-        debugger;
+        // debugger;
       });
 
-    $(".identifiers").on('click', '.fg_missed_button' ,function(){
-      setUpHeatmap(dataMissedShots);
+    $(".gameover_identifiers").on('click', '.fg_missed_button' ,function(){
+      setUpHeatmapGameover(dataMissedShots);
       // $(this).addClass("on_missed")
     });
 
-    $(".identifiers").on('click', '.fg_made_button' ,function(){
-      setUpHeatmap(dataMadeShots);
+    $(".gameover_identifiers").on('click', '.fg_made_button' ,function(){
+      setUpHeatmapGameover(dataMadeShots);
 
       // $(this).addClass("on_made")
     });
 
-    $(".identifiers").on('click', '.rebound_button' ,function(){
-      setUpHeatmap(dataRebounds);
+    $(".gameover_identifiers").on('click', '.rebound_button' ,function(){
+      setUpHeatmapGameover(dataRebounds);
       // $(this).addClass("on_rebound")
     });
 
-    $(".identifiers").on('click', '.steal_button' ,function(){
-      setUpHeatmap(dataSteals);
+    $(".gameover_identifiers").on('click', '.steal_button' ,function(){
+      setUpHeatmapGameover(dataSteals);
       // $(this).addClass("on_steal")
     });
 
-    $(".identifiers").on('click', '.turnover_button' ,function(){
-      setUpHeatmap(dataTurnovers);
+    $(".gameover_identifiers").on('click', '.turnover_button' ,function(){
+      setUpHeatmapGameover(dataTurnovers);
       // $(this).addClass("on_turnover")
     });
 
-    $(".identifiers").on('click', '.block_button' ,function(){
-      setUpHeatmap(dataBlocks);
+    $(".gameover_identifiers").on('click', '.block_button' ,function(){
+      setUpHeatmapGameover(dataBlocks);
       // $(this).addClass("on_block")
     });
 
-    $(".identifiers").on("click", ".clear_heatmap", function(){
+    $(".gameover_identifiers").on("click", ".clear_heatmap", function(){
       $('.heat_court').empty();
       // $('.heat_court').removeClass("on")
     });
@@ -71,7 +71,7 @@ $(document).ready(function(){
 
 
 
-  var setUpHeatmap = function(stat) {
+  var setUpHeatmapGameover = function(stat) {
 
   var heatmapInstance = h337.create({
     container: document.querySelector('.heat_court'),
