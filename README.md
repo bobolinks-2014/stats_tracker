@@ -4,7 +4,7 @@
 
 #About
 
-"Basketball App" is a Ruby on Rails web application (Ruby 2.0.0 Rails 4.0).  The application was developed to provide a user-friendly, quick and efficient tool for tracking basketball game statistics.  Developers of this application wanted to give any team the ability to use statistics from a quarter, game or season to improve their team.
+"Basketball App" is a Ruby on Rails web application (Ruby 2.0.0 Rails 4.0).  The application was developed to provide a user-friendly, quick and efficient tool for tracking basketball game statistics.  Developers of this application wanted to give any team the ability to use statistics from a game or season to improve their team.
 
 
 ![alt tag](http://www.awolfamongwolves.com/wp-content/uploads/2013/07/Redick-Heat-Map.png)

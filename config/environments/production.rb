@@ -29,6 +29,8 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+  config.assets.paths << Rails.root.join("app", "assets", "fonts").to_s
+  config.assets.precompile << (/\.(?:svg|gif|)$/)
   # Generate digests for assets URLs.
   config.assets.digest = true
 

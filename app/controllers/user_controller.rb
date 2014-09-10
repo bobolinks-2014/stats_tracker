@@ -53,7 +53,7 @@ class UserController < ApplicationController
   def show_all_season_games
     @user = User.find(session[:user_id])
     @season = Season.find(params[:season_id])
-    @games = @season.games
+    @games = @season.games.order('date desc')
 
     respond_to do |f|
       f.html { redirect_to user_path(@user) }

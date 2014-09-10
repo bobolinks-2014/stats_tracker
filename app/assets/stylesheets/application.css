@@ -21,7 +21,7 @@
   overflow: scroll;
 }*/
 
-/*@import 'bootstrap/glyphicons';*/
+@import 'bootstrap/glyphicons';
 
 /*========== FONT AWESOME =========*/
 
@@ -533,6 +533,7 @@ h2 {
 }
 /*************** The Game Court and Heatmap Buttons ************/
 
+
 .score_keeper {
   display: block;
   margin: 70px auto;
@@ -603,10 +604,13 @@ h2 {
   border-radius: 7%;
   cursor: pointer;
   float: left;
-  color: white;
+  color: ghostwhite;
+  /*text-shadow: 2px 2px #ff0000;*/
   text-align: center;
   font: Verdana sans-serif;
   font: white;
+  text-shadow: 0 1.6px 1.2px rgba(2, 2, 2, 2.2);
+
 }
 
 .game_over_button{
@@ -618,6 +622,7 @@ h2 {
   cursor: pointer;
   float: left;
   color: ghostwhite;
+  /*text-shadow: 2px 2px #ff0000;*/
   text-align: center;
   font: Verdana sans-serif;
   font: white;
@@ -625,7 +630,7 @@ h2 {
   font-size: 2em;
   background: rgb(202, 60, 60);
   margin-top: 43%;
-  position: relative;
+  /*position: relative;*/
 }
 
 .game_over_button:hover, .game_over_button:focus{
@@ -646,34 +651,35 @@ h2 {
   color: ghostwhite;
 }
 
-
 .fg_missed_button {
-  background-color: #d72905;
+  background-color: #fa3d15;
 }
 .fg_missed_button:hover, .fg_missed_button:focus {
-  background-color: #fa3d15;
+
+  background-color: #d72905;
   border: solid 1px #be2404;
   text-decoration: none;
   color: white;
 }
 .fg_missed_button:active, .fg_missed_active{
-    /*-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);*/
-    -moz-box-shadow: 0px 0px 10px yellow;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+ /*   -moz-box-shadow: 0px 0px 10px yellow;
     -webkit-box-shadow: 0px 0px 10px yellow;
-    box-shadow: 0px 0px 10px yellow;
+    box-shadow: 0px 0px 10px yellow;*/
     background: #fa3d15;
     border: solid 2px #fa3d15;
     text-decoration: none;
     color: white;
+
 }
 
 .fg_made_button{
-  background-color: #0063d1;
+  background-color: #3897ff;
 }
 .fg_made_button:hover, .fg_made_button:focus {
-  background-color: #3897ff;
+  background-color: #0063d1;
   border: solid 1px #057cff;
   text-decoration: none;
   color: white;
@@ -692,12 +698,12 @@ h2 {
 }
 
 .rebound_button{
-  background-color: #3b8911
+  background-color: #59cc1a;
 ;
 
 }
 .rebound_button:hover, .rebound_button:focus{
-  background-color: #59cc1a;
+  background-color: #3b8911;
   border: solid 1px #459f14;
   text-decoration: none;
   color: white;
@@ -717,10 +723,11 @@ h2 {
 
 
 .steal_button{
-  background-color: #754260;
+  background-color: #a45f88;
 }
 .steal_button:hover, .steal_button:focus {
-  background-color: #a45f88;
+
+  background-color: #754260;
   border: solid 1px #854b6d;
   text-decoration: none;
   color: white;
@@ -740,10 +747,11 @@ h2 {
 
 
 .turnover_button{
-  background-color: #03a7a7;
+  background-color: #15fbfb;
 }
 .turnover_button:hover, .turnover_button:focus {
-  background-color: #15fbfb;
+
+  background-color: #03a7a7;
   border: solid 1px #04d9d9;
   text-decoration: none;
   color: white;
@@ -761,11 +769,18 @@ h2 {
     color: white;
 }
 
+
+.game_over_form p {
+  font-size: 16px;
+  color: ghostwhite;
+  position: relative;
+}
 .block_button{
-  background-color: #5e5e5e;
+  background-color: #858585;
 }
 .block_button:hover, .block_button:focus {
-  background-color: #858585;
+
+  background-color: #5e5e5e;
   border: solid 1px #6b6b6b;
   text-decoration: none;
   color: white;
@@ -807,7 +822,7 @@ h2 {
   color: white;
   text-align: center;
   font: Verdana sans-serif;
-  background-color: #ff661f;
+  background-color: #FF8300;
   text-decoration: none;
 }
 .heatmap_button:hover, .heatmap_button:focus, .clear_heatmap:hover, .clear_heatmap:focus{
@@ -815,6 +830,7 @@ h2 {
   border: solid 1px #ff661f;
   text-decoration: none;
   color: white;
+  text-shadow: 0 2px 2px rgba(1, 1, 1, 2.2);
 }
 .heatmap_button:active, .clear_heatmap:active{
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
@@ -933,8 +949,8 @@ ul {
   color: #fff;
   font-size: 1.2em;
   margin-right: 2px;
-  background-color: #737272;
-  border: 1px solid #737272;
+  background-color: #002D7C;
+  border: 1px solid #002D7C;
 }
 .btn-primary:active, .btn-primary.active {
   background-color: #0062cc;
@@ -1313,8 +1329,8 @@ ul.row > li {
   margin: 0 2em 2em 0;
   cursor: pointer;
 
-  -webkit-transition: all linear 0.09s;
-  transition: all linear 0.09s;
+/*  -webkit-transition: all linear 0.09s;
+  transition: all linear 0.09s;*/
 }
 ul.row > li.add-form:hover, ul.row > li:active {
   width: 11em;
@@ -1337,11 +1353,13 @@ ul.row > li strong, ul > li > form {
 }
 ul.row > li.add-btn {
   width: 3.5em;
+  background-color: #97B7B7;
   -webkit-transition: all linear 0.09s;
   transition: all linear 0.09s;
 }
 ul.row > li.add-btn:hover, ul.row > li.add-btn.selected {
   width: 4.5em;
+  background-color: #285454;
   -webkit-transition: all linear 0.09s;
   transition: all linear 0.09s;
 }
@@ -1371,3 +1389,53 @@ ul.row > li strong {
   line-height: 1em;
   color: white;
 }
+form#game-form fieldset, form#game-form {
+  padding-left: 0;
+  padding-right: 0;
+  position: inherit;
+  width: 100%;
+}
+form#game-form {
+}
+form#game-form > fieldset {
+  margin-bottom: 0.5em;
+  height: 2.6em;
+}
+fieldset#calendar > input, fieldset#calendar > button {
+  float: left;
+  height: 3em;
+}
+fieldset#calendar > input {
+  width: 70%;
+}
+fieldset#calendar > button#btn-calendar {
+  width: 30%;
+  height: 3em;
+  padding: 0;
+  font-size: inherit;
+}
+form#game-form fieldset.lbl {
+
+}
+label#lbl-home, label#lbl-away {
+  width: 49%;
+  border: 0px solid white;
+}
+label#lbl-away {
+}
+fieldset#homeaway {
+  margin-top: 0.8em;
+}
+fieldset#homeaway > div{
+  width: 100%;
+}
+fieldset#opponent > input {
+  width: 100%;
+}
+fieldset#game-submit {
+  margin-top: 1em;
+}
+fieldset#game-submit > input {
+  width: 100%
+}
+
