@@ -25,7 +25,7 @@ $(document).ready(function() {
   // uses offsets to record accurate positioning of stats
   var getPoint = function(event) {
     return {
-      x_coord: event.x - 585,
+      x_coord: event.x - 680,
       y_coord: event.y - 66,
       value: 50,
       radius: 40
