@@ -1,32 +1,32 @@
 <div class="score_keeper" ng-controller="ScoreKeepersCtrl as skeeps">
   <div class="identifiers">
 
-    <div class="fg_missed_button" ng-click="skeeps.selectType(1)">
+    <div class="button fg_missed_button" stat="missed" ng-click="skeeps.selectType(1)">
       SHOTS MISSED
       <h1>{{skeeps.missed_fieldgoals.length}}</h1>
     </div>
 
-    <div class="fg_made_button" ng-click="skeeps.selectType(2)">
+    <div class="button fg_made_button" stat="made" ng-click="skeeps.selectType(2)">
       SHOTS MADE
       <h1>{{skeeps.made_fieldgoals.length}}</h1>
     </div>
 
-    <div class="rebound_button" ng-click="skeeps.selectType(3)">
+    <div class="button rebound_button" stat="rebounds" ng-click="skeeps.selectType(3)">
       REBOUNDS
       <h1>{{skeeps.rebounds.length}}</h1>
     </div>
 
-    <div class="steal_button" ng-click="skeeps.selectType(4)">
+    <div class="button steal_button" stat="steals" ng-click="skeeps.selectType(4)">
       STEALS
       <h1>{{skeeps.steals.length}}</h1>
     </div>
 
-    <div class="turnover_button" ng-click="skeeps.selectType(5)">
+    <div class="button turnover_button" stat="turnovers" ng-click="skeeps.selectType(5)">
       TURNOVERS
       <h1>{{skeeps.turnovers.length}}</h1>
     </div>
 
-    <div class="block_button" ng-click="skeeps.selectType(6)">
+    <div class="button block_button" stat="blocks" ng-click="skeeps.selectType(6)">
       BLOCKS
       <h1>{{skeeps.blocks.length}}</h1>
     </div>
@@ -62,9 +62,11 @@
     <div id="directions">
       <p>Begin by clicking a stat you want to track. Then click the court.</p>
     </div>
+    <p>COURT MODE</p>
   </div></a>
 
   <div class="heat_court_map">
+    <p>HEATMAP MODE</p>
     <!-- <div id="directions">
       <p>Turn on the Heatmap by clicking on a stat. To clear the Heatmap click the RESET button.</p>
     </div> -->
