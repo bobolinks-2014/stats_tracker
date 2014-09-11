@@ -941,7 +941,7 @@ ul {
   left:0px;*/
   margin: 0px 40px;
   position: fixed;
-  top: 7px;
+  top: 8px;
   right: 0px;
   z-index: 9999;
   background-color: #FA8320;
@@ -954,8 +954,8 @@ ul {
 }
 #login_button {
   position: fixed;
-  top: 6px;
-  right: 200px;
+  top: 8px;
+  right: 198px;
   z-index: 9999;
   background-color: #FA8320;
   border: 1px solid #FA8320;
