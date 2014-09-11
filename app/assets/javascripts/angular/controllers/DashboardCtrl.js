@@ -1,6 +1,9 @@
 app.controller('DashboardCtrl', ['$http', '$window',function($http, $window){
 //  === SET ZE VARS ===
 //
+	// // One jQuery call: set background to grey washed wall
+	// 	$('body').css('background-image',"url('../../assets/images/grey_wash_wall.png')")
+
 	// use that if afraid of scope issues
 		var that = this;
 

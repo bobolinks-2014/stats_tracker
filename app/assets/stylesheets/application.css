@@ -34,13 +34,20 @@
   cursor: pointer;
   clear: both;
   display: block;
-  color: black;
+  color: #FFF;
   font-family: "Roboto Slab";
 }
+.seasons-row, .games-row {
+  background-color: #818181;
+}
+
+h2.teams-row, h2.seasons-row, h2.games-row {
+  padding-left: 0.5em;
+}
+
 .active-row {
   cursor: pointer;
-  background-color: #0ce948;
-  opacity: 0.7
+  background-color: #333;
 }
 .teams {
 }
@@ -1323,7 +1330,7 @@ ul.row > li {
   height: 11em;
   width: 11em;
   line-height: 11em;
-  background-color: #3B8686;
+  background-color: #FA8320;
   text-align: center;
 
   margin: 0 2em 2em 0;
@@ -1336,7 +1343,7 @@ ul.row > li.add-form:hover, ul.row > li:active {
   width: 11em;
 }
 ul.row > li:hover, ul.row > li:active, ul.row > li.selected {
-  background-color: #79BD9A;
+  background-color: #2097FA;
   width: 13em;
 
   -webkit-transition: all linear 0.12s;
@@ -1353,17 +1360,18 @@ ul.row > li strong, ul > li > form {
 }
 ul.row > li.add-btn {
   width: 3.5em;
+  background-color: white;
   -webkit-transition: all linear 0.12s;
   transition: all linear 0.12s;
 }
 ul.row > li.add-btn > section {
-  line-height: 5.5em;
+  line-height: 5.6em;
 }
 ul.row > li.add-btn > section.add {
-  background-color: #97B7B7;
+  background-color: #F8CCA7;
 }
 ul.row > li.add-btn > section.delete {
-  background-color: #B79797;
+  background-color: #F8A7A7;
 }
 
 ul.row > li.add-btn > section.add:hover, ul.row > li.add-btn > section.delete:hover{
@@ -1371,10 +1379,10 @@ ul.row > li.add-btn > section.add:hover, ul.row > li.add-btn > section.delete:ho
   transition: all linear 0.12s;
 }
 ul.row > li.add-btn > section.add:hover{
-  background-color: #285454;
+  background-color: #874712;
 }
 ul.row > li.add-btn > section.delete:hover, ul.row > li.add-btn > section.delete.open{
-  background-color: #542828;
+  background-color: #871212;
 }
 
 
