@@ -944,12 +944,21 @@ ul {
   top: 7px;
   right: 0px;
   z-index: 9999;
+  background-color: #FA8320;
+  border: 1px solid #FA8320;
+}
+#button_id:hover, #button_id:active, #button_id:focus, 
+#login_button:hover, #login_button:active, #login_button:focus {
+  background-color: #2097FA;
+  border: 1px solid #2097FA;
 }
 #login_button {
   position: fixed;
   top: 6px;
   right: 200px;
   z-index: 9999;
+  background-color: #FA8320;
+  border: 1px solid #FA8320;
 }
 .btn-primary {
   width: 150px;
