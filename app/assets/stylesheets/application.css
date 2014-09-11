@@ -233,6 +233,11 @@ body {
   border-radius: 100px;
   padding: 2px;
 }
+
+.pics p {
+  font-size: 1.2em;
+  text-align: center;
+}
 .developement_team h3 {
   font-family: "Roboto Slab";
   margin: 0px;
@@ -257,6 +262,8 @@ body {
 }
 .make_miss_div img, .made_heat_div img, .miss_heat_div img {
   width: 100%;
+  border-left: #333;
+  border-right: #333; 
 }
 .made_heat_div {
   /*  background-image: url("/assets/made_heat.png");*/
@@ -814,6 +821,12 @@ h2 {
 
 #directions p {
   font-size: 16px;
+}
+
+div.court > p {
+  margin-left: 0.7em;
+  margin-top: 0.3em;
+  font-size: 2em;
 }
 
 .heatmap_button, .clear_heatmap, .back_to_game{
