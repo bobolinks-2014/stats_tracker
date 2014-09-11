@@ -6,27 +6,44 @@
 <!-- TEAMS SECTION -->
   <section id="teams" class="row-group">
     <h2 class="teams-row active-row" ng-click="dash.toggleRow('teams')">
+      <!-- <i class="fa fa-caret-down" dropdown is-open="true"></i> -->
       {{dash.team_name || "Teams"}}
     </h2>
-
     <!-- Show teams attached to user -->
     <ul ng-show="dash.isRowVisible('teams')" class="teams row row-transition">
-      
+
       <!-- Add new team button -->
-      <li class="add-btn" ng-class="{'selected': dash.isFormVisible('teams')}" ng-click="dash.displayForm('teams')">
-        <strong>
-          +
-        </strong>
+      <li class="add-btn" ng-class="{'selected': dash.isFormVisible('teams')}">
+        <section class="add" ng-class="{'selected': dash.isFormVisible('teams')}"
+                             ng-click="dash.displayForm('teams')">
+          <strong>
+            +
+          </strong>
+        </section>
+
+        <section class="delete dropdown dropdown-toggle" >
+          <strong>
+            <span>
+              –
+            </span>
+          </strong>
+          <ul class="dropdown-menu">
+            <li ng-repeat="team in dash.teams">
+              <a href ng-click="dash.deleteObject('team', team)">{{team.name}}</a>
+            </li>
+          </ul>
+        </section>
       </li>
+
 
       <!-- All the teams loaded up -->
       <li ng-repeat="team in dash.teams"
           ng-click="dash.showRowGroup(team, 'team')"
           class="team row row-transition"
           ng-class="{'selected': dash.team_id == team.id}">
-        <strong>
-          {{team.name}}
-        </strong>
+          <strong>
+            {{team.name}}
+          </strong>
       </li>
 
       <!-- Add new team form -->
@@ -48,17 +65,33 @@
 
     <!-- Show if no season selected -->
     <alert ng-show="dash.showWarning['seasons']" type="info" close="dash.closeAlert('seasons')">
-      Select a team
+      Select a team first :)
     </alert>
 
     <!-- Show seasons attached to team -->
     <ul ng-show="dash.isRowVisible('seasons')" class="seasons row row-transition">
-      
-      <!-- New-season button -->
-      <li class="add-btn"  ng-class="{'selected': dash.isFormVisible('seasons')}" ng-click="dash.displayForm('seasons')">
-        <strong>
-          +
-        </strong>
+
+      <!-- Add / Delete Season buttons -->
+      <li class="add-btn" ng-class="{'selected': dash.isFormVisible('seasons')}">
+        <section class="add" ng-class="{'selected': dash.isFormVisible('seasons')}"
+                             ng-click="dash.displayForm('seasons')">
+          <strong>
+            +
+          </strong>
+        </section>
+
+        <section class="delete dropdown dropdown-toggle" >
+          <strong>
+            <span>
+              –
+            </span>
+          </strong>
+          <ul class="dropdown-menu">
+            <li ng-repeat="season in dash.seasons" ng-show="season.team_id === dash.team_id">
+              <a href ng-click="dash.deleteObject('season', season)">{{season.name}}</a>
+            </li>
+          </ul>
+        </section>
       </li>
 
       <!-- Display all seasons attached to team -->
@@ -90,17 +123,33 @@
 
     <!-- Show if no season selected -->
     <alert ng-show="dash.showWarning['games']" type="info" close="dash.closeAlert('games')">
-      Select a season
+      Select a season first :)
     </alert>
 
     <!-- Show games attached to season -->
     <ul ng-show="dash.isRowVisible('games')" class="games row row-transition">
-      
-      <!-- New-game button -->
-      <li class="add-btn" ng-class="{'selected': dash.isWarningVisible('games')}" ng-click="dash.displayForm('games')">
-        <strong>
-          +
-        </strong>
+
+      <!-- Add / Delete Game buttons -->
+      <li class="add-btn" ng-class="{'selected': dash.isFormVisible('games')}">
+        <section class="add" ng-class="{'selected': dash.isFormVisible('games')}"
+                             ng-click="dash.displayForm('games')">
+          <strong>
+            +
+          </strong>
+        </section>
+
+        <section class="delete dropdown dropdown-toggle" >
+          <strong>
+            <span>
+              –
+            </span>
+          </strong>
+          <ul class="dropdown-menu">
+            <li ng-repeat="game in dash.games" ng-show="game.season_id === dash.season_id">
+              <a href ng-click="dash.deleteObject('game', game)">{{game.date | date : "EEE M/d/yy"}}: {{game.opponent}}</a>
+            </li>
+          </ul>
+        </section>
       </li>
 
       <!-- New-game form -->
@@ -140,11 +189,39 @@
             <strong id="opponentshow">{{game.opponent}}</strong>
           </div>
           <div class="win-info">
-            <strong id="winshow">{{game.win}}<strong> 
+            <strong id="winshow">{{game.win}}<strong>
           </div>
         </div>
       </li>
     </ul>
   </section>
 
+
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1329,8 +1329,8 @@ ul.row > li {
   margin: 0 2em 2em 0;
   cursor: pointer;
 
-/*  -webkit-transition: all linear 0.09s;
-  transition: all linear 0.09s;*/
+  -webkit-transition: all linear 0.12s;
+  transition: all linear 0.12s;
 }
 ul.row > li.add-form:hover, ul.row > li:active {
   width: 11em;
@@ -1339,13 +1339,13 @@ ul.row > li:hover, ul.row > li:active, ul.row > li.selected {
   background-color: #79BD9A;
   width: 13em;
 
-  -webkit-transition: all linear 0.09s;
-  transition: all linear 0.09s;
+  -webkit-transition: all linear 0.12s;
+  transition: all linear 0.12s;
 }
 /*This is if you want the text in li's to change when hovered / selected*/
 /*ul.row > li:hover strong, ul.row > li:active strong, ul.row > li.selected strong{
-  -webkit-transition: all linear 0.09s;
-  transition: all linear 0.09s;
+  -webkit-transition: all linear 0.12s;
+  transition: all linear 0.12s;
 }*/
 ul.row > li strong, ul > li > form {
   display: inline-block;
@@ -1353,21 +1353,75 @@ ul.row > li strong, ul > li > form {
 }
 ul.row > li.add-btn {
   width: 3.5em;
+  -webkit-transition: all linear 0.12s;
+  transition: all linear 0.12s;
+}
+ul.row > li.add-btn > section {
+  line-height: 5.5em;
+}
+ul.row > li.add-btn > section.add {
   background-color: #97B7B7;
-  -webkit-transition: all linear 0.09s;
-  transition: all linear 0.09s;
 }
-ul.row > li.add-btn:hover, ul.row > li.add-btn.selected {
-  width: 4.5em;
+ul.row > li.add-btn > section.delete {
+  background-color: #B79797;
+}
+
+ul.row > li.add-btn > section.add:hover, ul.row > li.add-btn > section.delete:hover{
+  -webkit-transition: all linear 0.12s;
+  transition: all linear 0.12s;
+}
+ul.row > li.add-btn > section.add:hover{
   background-color: #285454;
-  -webkit-transition: all linear 0.09s;
+}
+ul.row > li.add-btn > section.delete:hover, ul.row > li.add-btn > section.delete.open{
+  background-color: #542828;
+}
+
+
+
+ul.row > li.add-btn.selected {
+  -webkit-transition: all linear 0.12s;
+  transition: all linear 0.12s;
+}
+ul.row > li.add-btn.selected > section.add.selected {
+  background-color: #285454;
+}
+ul.row > li.add-btn.selected > section.deleted.selected {
+  background-color: white;
+}
+
+
+
+
+/*ul.row > li.add-btn:hover strong, ul.row > li.add-btn.selected strong {
+  font-size: 4.5em;
+  -webkit-transition: all linear 0.12s;
   transition: all linear 0.09s;
 }
-ul.row > li.add-btn:hover strong, ul.row > li.add-btn.selected strong {
-  /*font-size: 4.5em;*/
-  -webkit-transition: all linear 0.09s;
-  transition: all linear 0.09s;
-}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ul.row > li.add-form {
   background-color: rgba(0,0,0,0);
 }
@@ -1389,6 +1443,8 @@ ul.row > li strong {
   line-height: 1em;
   color: white;
 }
+
+
 form#game-form fieldset, form#game-form {
   padding-left: 0;
   padding-right: 0;

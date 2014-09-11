@@ -55,7 +55,13 @@ class SeasonController < ApplicationController
   end
 
   def destroy
+    @season = Season.find(params[:id])
 
+    if @season.destroy
+      respond_to do |f|
+        f.json { render json: true}
+      end
+    end
   end
 
    private

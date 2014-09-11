@@ -15,7 +15,6 @@ $(document).ready(function(){
     var data_fieldgoals = [];
 
     var gameId = parseInt($("#game_id").attr("value"));
-    debugger;
     var ajaxRequest = $.ajax({
       type: 'GET',
       url: "/game/"+gameId+".json"
@@ -28,7 +27,6 @@ $(document).ready(function(){
         dataSteals = response.steals;
         dataTurnovers = response.turnovers;
         dataBlocks = response.blocks;
-        debugger;
       });
 
     $(".identifiers").on('click', '.fg_missed_button' ,function(){

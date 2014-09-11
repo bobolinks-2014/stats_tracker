@@ -65,9 +65,15 @@ class GameController < ApplicationController
       redirect_to game_path
   end
 
-  # def destroy
+  def destroy
+    @game = Game.find(params[:id])
 
-  # end
+    if @game.destroy
+      respond_to do |f|
+        f.json { render json: true}
+      end
+    end
+  end
 
    private
 

@@ -50,7 +50,13 @@ class TeamController < ApplicationController
 
 
   def destroy
+    @team = Team.find(params[:id])
 
+    if @team.destroy
+      respond_to do |f|
+        f.json { render json: true}
+      end
+    end
   end
 
   private

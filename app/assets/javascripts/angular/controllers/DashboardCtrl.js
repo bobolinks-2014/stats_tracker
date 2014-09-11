@@ -17,7 +17,6 @@ app.controller('DashboardCtrl', ['$http', '$window',function($http, $window){
 			this.showWarning[row] = false;
 		}
 
-
 	// Selected team or season
 		this.always = true;
 		this.team_id = 0;
@@ -127,8 +126,61 @@ app.controller('DashboardCtrl', ['$http', '$window',function($http, $window){
 		})
 	}
 
+//  === DELETE AN OBJECT ===
+//
+
+	this.deleteObject = function(rowType, obj){
+
+		switch(rowType) {
+			case 'team':
+				var rowPlural = 'teams';
+				var rowIdString = 'team_id';
+				var nextRowPlural = 'seasons';
+				break;
+			case 'season':
+				var rowPlural = 'seasons';
+				var rowIdString = 'team_id';
+				var nextRowPlural = 'games';
+				break;
+			case 'game':
+				var rowPlural = 'games';
+				var rowIdString = null;
+				break;
+			default:
+				break;
+		};
+
+		if (confirm("You sure you want to delete " + obj.name + "?")){
+
+			// Delete obj in NG
+			this[rowPlural].forEach(function(rowObj, index){
+				if (rowObj.id === obj.id){
+					that[rowPlural].splice(index, 1);
+				}
+			});
+
+			if (obj.id === this[rowIdString]){
+				this[rowIdString] = 0;
+				this[nextRowPlural] = false;
+			}
+
+			$http({
+				method: "DELETE",
+				url: '/' + rowType + '/' + obj.id + '.json',
+			})
+			.success(function (data, status, headers, config) {
+				console.log("Nice, it worked")
+			})
+			.error(function (data, status, headers, config) {
+				console.log("Delete didn't work")
+			});
+		} else {
+			console.log("they said no :(")
+		}
+	};
+
 //  === DISPLAY ZE ROWS ===
-// 
+//
 	this.isSet = function(rowName){
 		return this.showRow[rowName];
 	};
