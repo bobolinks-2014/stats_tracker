@@ -182,15 +182,15 @@
           ng-class="{'selected': dash.game_id == game.id}"
           class="game">
         <div class="game-info">
-          <div class="date-info">
-            <strong id="dateshow">{{game.date | date : "EEE M/d/yy"}}</strong>
-          </div>
-          <div class="opp-info">
-            <strong id="opponentshow">{{game.opponent}}</strong>
-          </div>
-          <div class="win-info">
-            <strong id="winshow">{{game.win}}<strong>
-          </div>
+          <p class="date-info">
+            {{game.date | date : "EEE M/d/yy"}}
+          </p>
+          <p class="win-info" ng-class="{'won': dash.gameWin(game),'lost': dash.gameLose(game) }">
+            {{game.win || "TBD"}}
+          </p>
+          <p class="opp-info">
+            {{game.opponent}}
+          </p>
         </div>
       </li>
     </ul>

@@ -11,7 +11,7 @@
   mirta2 = Team.create(name: "Junior Varsity", school: "Mirta Ramirez", user_id: 1)
   Season.create(name: "2013", team_id: 1)
   Season.create(name: "2014", team_id: 2)
-  date = ["02/05/14", "03/04/14", "04/04/14", "05/04/14", "06/04/14", "07/04/14"]
+  date = ["02/05/2014", "03/04/2014", "04/04/2014", "05/04/2014", "06/04/2014", "07/04/2014"]
   boolean = ["W", "L"]
   opponents = ["Noble", "Rauner", "Bulls", "Pritzker", "Whitney Young","Simean","Cass Tech","Renaissance"]
 
