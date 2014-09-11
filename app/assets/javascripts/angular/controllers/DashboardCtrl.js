@@ -104,7 +104,7 @@ app.controller('DashboardCtrl', ['$http', '$window',function($http, $window){
 
 	// Date Formatting Stuff
 	this.openDate = function($event){
-		$event.preventDefault();
+		$event.preventDefault();are
 		$event.stopPropagation();
 
 		that.dateOpened = true;
@@ -152,8 +152,14 @@ app.controller('DashboardCtrl', ['$http', '$window',function($http, $window){
 			default:
 				break;
 		};
-
-		if (confirm("You sure you want to delete " + obj.name + "?")){
+		var msg = obj.name;
+		if (rowType === 'game'){
+			var date = new Date(Date.parse(obj.date));
+			var dateString = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear().toString().slice(2,4);
+			msg = obj.opponent + " on " + dateString;
+		}
+		debugger;
+		if (confirm("You sure you want to delete " + msg + "?")){
 
 			// Delete obj in NG
 			this[rowPlural].forEach(function(rowObj, index){
