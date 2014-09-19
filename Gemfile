@@ -31,6 +31,7 @@ gem "non-stupid-digest-assets"
 
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-glyphicons'
+gem "non-stupid-digest-assets"
 
 
 group :development, :test do
